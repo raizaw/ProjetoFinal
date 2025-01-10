@@ -8,7 +8,7 @@ class Tabuleiro {
 private:
     int linhas;   // Número de linhas do tabuleiro
     int colunas;  // Número de colunas do tabuleiro
-    std::vector<std::vector<char>> grid; // Matriz para representar o tabuleiro
+    std::vector<std::vector<char>> tab; // Matriz para representar o tabuleiro
 
 public:
     // Construtor que inicializa o tabuleiro com as dimensões
