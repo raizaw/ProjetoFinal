@@ -9,21 +9,25 @@
 class Jogos {
 protected:
     Tabuleiro* tabuleiro;
+    Tabuleiro::Peca jogadorAtual;
 
 public:
-    // Construtor que iniciliza o tabuleiro
+    // Construtor que inicializa o tabuleiro
     Jogos(int linhas, int colunas);
 
     // Métodos para imprimir o tabuleiro
     virtual void exibirTabuleiro() const;
-    virtual void exibirPeca(Tabuleiro::Peca peca) const = 0;
+    virtual void exibirPeca(Tabuleiro::Peca peca) const = 0; // Exibição das peças depende do jogo em questão
     
-    virtual void lerJogada() const = 0;
-	virtual bool jogadaEValida();
-	virtual void realizarJogada();
-	virtual bool partidaAcabou();
-	virtual void indicarFimDaPartida();
-	virtual void trocarJogador();
+    // Métodos responsáveis pelas jogadas em cada rodada
+    virtual void lerJogada() const = 0; // Lê jogada a depender do jogo em questão
+	virtual bool jogadaEValida() const = 0; // Verifica se jogada é válida a depender das regras do jogo em questão
+	virtual void realizarJogada() = 0; // Realiza a jogada a depender do jogo em questão
+
+    // Métodos que gerenciam o andamento da partida
+    virtual void trocarJogador();
+	virtual bool partidaAcabou() const = 0; // Verifica se a partida pode ou não continuar
+	virtual void indicarFimDaPartida() const = 0;
 
 
     virtual ~Jogos() {

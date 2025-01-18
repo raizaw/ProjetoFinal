@@ -2,6 +2,7 @@
 
 Jogos::Jogos(int linhas, int colunas) {
     tabuleiro = new Tabuleiro(linhas, colunas); // Inicializa o tabuleiro
+    jogadorAtual = Tabuleiro::Peca::JOGADOR1;
 }
 
 void Jogos::exibirTabuleiro() const {
@@ -11,4 +12,8 @@ void Jogos::exibirTabuleiro() const {
         }
         std::cout << "\n";
     }
+}
+
+void Jogos::trocarJogador() {
+    jogadorAtual = (jogadorAtual == Tabuleiro::Peca::JOGADOR1)? Tabuleiro::Peca::JOGADOR2 : Tabuleiro::Peca::JOGADOR1;
 }
