@@ -9,6 +9,7 @@ void Jogos::exibirTabuleiro() const {
     for (const auto& linha : tabuleiro->getTabuleiro()) {
         for (const auto& celula : linha) {
             exibirPeca(celula); // Chama o método virtual puro
+            std::cout << " | ";
         }
         std::cout << "\n";
     }

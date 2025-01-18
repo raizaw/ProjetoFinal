@@ -10,7 +10,7 @@ public:
     ~JogoDaVelha() {};
 
     // Métodos para imprimir o tabuleiro
-    // virtual void exibirTabuleiro() const override; -> declarar apenas se for sobrescrever
+    virtual void exibirTabuleiro() const override; //// sobrescrever para ficar bonito!!!
     virtual void exibirPeca(Tabuleiro::Peca peca) const override; 
     
     // Métodos responsáveis pelas jogadas em cada rodada
