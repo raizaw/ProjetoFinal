@@ -2,38 +2,47 @@
 #define GESTAO_DE_JOGADORES_H
 
 #include <string>
-#include <vector>
+#include <map>
 #include <iostream>
 #include <fstream>
 #include <sstream>//stringstream, ostringstream
+#include <memory>//unique_ptr
 #include <algorithm>//sort()
 #include <iomanip>//stew()
 #include "jogador.hpp"  
 
 class GestaoDeJogadores{
     private:
-    std::vector<Jogador*> jogadores_vec;
-    const std::string caminhoDoArquivo;
-
+        std::map<std::string, std::unique_ptr<Jogador>> jogadores_map;
+        const std::string caminhoDoArquivo;
 
     public:
         //Construtor e destrutor
-        GestaoDeJogadores(const std::string &caminho);
+        GestaoDeJogadores(const std::string &caminhoDoArquivo);
         ~GestaoDeJogadores();
 
-        //Metodos para manipulacao de arquivo
-        void carregarDoArquivo(const std::string& apelido1 = "", const std::string& apelido2 = "");
+        //Metodos para manipulação de arquivo
+        bool arquivoValido() const;
+        std::string buscarLinhaDoJogador(const std::string& apelido) const;
+        bool jogadorExiste(const std::string& apelido) const;
+        void processarLinha(const std::string& linha);
+        void carregarTodoArquivo();
+        void carregarDoisJogadores(const std::string& apelido1, const std::string& apelido2);
+
+
+
+        //AINDA FALTA atualizar alterações nas implemetações dos métodos abaixo
+
         bool salvarNovoJogador(const Jogador* novoJogador);
-        void salvarNovasEstatisticas(const std::vector<Jogador*>& jogadoresParaAtualizar);
+        void salvarNovasEstatisticas(const std::map<std::string, Jogador> &jogadoresParaAtualizar);
         
         //Metodos para gerenciar jogadores
-        bool cadastrarJogador(const std::string &_apelido, const std::string &_nome);
-        bool removerJogador(const std::string &_apelido);
-        void listarJogadores();
+        bool cadastrarJogador(const std::string &apelido, const std::string &nome);
+        bool removerJogador(const std::string &apelido);
 
         //Metodos auxiliares
-        std::string getNomeDoJogo(TipoDeJogo jogo);
+        void ordenarJogadores(std::map<std::string, std::unique_ptr<Jogador>> jogadores_desordenados_map); //a implementar
         bool buscaPorApelido(const std::string& apelido, std::streampos* posicao = nullptr) const;
+        std::string getNomeDoJogo(TipoDeJogo jogo);
 };
-
 #endif

@@ -9,13 +9,14 @@ enum TipoDeJogo{REVERSI = 0, LIG4, VELHA, TOTAL_DE_JOGOS /*sera sempre o valor d
 
 class Jogador{
     private:
-        std::string nome;
         std::string apelido;
+        std::string nome;
         std::map<TipoDeJogo,std::pair<int, int>> estatisticas_map; //mapa (jogo,vitorias,derrotas)
 
     public:
-        Jogador(const std::string& nome, const std::string& apelido); //Construtor
-        ~Jogador() = default; //Destrutor
+        //Construtor e destrutor
+        Jogador(const std::string& nome, const std::string& apelido);
+        ~Jogador();
 
         //Metodos de acesso
         std::string getNome() const;
@@ -25,7 +26,7 @@ class Jogador{
         void adicionarVitoria(TipoDeJogo jogo, int quantidade=1);
         void adicionarDerrota(TipoDeJogo jogo, int quantidade=1);
         std::pair<int, int> getEstatisticasDoJogo(TipoDeJogo jogo) const;
-        //Metodo auxiliare
+        //Metodo auxiliares
         std::string formatarJogadorComoCSV() const;
 };
 #endif

@@ -1,15 +1,47 @@
 #include "gestao_de_jogadores.hpp"
 
 GestaoDeJogadores::GestaoDeJogadores(const std::string& caminho)
-    : caminhoDoArquivo(caminho){
-    carregarDoArquivo();
-}
-GestaoDeJogadores::~GestaoDeJogadores(){
-    //Libera a memoria de todos os jogadores alocados dinamicamente
-    for(auto* _jogador : jogadores_vec){
-        delete _jogador;
+    : caminhoDoArquivo(caminho){} //ver questao do arquivo
+GestaoDeJogadores::~GestaoDeJogadores(){}
+
+bool GestaoDeJogadores::arquivoValido() const{
+    std::ifstream arquivo(caminhoDoArquivo);
+    if(!arquivo.is_open()){
+        throw std::runtime_error("Erro: Não foi possível abrir o arquivo");
+        return false;
     }
+    if(arquivo.peek() == EOF){
+        throw std::runtime_error("Erro: O arquivo está vazio.");
+        return false;
+    }
+    return true;
 }
+
+std::string GestaoDeJogadores::buscarLinhaDoJogador(const std::string &apelido) const{
+    if(arquivoValido()){
+        return "";
+    }
+
+    std::ifstream arquivo(caminhoDoArquivo);
+    std::string linha;
+    while(std::getline(arquivo, linha)){
+        std::stringstream ss(linha);
+        std::string apelidoExistente;
+        std::getline(ss, apelidoExistente, ',');
+        if(apelidoExistente == apelido){
+            return linha;
+        }
+    }
+    return "";
+}
+
+bool GestaoDeJogadores::jogadorExiste(const std::string& apelido) const{
+    if(arquivoValido()) {
+        return false; // Retorna falso se o arquivo não for válido
+    }
+    return !buscarLinhaDoJogador(apelido).empty();
+}
+
 
 /*
 Método carregarDoArquivo() :
@@ -20,80 +52,63 @@ Caso o apelido do jogador seja encontrado no arquivo, suas estatísticas são ca
 Testes: abertura de arquivo, arquivo esta vazio, vetor de jogadores não esta vazio, se linha está desformatada.
 A olhar: como tratar returns!
 */
-void GestaoDeJogadores::carregarDoArquivo(const std::string& apelido1 /* ="" */, const std::string& apelido2 /* ="" */){
-    std::ifstream arquivo(caminhoDoArquivo);
-    //Testa se eh possivel abrir arquivo
-    if(!arquivo.is_open()){
-        std::cout << "Erro: Não foi possível abrir o arquivo.\n";
-        return;
-    }
-    //Testa se o arquivo esta vazio
-    if (arquivo.peek() == EOF) { 
-        std::cout << "O arquivo está vazio.\n"; 
-        return; 
-    }
-    //Garante que jogadores_vec esteja vazio antes de carregar dados do arquivo
-    if(!jogadores_vec.empty()){
-        for(auto* _jogador : jogadores_vec){
-            delete _jogador;
-        }
-        jogadores_vec.clear();
-    }
 
-    std::string linha;
+//Método que encapsula a lógica de carregar os dados de um jogador a partir de uma linha.
+//Recebe a linha e cria o novo jogador com os dados dessa linha
+void GestaoDeJogadores::processarLinha(const std::string& linha){
+    std::stringstream ss(linha);
+    std::string apelido, nome;
+    std::getline(ss, apelido, ',');
+    std::getline(ss, nome, ',');
 
-    while(std::getline(arquivo, linha)){
-        std::string apelido, nome;
+    auto novoJogador = std::make_unique<Jogador>(apelido, nome);
+
+    for(int i=REVERSI;i<TOTAL_DE_JOGOS;i++){
         int vitoria, derrota;
-        std::stringstream ss(linha);
-
-        std::getline(ss, apelido, ',');
-        std::getline(ss, nome, ',');
-
-        //Se ambos os apelidos estiverem vazios, processa todos os jogadores. É usado em listarJogadores()
-        if(apelido1.empty() && apelido2.empty()){
-            Jogador* novoJogador = new Jogador(apelido, nome);
-            //Leitura das estatisticas
-            for (int i = REVERSI; i < TOTAL_DE_JOGOS; i++) {
-                if (!(ss >> vitoria >> derrota)) {
-                    std::cerr << "ERRO: Formato inválido na linha: " << linha << std::endl;
-                    delete novoJogador;
-                    break; 
-                }
-                novoJogador->adicionarVitoria(static_cast<TipoDeJogo>(i), vitoria);
-                novoJogador->adicionarDerrota(static_cast<TipoDeJogo>(i), derrota);
-            }
-            jogadores_vec.push_back(novoJogador);
+        if(!(ss >> vitoria >> derrota)){
+            std::cerr << "ERRO: Formato inválido na linha: " << linha << std::endl;
+            return;
         }
-        //Se o apelido for igual ao apelido1 ou apelido2, carrega o jogador desejado. Será usado nas partidas 
-        else if(apelido == apelido1 || apelido == apelido2){
-            Jogador* novoJogador = new Jogador(apelido, nome);
-            //Leitura das estatisticas
-            for(int i=REVERSI;i<TOTAL_DE_JOGOS;i++){
-                if(!(ss >> vitoria >> derrota)){
-                    std::cerr << "ERRO: Formato inválido na linha: " << linha << std::endl;
-                    break; 
+        novoJogador->adicionarVitoria(static_cast<TipoDeJogo>(i), vitoria);
+        novoJogador->adicionarDerrota(static_cast<TipoDeJogo>(i), derrota);
+    }
+    jogadores_map[apelido] = std::move(novoJogador);
+}
 
-                    /*
-                    Como tratar esta exceção? continue ou break?
-                    ver se é melhor quebrar o loop, se sim o que fazer
-                    */
-
-                }
-                novoJogador->adicionarVitoria(static_cast<TipoDeJogo>(i), vitoria);
-                novoJogador->adicionarDerrota(static_cast<TipoDeJogo>(i), derrota);
-            }
-            jogadores_vec.push_back(novoJogador);
-        }
-        if (!apelido2.empty() && jogadores_vec.size() == 2) {
-            break; //Dois jogadores encontrados
-        }
-        if (apelido2.empty() && jogadores_vec.size() == 1) {
-            break; //Um jogador encontrado
-        }
+void GestaoDeJogadores::carregarTodoArquivo(){
+    if (arquivoValido()){
+        return; //Não carrega se o arquivo não for válido
+    } else if(!jogadores_map.empty()){
+        jogadores_map.clear(); //Caso não esteja vazio, limpa o mapa antes de carregar jogadores(nao precisa de delete, por usar unique_ptr)
+    }
+    std::ifstream arquivo(caminhoDoArquivo);
+    std::string linha;
+    while(std::getline(arquivo, linha)){
+        processarLinha(linha);
     }
     arquivo.close();
 }
+void GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const std::string &apelido2){
+    if (arquivoValido()) {
+        return; //Não processa se o arquivo não for válido
+    } else if(!jogadores_map.empty()){
+        jogadores_map.clear(); //Caso não esteja vazio, limpa o mapa antes de carregar jogadores(nao precisa de delete, por usar unique_ptr)
+    }
+    
+    std::string linha1 = buscarLinhaDoJogador(apelido1);
+    std::string linha2 = buscarLinhaDoJogador(apelido2);
+
+    if(!linha1.empty()){
+        processarLinha(linha1);
+    }
+    if(!linha2.empty()){
+        processarLinha(linha2);
+    }
+}
+
+
+    //AINDA FALTA atualizar alterações nas implemetações dos métodos abaixo
+
 /*
 Método salvarNovasEstatisticas() :
 Recebe um vetor de ponteiros para Jogador e atualiza os jogadores necessários
@@ -289,9 +304,10 @@ Método buscaPorApelido() :
 */
 bool GestaoDeJogadores::buscaPorApelido(const std::string& apelido, std::streampos* posicao /*= nullptr*/) const {
     std::ifstream arquivo(caminhoDoArquivo);
-    if (!arquivo.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo para busca por apelido." << std::endl;
-        return false;
+    if(!arquivo.is_open()){
+        throw("Erro: Não foi possível abrir o arquivo");
+    }else if(arquivo.peek() == EOF){
+        throw("Erro: O arquivo está vazio para buscar jogador por apelido.");
     }
 
     std::string linha;
@@ -313,19 +329,3 @@ bool GestaoDeJogadores::buscaPorApelido(const std::string& apelido, std::streamp
 
     return false; // Apelido não encontrado
 }
-
-
-/*}
-FALTA FAZER:
-- Ordenar protecao dos metodos
-- 
-IDEIAS PARA FAZER:
-- uma ordenacao por apelido sempre que um jogador for cadastrado
-- 
-
-reler codigo, conferir se algo falta, conferir se tudo solicitado foi feito
-verificar interligacao com a parte de execução dos jogos
-verificar como ficará a main
-testar
-conversar sobre proximas etapas
-*/
