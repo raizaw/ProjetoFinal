@@ -11,13 +11,12 @@ protected:
     Tabuleiro* tabuleiro;
 
 public:
-    Jogos(int linhas, int colunas) {
-        tabuleiro = new Tabuleiro(linhas, colunas); // Inicializa o tabuleiro
-    }
+    // Construtor que iniciliza o tabuleiro
+    Jogos(int linhas, int colunas);
 
     // Métodos para imprimir o tabuleiro
     virtual void exibirTabuleiro() const;
-    virtual void exibirPeca() const = 0;
+    virtual void exibirPeca(Tabuleiro::Peca peca) const = 0;
     
     virtual void lerJogada() const = 0;
 	virtual bool jogadaEValida();

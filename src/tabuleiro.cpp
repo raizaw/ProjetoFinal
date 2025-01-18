@@ -34,3 +34,7 @@ Tabuleiro::Peca Tabuleiro::getPosicao(int linha, int coluna) const {
     }
     return Peca::VAZIO;
 }
+
+const std::vector<std::vector<Tabuleiro::Peca>>& Tabuleiro::getTabuleiro() const {
+    return tabuleiro;
+}
