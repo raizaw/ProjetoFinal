@@ -29,7 +29,7 @@ void lig4::exibirPeca(Tabuleiro::Peca peca) const{
     }
 }
 
-void lig4::lerJogada() const {
+void lig4::lerJogada() {
     std::cout << "Jogador " << (jogadorAtual == Tabuleiro::Peca::JOGADOR1 ? "1 (X)" : "2 (O)") << ", escolha uma coluna (1-7): ";
     std::cin >> colunaEscolhida;
     --colunaEscolhida; // ajusta para indice zero
@@ -48,7 +48,7 @@ void lig4::realizarJogada(){
     }
 }
 
-bool lig4::partidaAcabou() const{
+bool lig4::partidaAcabou() {
     for (int linha = 0; linha < 6; ++linha){
         for (int coluna = 0; coluna < 7; ++coluna){
             if(tabuleiro->getPosicao(linha, coluna) != Tabuleiro::Peca::VAZIO && verificarVitoria(linha, coluna)){

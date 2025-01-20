@@ -36,3 +36,24 @@ void Jogos::exibirTabuleiro() const {
 void Jogos::trocarJogador() {
     jogadorAtual = (jogadorAtual == Tabuleiro::Peca::JOGADOR1)? Tabuleiro::Peca::JOGADOR2 : Tabuleiro::Peca::JOGADOR1;
 }
+
+std::string Jogos::strJogador(int jogador) const {
+    if (jogador == 1) {
+        return "\033[31mJogador 1 (X)\033[0m"; // Jogador 1 em vermelho
+    } else if (jogador == 2) {
+        return "\033[33mJogador 2 (O)\033[0m"; // Jogador 2 em amarelo
+    } else {
+        return "Jogador inválido";
+    }
+}
+
+std::string Jogos::strJogador(Tabuleiro::Peca peca) const {
+    switch (peca) {
+    case Tabuleiro::Peca::JOGADOR1:
+        return "\033[31mJogador 1 (X)\033[0m"; // Jogador 1 em vermelho
+    case Tabuleiro::Peca::JOGADOR2:
+        return "\033[33mJogador 2 (O)\033[0m"; // Jogador 2 em amarelo
+    default:
+        return "Vazio ou inválido";
+    }
+}

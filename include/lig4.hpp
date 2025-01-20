@@ -17,12 +17,12 @@ public:
     virtual void exibirPeca(Tabuleiro::Peca peca) const override;
 
     // metodos responsaveis pelas jogadas em cada rodada
-    virtual void lerJogada() const override;
+    virtual void lerJogada() override;
     virtual bool jogadaEValida() const override;
     virtual void realizarJogada() override;
 
     // metodos que gerenciam o andamento da partida
-    virtual bool partidaAcabou() const override;
+    virtual bool partidaAcabou() override;
     virtual void indicarFimDaPartida() const override;
 private:
     mutable int colunaEscolhida; // coluna escolhida pelo jogador atual

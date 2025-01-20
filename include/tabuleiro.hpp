@@ -29,8 +29,10 @@ public:
     void setPosicao(int linha, int coluna, Peca peca); // Define um valor em uma posição específica
     Peca getPosicao(int linha, int coluna) const;      // Retorna o valor em uma posição específica
 
-    // Retorna a matriz do tabuleiro (referência constante)
+    // Getters
     const std::vector<std::vector<Peca>>& getTabuleiro() const;
+    int getLinhas() const;
+    int getColunas() const;
 };
 
 #endif
