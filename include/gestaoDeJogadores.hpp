@@ -9,7 +9,7 @@
 #include <memory>//unique_ptr
 #include <algorithm>//sort()
 #include <iomanip>//stew()
-#include "./jogador.hpp"  
+#include "jogador.hpp"  
 
 class GestaoDeJogadores{
     private:
@@ -22,22 +22,21 @@ class GestaoDeJogadores{
         ~GestaoDeJogadores();
 
         //Metodos para manipulação de arquivo
-        bool arquivoValidoParaBusca() const;
-        std::string buscarLinhaDoJogador(const std::string& apelido) const;
-        bool jogadorExiste(const std::string& apelido) const;
-        void processarLinha(const std::string& linha);
         void carregarTodoArquivo();
-        void carregarDoisJogadores(const std::string& apelido1, const std::string& apelido2);
-        bool salvarNovoJogador(const std::unique_ptr<Jogador>& novoJogador);
+        void carregarDoisJogadores(const std::string& apelido1,const std::string& apelido2);
+        bool inserirNovoJogador(const std::unique_ptr<Jogador>& novoJogador);
         bool atualizarEstatisticas(const std::map<std::string, std::unique_ptr<Jogador>>& jogadoresParaAtualizar);
         
         //Metodos para gerenciar jogadores
-        bool cadastrarJogador(const std::string &apelido, const std::string &nome);
+        bool cadastrarJogador(const std::string &apelido,const std::string &nome);
         bool removerJogador(const std::string &apelido);
+        void listarJogadores();
 
         //Metodos auxiliares
-        void ordenarJogadores(std::map<std::string, std::unique_ptr<Jogador>> jogadores_desordenados_map); //a implementar
-        bool buscaPorApelido(const std::string& apelido, std::streampos* posicao = nullptr) const;
-        std::string getNomeDoJogo(TipoDeJogo jogo);
+        std::ifstream GestaoDeJogadores::abrirArquivoParaLeitura()const;
+        std::string buscarLinhaDoJogador(const std::string& apelido)const;
+        bool jogadorExiste(const std::string& apelido)const;
+        void processarLinhaCSV(const std::string& linha);
+        std::string NomeDoJogo(TipoDeJogo jogo);
 };
 #endif
