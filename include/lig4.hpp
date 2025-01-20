@@ -1,7 +1,7 @@
 #ifndef LIG4_H
 #define LIG4_H
 
-#include "jogos.hpp"
+#include "./jogos.hpp"
 #include <iostream>
 
 

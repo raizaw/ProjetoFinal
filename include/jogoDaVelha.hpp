@@ -1,7 +1,7 @@
 #ifndef JOGODAVELHA_H
 #define JOGODAVELHA_H
 
-#include "jogos.hpp"
+#include "./jogos.hpp"
 #include <iostream>
 
 class JogoDaVelha : public Jogos {

@@ -1,4 +1,4 @@
-#include "lig4.hpp"
+#include "../include/lig4.hpp"
 
 void lig4::exibirTabuleiro() const{
     for(const auto& linha : tabuleiro->getTabuleiro()){

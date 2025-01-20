@@ -9,7 +9,7 @@
 #include <memory>//unique_ptr
 #include <algorithm>//sort()
 #include <iomanip>//stew()
-#include "jogador.hpp"  
+#include "./jogador.hpp"  
 
 class GestaoDeJogadores{
     private:

@@ -1,7 +1,7 @@
 #ifndef JOGOS_H
 #define JOGOS_H 
 
-#include "tabuleiro.hpp"
+#include "./tabuleiro.hpp"
 #include <iostream>
 #include <vector>
 

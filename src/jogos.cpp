@@ -1,4 +1,4 @@
-#include "jogos.hpp"
+#include "../include/jogos.hpp"
 
 Jogos::Jogos(int linhas, int colunas) {
     tabuleiro = new Tabuleiro(linhas, colunas); // Inicializa o tabuleiro

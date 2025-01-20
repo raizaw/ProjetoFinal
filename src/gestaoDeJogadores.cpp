@@ -1,4 +1,4 @@
-#include "gestao_de_jogadores.hpp"
+#include "../include/gestaoDeJogadores.hpp"
 
 GestaoDeJogadores::GestaoDeJogadores(const std::string& caminho)
     : caminhoDoArquivo(caminho){} //ver questao do arquivo

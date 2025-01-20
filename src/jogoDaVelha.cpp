@@ -1,4 +1,4 @@
-#include "jogoDaVelha.hpp"
+#include "../include/jogoDaVelha.hpp"
 
 void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
     switch (peca) {
@@ -11,4 +11,5 @@ void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
     case Tabuleiro::Peca::JOGADOR2:
         std::cout << "\033[33mO\033[0m"; // O em amarelo
         break;
+    }
 };
