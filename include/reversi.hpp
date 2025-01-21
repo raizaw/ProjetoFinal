@@ -1,38 +1,31 @@
-#ifndef REVERSI_H
-#define REVERSI_H
+#ifndef REVERSI_HPP
+#define REVERSI_HPP
 
-#include "./jogos.hpp"
-#include <vector>
+#include "jogos.hpp"
+#include "tabuleiro.hpp"
 #include <iostream>
+#include <utility>
 
 class Reversi : public Jogos {
-private:
-    int jogadaLinha;  // Linha da jogada atual
-    int jogadaColuna; // Coluna da jogada atual
-
-    // Métodos auxiliares
-    bool dentroDosLimites(int linha, int coluna) const;
-    bool capturarPecas(int linha, int coluna, Tabuleiro::Peca peca);
-    bool direcaoValida(int linha, int coluna, int deltaLinha, int deltaColuna, Tabuleiro::Peca peca) const;
-
 public:
     Reversi();
-    ~Reversi() {}
 
-    // Métodos para exibir o tabuleiro
-    virtual void exibirPeca(Tabuleiro::Peca peca) const override;
+    void exibirPeca(Tabuleiro::Peca peca) const override;
+    void lerJogada() override;
+    bool jogadaEValida() const override;
+    void realizarJogada() override;
+    bool partidaAcabou() override;
+    void indicarFimDaPartida() const override;
 
-    // Métodos responsáveis pelas jogadas
-    virtual void lerJogada() override;
-    virtual bool jogadaEValida() const override;
-    virtual void realizarJogada() override;
+private:
+    int jogadaLinha;
+    int jogadaColuna;
 
-    // Métodos que gerenciam o andamento da partida
-    virtual bool partidaAcabou() override;
-    virtual void indicarFimDaPartida() const override;
-
-    // Conta as peças de cada jogador no tabuleiro
-    std::pair<int, int> contarPecas() const;
+    std::pair<int, int> contarPecas() const; // Adicione a declaração da função aqui
+    bool dentroDosLimites(int linha, int coluna) const;
+    bool direcaoValida(int linha, int coluna, int deltaLinha, int deltaColuna, Tabuleiro::Peca peca) const;
+    bool capturarPecas(int linha, int coluna, Tabuleiro::Peca peca);
 };
 
-#endif
+#endif // REVERSI_HPP
+

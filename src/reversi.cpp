@@ -78,8 +78,27 @@ bool Reversi::partidaAcabou() {
     return true;
 }
 
+std::pair<int, int> Reversi::contarPecas() const {
+    int jogador1 = 0, jogador2 = 0;
+    for (const auto& linha : tabuleiro->getTabuleiro()) {
+        for (const auto& celula : linha) {
+            if (celula == Tabuleiro::Peca::JOGADOR1) ++jogador1;
+            if (celula == Tabuleiro::Peca::JOGADOR2) ++jogador2;
+        }
+    }
+    return {jogador1, jogador2};
+}
+
+
+
 void Reversi::indicarFimDaPartida() const {
-    auto [pecasJogador1, pecasJogador2] = contarPecas();
+    // Chamada à função contarPecas, que retorna um std::pair
+    std::pair<int, int> pecas = contarPecas();
+
+    // Extrai os valores manualmente
+    int pecasJogador1 = pecas.first;
+    int pecasJogador2 = pecas.second;
+
     std::cout << "Partida encerrada!\n";
     std::cout << "Jogador 1 (X): " << pecasJogador1 << " peças\n";
     std::cout << "Jogador 2 (O): " << pecasJogador2 << " peças\n";
@@ -93,16 +112,7 @@ void Reversi::indicarFimDaPartida() const {
     }
 }
 
-std::pair<int, int> Reversi::contarPecas() const {
-    int jogador1 = 0, jogador2 = 0;
-    for (const auto& linha : tabuleiro->getTabuleiro()) {
-        for (const auto& celula : linha) {
-            if (celula == Tabuleiro::Peca::JOGADOR1) ++jogador1;
-            if (celula == Tabuleiro::Peca::JOGADOR2) ++jogador2;
-        }
-    }
-    return {jogador1, jogador2};
-}
+
 
 bool Reversi::dentroDosLimites(int linha, int coluna) const {
     return linha >= 0 && linha < tabuleiro->getLinhas() && coluna >= 0 && coluna < tabuleiro->getColunas();
