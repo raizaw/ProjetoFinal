@@ -3,18 +3,24 @@
 
 #include <string>
 #include <map>
+#include <set>//atualizarEstatisticas
 #include <iostream>
 #include <fstream>
-#include <sstream>//stringstream, ostringstream
+#include <sstream>//stringstream
 #include <memory>//unique_ptr
-#include <algorithm>//sort()
 #include <iomanip>//stew()
-#include "jogador.hpp"  
+#include "./jogador.hpp"  
 
 class GestaoDeJogadores{
     private:
         std::map<std::string, std::unique_ptr<Jogador>> jogadores_map;
         const std::string caminhoDoArquivo;
+
+        //Metodos auxiliares
+        std::ifstream GestaoDeJogadores::abrirArquivoParaLeitura()const;
+        std::string buscarLinhaDoJogador(const std::string& apelido)const;
+        void inserirLinhaNoMapa(const std::string& linha);
+        std::string nomeDoJogo(TipoDeJogo jogo);
 
     public:
         //Construtor e destrutor
@@ -31,12 +37,5 @@ class GestaoDeJogadores{
         bool cadastrarJogador(const std::string &apelido,const std::string &nome);
         bool removerJogador(const std::string &apelido);
         void listarJogadores();
-
-        //Metodos auxiliares
-        std::ifstream GestaoDeJogadores::abrirArquivoParaLeitura()const;
-        std::string buscarLinhaDoJogador(const std::string& apelido)const;
-        bool jogadorExiste(const std::string& apelido)const;
-        void processarLinhaCSV(const std::string& linha);
-        std::string NomeDoJogo(TipoDeJogo jogo);
 };
 #endif
