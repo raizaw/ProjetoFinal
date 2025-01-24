@@ -275,7 +275,8 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido){
     if(!arquivo.is_open()){
         throw std::runtime_error("Erro: Não foi possível abrir o arquivo");
     }
-    for(const auto&  [_apelido, _jogador]: jogadores_map){
+    for(const auto&  pair: jogadores_map){
+        const auto& _jogador = pair.second;
         arquivo << _jogador->formatarJogadorComoCSV();
     }
 
@@ -303,7 +304,6 @@ void GestaoDeJogadores::listarJogadores(){
     carregarTodoArquivo();
     //Exibe a lista de jogadores com suas estatisticas
     for (const auto& pair : jogadores_map){
-        const auto& _apelido = pair.first;
         const auto& _jogador = pair.second;
         //Exibe apelido e nome do jogador
         std::cout << "LJ [A] " << std::setw(15) << std::left << _jogador->getApelido()
