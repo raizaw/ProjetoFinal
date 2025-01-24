@@ -301,15 +301,18 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido){
 void GestaoDeJogadores::listarJogadores(){
     //Recarrega todos dados do arquivo
     carregarTodoArquivo();
-    //Exibe a lista de jogadores com suas estatísticas
-    for (const auto& [_apelido, _jogador] : jogadores_map) {
+    //Exibe a lista de jogadores com suas estatisticas
+    for (const auto& pair : jogadores_map){
+        const auto& _apelido = pair.first;
+        const auto& _jogador = pair.second;
+        //Exibe apelido e nome do jogador
         std::cout << "LJ [A] " << std::setw(15) << std::left << _jogador->getApelido()
                   << _jogador->getNome() << std::endl;
-        // Exibe as estatísticas de vitórias e derrotas de cada jogo
+        //Exibe as estatisticas de vitorias e derrotas de cada jogo
         for (int i = REVERSI; i < TOTAL_DE_JOGOS; i++) {
             auto estatisticas = _jogador->getEstatisticasDoJogo(static_cast<TipoDeJogo>(i));
             std::cout << nomeDoJogo(static_cast<TipoDeJogo>(i))
-                      << " - V: " << estatisticas.first   // Vitória
+                      << " - V: " << estatisticas.first   // Vitoria
                       << " D: " << estatisticas.second  // Derrota
                       << std::endl;
         }
