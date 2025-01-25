@@ -7,8 +7,10 @@
 
 
 class lig4 : public Jogos {
+private:
+    int vencedor; // 0 para empate, 1 para jogador 1 e 2 para jogador 2
 public:
-    lig4() : Jogos(6, 7) {} // tabuleiro de 6 linhas e 7 colunas para o lig 4
+    lig4() : Jogos(6, 7), vencedor(0) {} // tabuleiro de 6 linhas e 7 colunas para o lig 4
     ~lig4() {}
 
 
