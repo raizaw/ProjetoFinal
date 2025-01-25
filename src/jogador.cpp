@@ -7,6 +7,7 @@ Jogador::Jogador(const std::string &nome, const std::string &apelido)
         estatisticas_map[static_cast<TipoDeJogo>(i)] = {0, 0}; 
     }
 }
+Jogador::~Jogador(){};
 std::string Jogador::getNome() const{
     return this->nome;
 }

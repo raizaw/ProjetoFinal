@@ -17,7 +17,6 @@ class GestaoDeJogadores{
         const std::string caminhoDoArquivo;
 
         //Metodos auxiliares
-        std::ifstream GestaoDeJogadores::abrirArquivoParaLeitura()const;
         std::string buscarLinhaDoJogador(const std::string& apelido)const;
         void inserirLinhaNoMapa(const std::string& linha);
         std::string nomeDoJogo(TipoDeJogo jogo);
