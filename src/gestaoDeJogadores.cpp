@@ -18,26 +18,28 @@ GestaoDeJogadores::~GestaoDeJogadores(){}
 
 
 //Métodos para manipulação do arquivo
-void GestaoDeJogadores::carregarTodoArquivo(){
+bool GestaoDeJogadores::carregarTodoArquivo(){
     jogadores_map.clear(); //Limpa o mapa antes de carregar dados
     std::ifstream arquivo(caminhoDoArquivo);
 
     //Confere se arquivo esta vazio
     arquivo.seekg(0, std::ios::end); //Vai para o final do arquivo
     if (arquivo.tellg() == 0) {
-        throw std::runtime_error("Erro: O arquivo '"+ caminhoDoArquivo +"' esta vazio para carregar dados.");
+        std::cout << "Nenhum jogador cadastrado." << std::endl;
+        return false;
     } //Se posicao for 0, entao arquivo esta vazio
     arquivo.seekg(0, std::ios::beg); //Volta ao inicio para leitura
 
     std::string linha;
     while(std::getline(arquivo, linha)){
-        inserirLinhaNoMapa(linha);
+        inserirLinhaNoMapa(linha); //impede linha corrompida
     }
     arquivo.close();
+    return true;
 }
 void GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const std::string &apelido2){
     if(apelido1 == apelido2){
-        throw std::runtime_error("Erro: Apelidos duplicados foram fornecidos.");
+        std::cerr << "Erro: Apelidos duplicados foram fornecidos." << std::endl;
     }
     //Encontra linha dos jogadores no arquivo
     std::string linha1 = buscarLinhaDoJogador(apelido1);
@@ -47,12 +49,12 @@ void GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const 
     if(!linha1.empty()){
         inserirLinhaNoMapa(linha1);
     }else{
-        throw std::runtime_error("Jogador com apelido '"+ apelido1 + "' nso existe no arquivo");
+        std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido1 + "'" << std::endl;
     }
     if(!linha2.empty()){
         inserirLinhaNoMapa(linha2);
     }else
-        throw std::runtime_error("Jogador com apelido '"+ apelido2 + "' nao existe no arquivo");
+        std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido2 + "'" << std::endl;
 }
 bool GestaoDeJogadores::inserirNovoJogador(const std::unique_ptr<Jogador>& NovoJogador){
     std::fstream arquivo(caminhoDoArquivo, std::ios::app | std::ios::out); //abre o arquivo para leitura e edicao
@@ -70,7 +72,8 @@ bool GestaoDeJogadores::inserirNovoJogador(const std::unique_ptr<Jogador>& NovoJ
 }
 bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::unique_ptr<Jogador>>& jogadoresParaAtualizar_map){
     if (jogadoresParaAtualizar_map.empty()) {
-        throw std::runtime_error("Erro: Mapa de jogadores para atualizar esta vazio.");
+        std::cerr << "Erro: Mapa de jogadores para atualizar esta vazio." << std::endl;
+        return false;
     }
 
     std::fstream arquivo(caminhoDoArquivo, std::ios::in | std::ios::out); // Abrir para leitura e escrita
@@ -80,7 +83,7 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
 
     arquivo.seekg(0, std::ios::end); // Vai para o final do arquivo
     if (arquivo.tellg() == 0) {
-        throw std::runtime_error("Erro: O arquivo '"+ caminhoDoArquivo +"' esta vazio.");
+        std::cerr << "Erro: O arquivo '"+ caminhoDoArquivo +"' esta vazio." << std::endl;
     } // Se posicao for 0, entao arquivo esta vazio
     arquivo.seekg(0, std::ios::beg); // Volta ao inicio para leitura
 
@@ -119,40 +122,37 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
 
 
 //Métodos para gerenciar jogadores
+
+//Falta: impedir adicao de caracteres que atrapalhem o csv
 bool GestaoDeJogadores::cadastrarJogador(const std::string &apelido, const std::string &nome){
-    //Erro se nome ou apelido forem vazios
-    if (apelido.empty() || nome.empty()) {
-        throw std::runtime_error("ERRO: Apelido ou nome nao podem ser vazios para o cadastro.");
-    }
     //Testa se apelido já existe
     if(!buscarLinhaDoJogador(apelido).empty()){
-        throw std::runtime_error("ERRO: jogador com apelido'" + apelido + "' ja existe."); 
+        std::cerr << "Erro: jogador com o apelido '" + apelido + "' ja existe. Insira outro." << std::endl;
+        return false;
     }
-
     //Cria novo jogador
-    auto novoJogador = std::make_unique<Jogador>(nome, apelido);
-
+    auto novoJogador = std::make_unique<Jogador>(apelido, nome);
     //Teste se houve erro no salvamento do jogador no arquivo
     if (!inserirNovoJogador(novoJogador)) {
         throw std::runtime_error("ERRO: Falha ao salvar o jogador no arquivo.");
     }
-
     std::cout << "Jogador " << apelido << " cadastrado com sucesso." << std::endl;
     return true;
 }
 bool GestaoDeJogadores::removerJogador(const std::string &apelido){ 
-    if(apelido.empty()){
-        std::cout << "Erro: Apelido nao pode ser vazio para a remocao." <<std::endl;
-    }
-    carregarTodoArquivo(); // Coloca todos jogadores do arquivo num mapa
+    if(!carregarTodoArquivo()){
+        return false;
+    } 
+    // Coloca todos jogadores do arquivo num mapa
     if(jogadores_map.find(apelido) == jogadores_map.end()){
-        std::cout << "Erro: Jogador com apelido '" + apelido + "' nao existe." << std::endl;
+        std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido + "'" << std::endl;
+        return false;
     }
     //remove jogador do mapa
     jogadores_map.erase(apelido);
     std::ofstream arquivo(caminhoDoArquivo, std::ios::trunc); //trunc reseta o arquivo para 0 bytes
     if(!arquivo.is_open()){
-        throw std::runtime_error("ERRO: Nao foi possível abrir o arquivo");
+        throw std::runtime_error("ERRO: Nao foi possível abrir o arquivo para removerJogador");
     }
     for(const auto&  pair: jogadores_map){
         const auto& _jogador = pair.second;
@@ -165,19 +165,21 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido){
 }
 void GestaoDeJogadores::listarJogadores(){
     //Recarrega todos dados do arquivo
-    carregarTodoArquivo();
+    if(!carregarTodoArquivo()){
+        std::cerr << "Não foi possível carregar todo o arquivo para listar jogadores" << std::endl;
+    }
     //Exibe a lista de jogadores com suas estatisticas
     for (const auto& pair : jogadores_map){
         const auto& _jogador = pair.second;
         //Exibe apelido e nome do jogador
-        std::cout << "LJ [A] " << std::setw(15) << std::left << _jogador->getApelido()
-                  << _jogador->getNome() << std::endl;
+        std::cout << "[A|N] " << std::setw(15) << std::left << _jogador->getApelido()
+                  << std::left << _jogador->getNome() << std::endl;
         //Exibe as estatisticas de vitorias e derrotas de cada jogo
         for (int i = REVERSI; i < TOTAL_DE_JOGOS; i++) {
             auto estatisticas = _jogador->getEstatisticasDoJogo(static_cast<TipoDeJogo>(i));
-            std::cout << nomeDoJogo(static_cast<TipoDeJogo>(i))
-                      << " - V: " << estatisticas.first   // Vitoria
-                      << " D: " << estatisticas.second  // Derrota
+            std::cout << std::setw(10) << std::left << nomeDoJogo(static_cast<TipoDeJogo>(i))
+                      << " - V: " << std::setw(3) << std::left << estatisticas.first   // Vitoria
+                      << " D: " << std::setw(3) << std::left << estatisticas.second  // Derrota
                       << std::endl;
         }
         std::cout << std::endl;
@@ -213,13 +215,31 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha){
     }
 
     auto novoJogador = std::make_unique<Jogador>(apelido, nome);
+
+    std::string estatistica;
+    int contaJogos = 0;
+
     for(int i=REVERSI;i<TOTAL_DE_JOGOS;i++){
         int vitoria, derrota;
-        if (!(ss >> vitoria >> derrota)) {
-            throw std::runtime_error("Erro: Estatísticas mal formatadas na linha - " + linha);
+
+        //Le vitorias (se nao conseguir ler a estatistica ou nao colocar em vitoria)
+        if (!std::getline(ss, estatistica, ',') || !(std::istringstream(estatistica) >> vitoria)) {
+            std::cerr << "Erro: Estatísticas mal formatadas para o jogo " << i << " na linha - " << linha << std::endl;
+            return; //Continua processando outras linhas
+        }
+        //Le derrotas
+        if (!std::getline(ss, estatistica, ',') || !(std::istringstream(estatistica) >> derrota)) {
+            std::cerr << "Erro: Estatísticas mal formatadas para o jogo " << i << " na linha - " << linha << std::endl;
+            return; //Continua processando outras linhas
         }
         novoJogador->adicionarVitoria(static_cast<TipoDeJogo>(i), vitoria);
         novoJogador->adicionarDerrota(static_cast<TipoDeJogo>(i), derrota);
+        contaJogos++;
+    }
+    // Verifique se o número de jogos lidos é o esperado
+    if (contaJogos != (TOTAL_DE_JOGOS - REVERSI)) {
+        std::cerr << "Erro: Número incorreto de jogos na linha - " + linha << std::endl;
+        return; //Continua processando outras linhas
     }
     jogadores_map[apelido] = std::move(novoJogador);
 }

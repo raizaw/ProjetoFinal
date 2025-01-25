@@ -15,7 +15,7 @@ class Jogador{
 
     public:
         //Construtor e destrutor
-        Jogador(const std::string& nome, const std::string& apelido);
+        Jogador(const std::string& apelido, const std::string& nome);
         ~Jogador();
 
         //Metodos de acesso

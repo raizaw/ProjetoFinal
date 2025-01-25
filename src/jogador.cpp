@@ -1,19 +1,21 @@
 #include "../include/jogador.hpp"
 
-Jogador::Jogador(const std::string &nome, const std::string &apelido)
-    :nome(nome), apelido(apelido) {
+Jogador::Jogador(const std::string &apelido, const std::string &nome)
+    :apelido(apelido), nome(nome){
     //Inicializa o mapa de estatisticas com 0 vitórias e 0 derrotas para todos os jogos
     for (int i=REVERSI; i<TOTAL_DE_JOGOS; i++){
         estatisticas_map[static_cast<TipoDeJogo>(i)] = {0, 0}; 
     }
 }
 Jogador::~Jogador(){};
-std::string Jogador::getNome() const{
-    return this->nome;
-}
+//Métodos de acesso
 std::string Jogador::getApelido() const{
     return this->apelido;
 }
+std::string Jogador::getNome() const{
+    return this->nome;
+}
+
 
 //É importante sempre passar o número do jogo (TipoDeJogo) e a quantidade de vitórias ou derrotas. 
 //Este método foi projetado para ser utilizado tanto durante os jogos quanto ao processar dados carregados do arquivo.
