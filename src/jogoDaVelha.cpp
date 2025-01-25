@@ -15,8 +15,23 @@ void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
 };
 
 void JogoDaVelha::lerJogada() {
-    std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 0 1): ";
-    std::cin >> jogadaLinha >> jogadaColuna;
+    bool entradaValida = false;
+
+    while (!entradaValida) {
+        std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 0 1): ";
+        std::cin >> jogadaLinha >> jogadaColuna;
+
+        if (std::cin.fail()) {
+            // Limpa o estado de erro e esvazia o buffer
+            std::cin.clear();
+            std::cin.ignore(10000, '\n'); // Valor grande para garantir que o buffer seja limpo
+            std::cout << "Entrada inválida. Tente novamente.\n";
+        } else {
+            // Esvazia o buffer para descartar entradas extras
+            std::cin.ignore(10000, '\n');
+            entradaValida = true;
+        }
+    }
 }; 
 
 bool JogoDaVelha::jogadaEValida() const {
