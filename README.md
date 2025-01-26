@@ -8,12 +8,11 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
 
 - **Arthur Ferreira Rabelo**  
 - **Luís Henrique Emediato de Rezende Lara**  
-- **Marco Aurélio ...**  
+- **Marco Aurélio Gonçalves de Souza**  
 - **Raiza Wunsch Pinto**  
 
 📧 **Contato:** [arthurfrabelo06@gmail.com](mailto:arthurfrabelo06@gmail.com)  
 🌐 **Repositório:** [https://github.com/luisemediato/ProjetoFinal/](https://github.com/luisemediato/ProjetoFinal/)  
-📄 **Licença:** Este projeto está licenciado sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
@@ -67,6 +66,11 @@ Para gerar a documentação com Doxygen:
 ## ✨ Funcionalidades
 
 ### 🧑💻 Sistema de Jogadores
+Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem um nome, um apelido único, e estatísticas com o número de vitórias e derrotas nos jogos. Além disso criamos métodos para:
+
+- **Cadastrar/Remover Jogadores**: Permite o cadastro e remoção de jogadores com apelido único.
+- **Listagem Detalhada**: Exibe estatísticas detalhadas por jogo para cada jogador.
+- **Persistência em Arquivo csv**: O cadastro de jogadores é mantido entre diferentes execuções do sistema, com mecanismos para salvar e ler os dados a partir de um arquivo.
 
 
 ### 🎲 Jogos Implementados
@@ -92,6 +96,8 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 
 A documentação do projeto foi gerada utilizando **Doxygen**. Para acessar a documentação completa, siga os passos de geração da documentação acima ou consulte a pasta `docs/` após a geração.
 
----
+# 🎮 Trabalho Prático PDS2 - Jogos de Tabuleiro
 
-**Divirta-se jogando!** 🎉
+Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Connect4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.
+
+---
