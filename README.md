@@ -94,10 +94,5 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 
 ## 📚 Documentação
 
-A documentação do projeto foi gerada utilizando **Doxygen**. Para acessar a documentação completa, siga os passos de geração da documentação acima ou consulte a pasta `docs/` após a geração.
+A documentação do projeto foi gerada utilizando **Doxygen**. Para acessar a documentação completa, siga os passos de geração da documentação acima ou consulte nosso **Dropbox** onde, além da documentação, colocamos todos os recursos utilizados para o projeto.
 
-# 🎮 Trabalho Prático PDS2 - Jogos de Tabuleiro
-
-Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Connect4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.
-
----
