@@ -37,24 +37,29 @@ bool GestaoDeJogadores::carregarTodoArquivo(){
     arquivo.close();
     return true;
 }
-void GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const std::string &apelido2){
+bool GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const std::string &apelido2){
+    //Confere se os apelidos recebidos são iguais
     if(apelido1 == apelido2){
         std::cerr << "Erro: Apelidos duplicados foram fornecidos." << std::endl;
+        return false;
     }
     //Encontra linha dos jogadores no arquivo
     std::string linha1 = buscarLinhaDoJogador(apelido1);
-    std::string linha2 = buscarLinhaDoJogador(apelido2);
-    jogadores_map.clear(); // Limpa o mapa antes de carregar dados
-    //Insere jogadores no mapa limpo
-    if(!linha1.empty()){
-        inserirLinhaNoMapa(linha1);
-    }else{
+    if(linha1.empty()){
         std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido1 + "'" << std::endl;
+        return false;
     }
-    if(!linha2.empty()){
-        inserirLinhaNoMapa(linha2);
-    }else
+
+    std::string linha2 = buscarLinhaDoJogador(apelido2);
+    if(linha2.empty()){
         std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido2 + "'" << std::endl;
+        return false;
+    }
+    //Insere jogadores no mapa limpo
+    jogadores_map.clear();
+    inserirLinhaNoMapa(linha1);
+    inserirLinhaNoMapa(linha2);
+    return true;
 }
 bool GestaoDeJogadores::inserirNovoJogador(const std::unique_ptr<Jogador>& NovoJogador){
     std::fstream arquivo(caminhoDoArquivo, std::ios::app | std::ios::out); //abre o arquivo para leitura e edicao

@@ -27,8 +27,9 @@ class GestaoDeJogadores{
         ~GestaoDeJogadores();
 
         //Metodos para manipulação de arquivo
+        bool ehValidoParaCSV(const std::string& str);
         bool carregarTodoArquivo();
-        void carregarDoisJogadores(const std::string& apelido1,const std::string& apelido2);
+        bool carregarDoisJogadores(const std::string& apelido1,const std::string& apelido2);
         bool inserirNovoJogador(const std::unique_ptr<Jogador>& novoJogador);
         bool atualizarEstatisticas(const std::map<std::string, std::unique_ptr<Jogador>>& jogadoresParaAtualizar);
         

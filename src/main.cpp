@@ -25,6 +25,17 @@ void executarPartida(std::unique_ptr<Jogos> jogo) {
     jogo->indicarFimDaPartida();
 }
 
+bool ehValidoParaCSV(const std::string& str){
+    // Verifica cada caractere da string
+    for (char c : str) {
+        // Se encontrar um dos caracteres inválidos, retorna false
+        if (c == ',' || c == '"' || c == '\n' || c == '\t') {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(){
 
     const std::string caminhodoArquivo = "dados.csv";
@@ -38,17 +49,34 @@ int main(){
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
 
         if (comando == "CJ") {
-            do {
-                //preciso ver como o progresso é interferido no caso de caracteres especiais e de outros , . \n \t "" ''
-                std::cout << "Digite o apelido (uma unica palavra): "; //uma palavra
-                std::cin >> apelido;
+            do{
+                // Solicita o apelido ate que ele seja valido
+                do {
+                    std::cout << "Digite o apelido (uma unica palavra): ";  // Uma palavra
+                    std::cin >> apelido;
+
+                    // Verifica se o apelido e valido
+                    if (!ehValidoParaCSV(apelido)) {
+                        std::cout << "Erro: O apelido contem caracteres invalidos (virgula, aspas, etc.). Tente novamente." << std::endl;
+                    } else {
+                        break; // Sai do loop quando o apelido for válido
+                    }
+                } while (true);
+
+                // Solicita o nome ate que ele seja valido
                 std::cin.ignore(); // Limpa o buffer de entrada antes de getline.
-                std::cout << "Digite o nome (pode conter mais de uma palavra): "; //pode ter mais de uma palavra
-                std::getline(std::cin, nome);
-                while(nome.empty()){
-                    std::cout << "Nome nao pode estar vazio. Tente novamente." << std::endl;
-                    std::getline(std::cin, nome);
-                }
+                do {
+                    std::cout << "Digite o nome (pode conter mais de uma palavra): ";  // Pode ter mais de uma palavra
+                    std::getline(std::cin >> std::ws, nome);  // `std::ws` ignora espaços em branco à frente da string
+                    if(nome.empty()){
+                        std::cout << "Erro: nome nao pode estar vazio." << std::endl;
+                    } else if(!ehValidoParaCSV(nome)){
+                        std::cout << "Erro: O nome contem caracteres invalidos (virgula, aspas, etc.). Tente novamente." << std::endl;
+                    } else{
+                        break;
+                    }
+                } while (true);
+
             } while (!gestao.cadastrarJogador(apelido, nome)); // Tenta cadastrar até ser bem-sucedido.
 
         } else if(comando == "RJ"){
