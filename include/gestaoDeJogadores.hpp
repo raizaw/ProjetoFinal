@@ -36,5 +36,8 @@ class GestaoDeJogadores{
         bool cadastrarJogador(const std::string &apelido,const std::string &nome);
         bool removerJogador(const std::string &apelido);
         void listarJogadores();
+
+        // Auxiliar visível
+        bool apelidoEstaCadastrado(const std::string& apelido) const;
 };
 #endif

@@ -1,32 +1,77 @@
 #include "../include/reversi.hpp"
 
+#include <limits>
+
 Reversi::Reversi() : Jogos(8, 8), jogadaLinha(-1), jogadaColuna(-1) {
     // Inicializa o tabuleiro com as peças iniciais do Reversi
     tabuleiro->setPosicao(3, 3, Tabuleiro::Peca::JOGADOR2);
     tabuleiro->setPosicao(3, 4, Tabuleiro::Peca::JOGADOR1);
     tabuleiro->setPosicao(4, 3, Tabuleiro::Peca::JOGADOR1);
     tabuleiro->setPosicao(4, 4, Tabuleiro::Peca::JOGADOR2);
+
+    std::cout << "Iniciando o Reversi..." << std::endl;
 }
 
 void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
     switch (peca) {
         case Tabuleiro::Peca::VAZIO: 
-            std::cout << " . ";
+            std::cout << "  ";
             break;
         case Tabuleiro::Peca::JOGADOR1:
-            std::cout << "\033[31m X \033[0m"; // X em vermelho
+            std::cout << "\033[35m O \033[0m"; // "O" em magenta
             break;
         case Tabuleiro::Peca::JOGADOR2:
-            std::cout << "\033[33m O \033[0m"; // O em amarelo
+            std::cout << "\033[36m O \033[0m"; // "O" em ciano
             break;
     }
 }
 
+bool Reversi::haJogadasPossiveis() {
+    for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
+        for (int j = 0; j < tabuleiro->getColunas(); ++j) {
+            if (tabuleiro->getPosicao(i, j) == Tabuleiro::Peca::VAZIO) {
+                // Verifica se a jogada é válida para o jogador atual
+                jogadaLinha = i;
+                jogadaColuna = j;
+                if (jogadaEValida()) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 void Reversi::lerJogada() {
-    std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 3 4): ";
-    std::cin >> jogadaLinha >> jogadaColuna;
-    --jogadaLinha; // Ajusta para índice zero
-    --jogadaColuna; // Ajusta para índice zero
+    bool entradaValida = false;
+
+    while (!entradaValida) {
+        if (!haJogadasPossiveis()) {
+            std::cout << "Não há jogadas disponíveis para o jogador " << strJogador(jogadorAtual) 
+                      << ". Pressione Enter para passar a vez...";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer
+            std::cin.get(); // Espera o jogador pressionar Enter
+            std::cout << "Jogador " << strJogador(jogadorAtual) << " passou a vez.\n";
+            trocarJogador(); // Passa a vez para o outro jogador
+            return;
+        }
+
+        std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 0 1): ";
+        std::cin >> jogadaLinha >> jogadaColuna;
+
+        if (std::cin.fail()) {
+            // Limpa o estado de erro e esvazia o buffer
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Entrada inválida. Tente novamente.\n";
+        } else {
+            // Esvazia o buffer para descartar entradas extras
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            entradaValida = true;
+        }
+    }
+    --jogadaLinha; // Ajusta para índice zero da matriz
+    --jogadaColuna; // Ajusta para índice zero da matriz
 }
 
 bool Reversi::jogadaEValida() const {
@@ -67,15 +112,38 @@ void Reversi::realizarJogada() {
 }
 
 bool Reversi::partidaAcabou() {
-    // Verifica se há jogadas possíveis para ambos os jogadores
+    // Verifica se o tabuleiro está cheio
+    bool tabuleiroCheio = true;
     for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
         for (int j = 0; j < tabuleiro->getColunas(); ++j) {
             if (tabuleiro->getPosicao(i, j) == Tabuleiro::Peca::VAZIO) {
-                return false;
+                tabuleiroCheio = false;
+                break;
             }
         }
+        if (!tabuleiroCheio) break;
     }
-    return true;
+
+    // Verifica se ambos os jogadores não têm jogadas possíveis
+    if (!haJogadasPossiveis()) {
+        trocarJogador(); // Verifica o outro jogador
+        if (!haJogadasPossiveis()) {
+            return true; // Ambos os jogadores não têm jogadas possíveis
+        }
+        trocarJogador(); // Volta ao jogador original
+    }
+
+    return tabuleiroCheio;
+    
+    // // Verifica se há jogadas possíveis para ambos os jogadores
+    // for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
+    //     for (int j = 0; j < tabuleiro->getColunas(); ++j) {
+    //         if (tabuleiro->getPosicao(i, j) == Tabuleiro::Peca::VAZIO) {
+    //             return false;
+    //         }
+    //     }
+    // }
+    // return true;
 }
 
 std::pair<int, int> Reversi::contarPecas() const {

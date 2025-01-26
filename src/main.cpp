@@ -17,7 +17,7 @@ void executarPartida(std::unique_ptr<Jogos> jogo) {
         if (jogo->jogadaEValida()) {
             jogo->realizarJogada();
         } else {
-            std::cout << "Jogada inválida. Tente novamente.\n";
+            std::cout << "Jogada invalida. Tente novamente.\n";
         }
     }
 
@@ -33,6 +33,9 @@ int main(){
     char escolhaJogo;
 
     while(std::cin >> comando){
+
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
+
         if (comando == "CJ") {
             do {
                 //preciso ver como o progresso é interferido no caso de caracteres especiais e de outros , . \n \t "" ''
@@ -53,13 +56,15 @@ int main(){
 
         } else if(comando == "LJ"){
             gestao.listarJogadores();
-            
+
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
+
             while (true) { // Loop até que uma escolha válida seja feita
-                std::cout << "Escolha o jogo:\n";
-                std::cout << "R - Reversi\n";
-                std::cout << "V - Jogo da Velha\n";
-                std::cout << "L - Lig4\n";
+                // std::cout << "Escolha o jogo:\n";
+                // std::cout << "R - Reversi\n";
+                // std::cout << "V - Jogo da Velha\n";
+                // std::cout << "L - Lig4\n";
+
                 std::cin >> escolhaJogo;
 
                 // Verifica se a entrada é exatamente um caractere
@@ -75,6 +80,7 @@ int main(){
                 if (escolhaJogo == 'R' || escolhaJogo == 'V' || escolhaJogo == 'L') {
                     std::unique_ptr<Jogos> jogo;
 
+                    // Cria o jogo escolhido
                     switch (escolhaJogo) {
                         case 'R':
                             jogo = std::make_unique<Reversi>();
@@ -87,15 +93,52 @@ int main(){
                             break;
                     }
 
-                        executarPartida(std::move(jogo));
-                        break; // Sai do loop após uma escolha válida
+                    // Solicita e valida os apelidos dos jogadores
+                    std::string apelidoJogador1, apelidoJogador2;
+                    bool apelidosValidos = false;
+
+                    while (!apelidosValidos) {
+                        std::cin >> apelidoJogador1 >> apelidoJogador2;
+
+                        // Verifica se os apelidos estão cadastrados
+                        bool jogador1Valido = gestao.apelidoEstaCadastrado(apelidoJogador1);
+                        bool jogador2Valido = gestao.apelidoEstaCadastrado(apelidoJogador2);
+
+                        if (!jogador1Valido && !jogador2Valido) {
+                            std::cout << "Os apelidos '" << apelidoJogador1 << "' e '" << apelidoJogador2 << "' não estão cadastrados.\n";
+                        } else if (!jogador1Valido) {
+                            std::cout << "O apelido '" << apelidoJogador1 << "' não está cadastrado.\n";
+                        } else if (!jogador2Valido) {
+                            std::cout << "O apelido '" << apelidoJogador2 << "' não está cadastrado.\n";
+                        } else {
+                            apelidosValidos = true; // Ambos os apelidos são válidos
+                        }
+
+                        if (!apelidosValidos) {
+                            std::cout << "Por favor, insira apelidos válidos.\n";
+                        }
+                    }
+
+                    // Define os apelidos no jogo (se necessário)
+                    jogo->setApelidoJogador1(apelidoJogador1);
+                    jogo->setApelidoJogador2(apelidoJogador2);
+
+                    // Executa a partida
+                    executarPartida(std::move(jogo));
+                    break; // Sai do loop após uma escolha válida
                 } else {
-                    std::cout << "Escolha invalida. Tente novamente.\n";
+                    std::cout << "Escolha inválida. Tente novamente.\n";
                 }
             }
+
         } else if(comando == "FS"){
                     break;
-        } 
+                    
+        } else {
+            std::cout << "Comando Invalido. Tente Novamente";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
     }
     return 0;
 }

@@ -57,3 +57,12 @@ std::string Jogos::strJogador(Tabuleiro::Peca peca) const {
         return "Vazio ou inválido";
     }
 }
+
+// Setters
+void Jogos::setApelidoJogador1(std::string apelido) {
+    apelidoJogador1 = apelido;
+};
+
+void Jogos::setApelidoJogador2(std::string apelido) {
+    apelidoJogador2 = apelido;
+};

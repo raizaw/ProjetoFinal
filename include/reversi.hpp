@@ -25,6 +25,7 @@ private:
     bool dentroDosLimites(int linha, int coluna) const;
     bool direcaoValida(int linha, int coluna, int deltaLinha, int deltaColuna, Tabuleiro::Peca peca) const;
     bool capturarPecas(int linha, int coluna, Tabuleiro::Peca peca);
+    bool haJogadasPossiveis();
 };
 
 #endif // REVERSI_HPP

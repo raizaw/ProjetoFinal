@@ -203,6 +203,9 @@ std::string GestaoDeJogadores::buscarLinhaDoJogador(const std::string &apelido) 
     arquivo.close();
     return "";
 }
+bool GestaoDeJogadores::apelidoEstaCadastrado(const std::string& apelido) const {
+    return !buscarLinhaDoJogador(apelido).empty();
+}
 void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha){
     std::stringstream ss(linha);
     std::string apelido, nome;

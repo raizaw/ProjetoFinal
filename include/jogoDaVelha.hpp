@@ -11,7 +11,9 @@ private:
     int vencedor;     // 0 para empate, 1 para Jogador 1, 2 para Jogador 2
 
 public:
-    JogoDaVelha() : Jogos(3, 3), jogadaLinha(-1), jogadaColuna(-1), vencedor(0) {}
+    JogoDaVelha() : Jogos(3, 3), jogadaLinha(-1), jogadaColuna(-1), vencedor(0) {
+        std::cout << "Iniciando o Jogo da Velha..." << std::endl;
+    }
     ~JogoDaVelha() {};
 
     // Método para imprimir o tabuleiro

@@ -11,6 +11,7 @@ class Jogos {
 protected:
     Tabuleiro* tabuleiro;
     Tabuleiro::Peca jogadorAtual;
+    std::string apelidoJogador1, apelidoJogador2;
 
 public:
     // Construtor que inicializa o tabuleiro
@@ -30,8 +31,14 @@ public:
 	virtual bool partidaAcabou() = 0; // Verifica se a partida pode ou não continuar
 	virtual void indicarFimDaPartida() const = 0;
 
+
+    // Métodos auxiliares
     std::string strJogador(int jogador) const;
     std::string strJogador(Tabuleiro::Peca peca) const;
+
+    // Setters
+    virtual void setApelidoJogador1(std::string apelido);
+    virtual void setApelidoJogador2(std::string apelido);
 
     virtual ~Jogos() {
         delete tabuleiro; // Libera a memória do tabuleiro
