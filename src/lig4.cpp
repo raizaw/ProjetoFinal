@@ -1,5 +1,7 @@
 #include "../include/lig4.hpp"
 
+#include <iomanip>
+
 std::string lig4::cor(Tabuleiro::Peca jogador){
     if (jogador == Tabuleiro::Peca::JOGADOR1){
         return "\033[31m"; // Vermelho
@@ -15,16 +17,22 @@ void lig4::fraseInicial() {
 }
 
 void lig4::exibirTabuleiro() const{
-    for(const auto& linha : tabuleiro->getTabuleiro()){
-        for(const auto& celula : linha){
-            exibirPeca(celula);
-            std::cout << " | ";
+    const int larguraCelula = 3; // Define a largura fixa para cada célula
+    const std::string separador = std::string(7 * (larguraCelula + 3), '-'); // Linha separadora ajustada
+
+    // Exibe as linhas do tabuleiro
+    for (const auto& linha : tabuleiro->getTabuleiro()) {
+        for (const auto& celula : linha) {
+            std::cout << std::setw(larguraCelula) << std::left; // Define largura e alinhamento
+            exibirPeca(celula); // Exibe a peça com a largura ajustada
+            std::cout << " | "; // Separador entre células
         }
-        std::cout << "\n";
+        std::cout << "\n" << separador << "\n"; // Linha separadora entre linhas
     }
-    std::cout << std::string(29, '-') << "\n"; // separador visual
-    for(int i = 0; i < 7; ++i){
-        std::cout << "  " << i + 1 << "  ";
+
+    // Exibe os números das colunas
+    for (int i = 0; i < 7; ++i) {
+        std::cout << "  " << std::setw(larguraCelula) << std::right << i + 1 << " "; // Alinha os números das colunas
     }
     std::cout << "\n";
 }

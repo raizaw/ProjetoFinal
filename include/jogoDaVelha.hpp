@@ -16,6 +16,7 @@ public:
 
     // Métodos para impressão
     virtual void fraseInicial() override;
+    virtual void exibirTabuleiro() const override;
     virtual void exibirPeca(Tabuleiro::Peca peca) const override;
     std::string cor (Tabuleiro::Peca jogador);
     

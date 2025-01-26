@@ -10,6 +10,7 @@ class Reversi : public Jogos {
 public:
     Reversi();
 
+    void exibirTabuleiro() const override;
     void fraseInicial() override;
     void exibirPeca(Tabuleiro::Peca peca) const override;
     void lerJogada() override;

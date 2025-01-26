@@ -1,6 +1,7 @@
 #include "../include/reversi.hpp"
 
 #include <limits>
+#include <iomanip>
 
 std::string Reversi::cor(Tabuleiro::Peca jogador){
     if (jogador == Tabuleiro::Peca::JOGADOR1){
@@ -35,6 +36,48 @@ void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
         case Tabuleiro::Peca::JOGADOR2:
             std::cout << "\033[36m O \033[0m"; // "O" em ciano
             break;
+    }
+}
+
+void Reversi::exibirTabuleiro() const {
+    const auto& matriz = tabuleiro->getTabuleiro();
+    const size_t tamanho = matriz.size();
+
+    const int largura = 3; // Largura fixa para cada célula (ajuste conforme necessário)
+
+    // Exibe os números das colunas
+    std::cout << std::setw(largura - 1) << "  "; // Espaço para alinhar com os números das linhas
+    for (size_t coluna = 0; coluna < tamanho; ++coluna) {
+        std::cout << std::setw(largura + 1) << coluna + 1;
+    }
+    std::cout << "\n";
+
+    for (size_t i = 0; i < matriz.size(); ++i) { // Itera sobre as linhas
+        const auto& linha = matriz[i];
+
+        // Exibe o número da linha
+        std::cout << std::setw(largura) << i + 1 << " "; // Numeração das linhas
+
+        // Exibe as peças da linha com os separadores "|"
+        for (size_t j = 0; j < linha.size(); ++j) {
+            exibirPeca(linha[j]); // Exibe a peça
+            if (j < linha.size() - 1) { // Adiciona "|", exceto no final da linha
+                std::cout << " | ";
+            }
+        }
+        std::cout << "\n";
+
+        // Adiciona os separadores entre as linhas, exceto no final do tabuleiro
+        if (i < matriz.size() - 1) {
+            std::cout << std::setw(largura) << " "; // Espaço alinhado com a numeração das linhas
+            for (size_t j = 0; j < linha.size(); ++j) {
+                std::cout << std::string(largura, '-'); // Linha horizontal para cada célula
+                if (j < linha.size() - 1) { // Adiciona o "|" entre os blocos
+                    std::cout << "+";
+                }
+            }
+            std::cout << "\n";
+        }
     }
 }
 
