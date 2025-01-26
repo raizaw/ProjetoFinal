@@ -2,14 +2,26 @@
 
 #include <limits>
 
+std::string Reversi::cor(Tabuleiro::Peca jogador){
+    if (jogador == Tabuleiro::Peca::JOGADOR1){
+        return "\033[35m"; // Magenta
+    } else if (jogador == Tabuleiro::Peca::JOGADOR2){
+        return "\033[36m"; // Ciano
+    }
+}
+
 Reversi::Reversi() : Jogos(8, 8), jogadaLinha(-1), jogadaColuna(-1) {
     // Inicializa o tabuleiro com as peças iniciais do Reversi
     tabuleiro->setPosicao(3, 3, Tabuleiro::Peca::JOGADOR2);
     tabuleiro->setPosicao(3, 4, Tabuleiro::Peca::JOGADOR1);
     tabuleiro->setPosicao(4, 3, Tabuleiro::Peca::JOGADOR1);
     tabuleiro->setPosicao(4, 4, Tabuleiro::Peca::JOGADOR2);
+}
 
-    std::cout << "Iniciando o Reversi..." << std::endl;
+void Reversi::fraseInicial() {
+    std::cout << "Iniciando partida de Reversi entre " 
+              << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << " e " 
+              << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << "..." << std::endl;
 }
 
 void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
@@ -47,23 +59,33 @@ void Reversi::lerJogada() {
 
     while (!entradaValida) {
         if (!haJogadasPossiveis()) {
-            std::cout << "Não há jogadas disponíveis para o jogador " << strJogador(jogadorAtual) 
+            std::cout << "Não ha jogadas disponiveis para o jogador " 
+                      << ((jogadorAtual == Tabuleiro::Peca::JOGADOR1)? apelidoJogador1 : apelidoJogador2) 
                       << ". Pressione Enter para passar a vez...";
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer
             std::cin.get(); // Espera o jogador pressionar Enter
-            std::cout << "Jogador " << strJogador(jogadorAtual) << " passou a vez.\n";
+            std::cout << ((jogadorAtual == Tabuleiro::Peca::JOGADOR1)? apelidoJogador1 : apelidoJogador2) 
+                      << " passou a vez.\n";
             trocarJogador(); // Passa a vez para o outro jogador
             return;
         }
 
-        std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 0 1): ";
+        if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
+            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 
+                      << "\033[0m" << std::endl;
+        } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
+            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 
+                      << "\033[0m" << std::endl;
+        }
+        std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";
+
         std::cin >> jogadaLinha >> jogadaColuna;
 
         if (std::cin.fail()) {
             // Limpa o estado de erro e esvazia o buffer
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Entrada inválida. Tente novamente.\n";
+            std::cout << "Entrada invalida. Tente novamente.\n";
         } else {
             // Esvazia o buffer para descartar entradas extras
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -134,16 +156,6 @@ bool Reversi::partidaAcabou() {
     }
 
     return tabuleiroCheio;
-    
-    // // Verifica se há jogadas possíveis para ambos os jogadores
-    // for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
-    //     for (int j = 0; j < tabuleiro->getColunas(); ++j) {
-    //         if (tabuleiro->getPosicao(i, j) == Tabuleiro::Peca::VAZIO) {
-    //             return false;
-    //         }
-    //     }
-    // }
-    // return true;
 }
 
 std::pair<int, int> Reversi::contarPecas() const {
@@ -159,7 +171,7 @@ std::pair<int, int> Reversi::contarPecas() const {
 
 
 
-void Reversi::indicarFimDaPartida() const {
+void Reversi::indicarFimDaPartida() {
     // Chamada à função contarPecas, que retorna um std::pair
     std::pair<int, int> pecas = contarPecas();
 
@@ -167,16 +179,17 @@ void Reversi::indicarFimDaPartida() const {
     int pecasJogador1 = pecas.first;
     int pecasJogador2 = pecas.second;
 
-    std::cout << "Partida encerrada!\n";
-    std::cout << "Jogador 1 (X): " << pecasJogador1 << " peças\n";
-    std::cout << "Jogador 2 (O): " << pecasJogador2 << " peças\n";
+    exibirTabuleiro();
+    std::cout << "PARTIDA ENCERRADA!\nContagem de pontos:";
+    std::cout << apelidoJogador1 << ": " << pecasJogador1 << std::endl;
+    std::cout << apelidoJogador2 << ": " << pecasJogador2 << std::endl;
 
     if (pecasJogador1 > pecasJogador2) {
-        std::cout << "Parabéns, Jogador 1 (X), você venceu!\n";
+        std::cout << "\nParabens, \033[35m" << apelidoJogador1 << "\033[0m, voce venceu!" << std::endl;
     } else if (pecasJogador1 < pecasJogador2) {
-        std::cout << "Parabéns, Jogador 2 (O), você venceu!\n";
+        std::cout << "\nParabens, \033[36m" << apelidoJogador2 << "\033[0m, voce venceu!" << std::endl;
     } else {
-        std::cout << "O jogo terminou empatado!\n";
+        std::cout << "\nO jogo terminou empatado!" << std::endl;
     }
 }
 

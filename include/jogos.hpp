@@ -17,7 +17,8 @@ public:
     // Construtor que inicializa o tabuleiro
     Jogos(int linhas, int colunas);
 
-    // Métodos para imprimir o tabuleiro
+    // Métodos de impressão
+    virtual void fraseInicial() = 0;
     virtual void exibirTabuleiro() const;
     virtual void exibirPeca(Tabuleiro::Peca peca) const = 0; // Exibição das peças depende do jogo em questão
     
@@ -29,7 +30,7 @@ public:
     // Métodos que gerenciam o andamento da partida
     virtual void trocarJogador();
 	virtual bool partidaAcabou() = 0; // Verifica se a partida pode ou não continuar
-	virtual void indicarFimDaPartida() const = 0;
+	virtual void indicarFimDaPartida() = 0;
 
 
     // Métodos auxiliares

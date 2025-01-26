@@ -9,6 +9,7 @@
 #include <limits> // Para std::numeric_limits e std::streamsize
 
 void executarPartida(std::unique_ptr<Jogos> jogo) {
+    jogo->fraseInicial();
     jogo->exibirTabuleiro();
 
     while (!jogo->partidaAcabou()) {
@@ -105,17 +106,17 @@ int main(){
                         bool jogador2Valido = gestao.apelidoEstaCadastrado(apelidoJogador2);
 
                         if (!jogador1Valido && !jogador2Valido) {
-                            std::cout << "Os apelidos '" << apelidoJogador1 << "' e '" << apelidoJogador2 << "' não estão cadastrados.\n";
+                            std::cout << "Os apelidos '" << apelidoJogador1 << "' e '" << apelidoJogador2 << "' nao estao cadastrados.\n";
                         } else if (!jogador1Valido) {
-                            std::cout << "O apelido '" << apelidoJogador1 << "' não está cadastrado.\n";
+                            std::cout << "O apelido '" << apelidoJogador1 << "' nao esta cadastrado.\n";
                         } else if (!jogador2Valido) {
-                            std::cout << "O apelido '" << apelidoJogador2 << "' não está cadastrado.\n";
+                            std::cout << "O apelido '" << apelidoJogador2 << "' nao esta cadastrado.\n";
                         } else {
                             apelidosValidos = true; // Ambos os apelidos são válidos
                         }
 
                         if (!apelidosValidos) {
-                            std::cout << "Por favor, insira apelidos válidos.\n";
+                            std::cout << "Por favor, insira apelidos validos.\n";
                         }
                     }
 
@@ -127,13 +128,13 @@ int main(){
                     executarPartida(std::move(jogo));
                     break; // Sai do loop após uma escolha válida
                 } else {
-                    std::cout << "Escolha inválida. Tente novamente.\n";
+                    std::cout << "Escolha invalida. Tente novamente.\n";
                 }
             }
 
         } else if(comando == "FS"){
                     break;
-                    
+
         } else {
             std::cout << "Comando Invalido. Tente Novamente";
             std::cin.clear();

@@ -1,5 +1,13 @@
 #include "../include/jogoDaVelha.hpp"
 
+std::string JogoDaVelha::cor(Tabuleiro::Peca jogador){
+    if (jogador == Tabuleiro::Peca::JOGADOR1){
+        return "\033[31m"; // Vermelho
+    } else if (jogador == Tabuleiro::Peca::JOGADOR2){
+        return "\033[33m"; // Amarelo
+    }
+}
+
 void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
     switch (peca) {
     case Tabuleiro::Peca::VAZIO:
@@ -14,37 +22,51 @@ void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
     }
 };
 
+void JogoDaVelha::fraseInicial() {
+    std::cout << "Iniciando partida de Jogo da Velha entre " 
+              << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << " e " 
+              << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << "..." << std::endl;
+}
+
 void JogoDaVelha::lerJogada() {
     bool entradaValida = false;
 
     while (!entradaValida) {
-        std::cout << "Jogador " << strJogador(jogadorAtual) << ", insira a linha e a coluna da sua jogada (ex: 0 1): ";
+        if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
+            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << std::endl;
+        } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
+            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << std::endl;
+        }
+        std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";
+
         std::cin >> jogadaLinha >> jogadaColuna;
 
         if (std::cin.fail()) {
             // Limpa o estado de erro e esvazia o buffer
             std::cin.clear();
             std::cin.ignore(10000, '\n'); // Valor grande para garantir que o buffer seja limpo
-            std::cout << "Entrada inválida. Tente novamente.\n";
+            std::cout << "Entrada invalida. Tente novamente.\n";
         } else {
             // Esvazia o buffer para descartar entradas extras
             std::cin.ignore(10000, '\n');
             entradaValida = true;
         }
     }
+    --jogadaLinha; // ajustar índice para matriz
+    --jogadaColuna;
 }; 
 
 bool JogoDaVelha::jogadaEValida() const {
     // Verifica se a posição está dentro dos limites do tabuleiro
     if (jogadaLinha < 0 || jogadaLinha >= tabuleiro->getLinhas() ||
         jogadaColuna < 0 || jogadaColuna >= tabuleiro->getColunas()) {
-        std::cout << "Jogada inválida: posição fora do tabuleiro.\n";
+        std::cout << "Jogada invalida: posicao fora do tabuleiro.\n";
         return false;
     }
 
     // Verifica se a posição está vazia
     if (tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::VAZIO) {
-        std::cout << "Jogada inválida: posição já ocupada.\n";
+        std::cout << "Jogada invalida: posicao ja ocupada.\n";
         return false;
     }
 
@@ -111,13 +133,16 @@ bool JogoDaVelha::partidaAcabou() {
     return true;
 }; 
 
-void JogoDaVelha::indicarFimDaPartida() const {
+void JogoDaVelha::indicarFimDaPartida() {
+    exibirTabuleiro();
+    std::cout << "PARTIDA ENCERRADA\n" << std::endl;
     if (vencedor == 0) {
         std::cout << "A partida terminou em empate!\n";
     } else {
-        std::cout << "Parabéns, Jogador " << vencedor << "! Você venceu!\n";
+ std::cout << "Parabens, " 
+           << ((vencedor == 1) ? cor(Tabuleiro::Peca::JOGADOR1) : cor(Tabuleiro::Peca::JOGADOR2))
+           << " "
+           << ((vencedor == 1) ? apelidoJogador1 : apelidoJogador2)
+           << "! Voce venceu!" << std::endl;    
     }
-
-    std::cout << "Jogo encerrado.\n";
-    exibirTabuleiro();
 };
