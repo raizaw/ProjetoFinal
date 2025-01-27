@@ -86,13 +86,17 @@ int main(){
                 } while (true);
 
             } while (!gestao.cadastrarJogador(apelido, nome)); // Tenta cadastrar até ser bem-sucedido.
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "RJ"){
+            std::cout << "Insira o apelido do jogador a ser removido: " << std::endl;
             std::cin >> apelido;
             gestao.removerJogador(apelido);
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "LJ"){
             gestao.listarJogadores();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
 
@@ -197,20 +201,19 @@ int main(){
                     std::cout << "Escolha invalida. Tente novamente.\n";
                 }
             }
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "FS"){
+            std::cout << "Sistema Finalizado. Saindo..." << std::endl;
                     break;
 
         } else {
             std::cout << "Comando Invalido. Tente Novamente." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "CJ - Cadastrar Jogador\n" 
-              << "RJ - Remover Jogador\n" 
-              << "LJ - Listar Jogadores\n" 
-              << "EP - Executar Partida\n" 
-              << "FS - Finalizar Sistema" << std::endl;
         }
+
+        std::cout << "\n\nInsira um comando: " << std::endl;
     }
     return 0;
 }
