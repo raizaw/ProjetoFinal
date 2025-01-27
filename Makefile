@@ -1,37 +1,47 @@
-INCLUDEDIR = include
-SRCDIR = src
-OBJDIR = obj
-BINDIR = bin
+# Compilador
+CXX = g++
 
-$(BINDIR)/jogo: $(OBJDIR)/main.o $(OBJDIR)/executaPartida.o $(OBJDIR)/reversi.o $(OBJDIR)/lig4.o $(OBJDIR)/jogoDaVelha.o $(OBJDIR)/gestaoDeJogadores.o $(OBJDIR)/jogador.o $(OBJDIR)/jogos.o $(OBJDIR)/tabuleiro.o
-	g++ $(OBJDIR)/main.o $(OBJDIR)/executaPartida.o $(OBJDIR)/reversi.o $(OBJDIR)/lig4.o $(OBJDIR)/jogoDaVelha.o $(OBJDIR)/gestaoDeJogadores.o $(OBJDIR)/jogador.o $(OBJDIR)/jogos.o $(OBJDIR)/tabuleiro.o -o $(BINDIR)/jogo
+# Flags de compilação
+CXXFLAGS = -std=c++11 -Wall -Iinclude
 
-$(OBJDIR)/main.o: $(SRCDIR)/main.cpp $(INCLUDEDIR)/executaPartida.hpp
-	g++ -c $(SRCDIR)/main.cpp -o $(OBJDIR)/main.o
+# Nome do executável
+TARGET = bin/main.exe
 
-$(OBJDIR)/executaPartida.o: $(SRCDIR)/executaPartida.cpp $(INCLUDEDIR)/executaPartida.hpp $(INCLUDEDIR)/reversi.hpp $(INCLUDEDIR)/lig4.hpp $(INCLUDEDIR)/jogoDaVelha.hpp $(INCLUDEDIR)/gestaoDeJogadores.hpp
-	g++ -c $(SRCDIR)/executaPartida.cpp -o $(OBJDIR)/executaPartida.o
+# Diretórios
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 
-$(OBJDIR)/gestaoDeJogadores.o: $(SRCDIR)/gestaoDeJogadores.cpp $(INCLUDEDIR)/gestaoDeJogadores.hpp $(INCLUDEDIR)/jogador.hpp
-	g++ -c $(SRCDIR)/gestaoDeJogadores.cpp -o $(OBJDIR)/gestaoDeJogadores.o
+# Lista de arquivos fonte
+SRCS = $(SRC_DIR)/main.cpp \
+       $(SRC_DIR)/gestaoDeJogadores.cpp \
+       $(SRC_DIR)/tabuleiro.cpp \
+       $(SRC_DIR)/jogos.cpp \
+       $(SRC_DIR)/jogador.cpp \
+       $(SRC_DIR)/jogoDaVelha.cpp \
+       $(SRC_DIR)/reversi.cpp \
+       $(SRC_DIR)/lig4.cpp
 
-$(OBJDIR)/jogador.o: $(SRCDIR)/jogador.cpp $(INCLUDEDIR)/jogador.hpp
-	g++ -c $(SRCDIR)/jogador.cpp -o $(OBJDIR)/jogador.o
+# Lista de objetos gerados (com caminho para a pasta obj/)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
-$(OBJDIR)/reversi.o: $(SRCDIR)/reversi.cpp $(INCLUDEDIR)/reversi.hpp $(INCLUDEDIR)/jogos.hpp
-	g++ -c $(SRCDIR)/reversi.cpp -o $(OBJDIR)/reversi.o
+# Regra padrão
+all: $(TARGET)
 
-$(OBJDIR)/lig4.o: $(SRCDIR)/lig4.cpp $(INCLUDEDIR)/lig4.hpp $(INCLUDEDIR)/jogos.hpp
-	g++ -c $(SRCDIR)/lig4.cpp -o $(OBJDIR)/lig4.o
+# Regra para gerar o executável
+$(TARGET): $(OBJS)
+	@if not exist $(BIN_DIR) mkdir $(BIN_DIR)  # Cria a pasta bin/ se não existir
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-$(OBJDIR)/jogoDaVelha.o: $(SRCDIR)/jogoDaVelha.cpp $(INCLUDEDIR)/jogoDaVelha.hpp $(INCLUDEDIR)/jogos.hpp
-	g++ -c $(SRCDIR)/jogoDaVelha.cpp -o $(OBJDIR)/jogoDaVelha.o
+# Regra para compilar cada arquivo .cpp em um objeto .o na pasta obj/
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)  # Cria a pasta obj/ se não existir
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR)/jogos.o: $(SRCDIR)/jogos.cpp $(INCLUDEDIR)/jogos.hpp $(INCLUDEDIR)/tabuleiro.hpp
-	g++ -c $(SRCDIR)/jogos.cpp -o $(OBJDIR)/jogos.o
-
-$(OBJDIR)/tabuleiro.o: $(SRCDIR)/tabuleiro.cpp $(INCLUDEDIR)/tabuleiro.hpp
-	g++ -c $(SRCDIR)/tabuleiro.cpp -o $(OBJDIR)/tabuleiro.o
-
+# Limpar arquivos gerados
 clean:
-	rm -f $(OBJDIR)/*.o $(BINDIR)/jogo
+	rmdir /s /q $(OBJ_DIR) $(BIN_DIR)
+
+# Executar o programa
+run: $(TARGET)
+	$(TARGET)

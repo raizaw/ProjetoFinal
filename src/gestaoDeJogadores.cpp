@@ -129,7 +129,7 @@ bool GestaoDeJogadores::cadastrarJogador(const std::string &apelido, const std::
         return false;
     }
     //Cria novo jogador
-    auto novoJogador = std::make_unique<Jogador>(apelido, nome);
+    std::unique_ptr<Jogador> novoJogador(new Jogador(apelido, nome));
     //Teste se houve erro no salvamento do jogador no arquivo
     if (!inserirNovoJogador(novoJogador)) {
         throw std::runtime_error("ERRO: Falha ao salvar o jogador no arquivo.");
@@ -216,7 +216,7 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha){
         return; // Continua processando outras linhas
     }
 
-    auto novoJogador = std::make_unique<Jogador>(apelido, nome);
+    std::unique_ptr<Jogador> novoJogador(new Jogador(apelido, nome));
 
     std::string estatistica;
     int contaJogos = 0;
