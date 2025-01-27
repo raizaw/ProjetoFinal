@@ -17,8 +17,6 @@ int executarPartida(std::unique_ptr<Jogos> jogo) {
 
         if (jogo->jogadaEValida()) {
             jogo->realizarJogada();
-        } else {
-            std::cout << "Jogada invalida. Tente novamente.\n";
         }
     }
 
@@ -86,17 +84,14 @@ int main(){
                 } while (true);
 
             } while (!gestao.cadastrarJogador(apelido, nome)); // Tenta cadastrar até ser bem-sucedido.
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "RJ"){
             std::cout << "Insira o apelido do jogador a ser removido: " << std::endl;
             std::cin >> apelido;
             gestao.removerJogador(apelido);
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "LJ"){
             gestao.listarJogadores();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
 
@@ -104,7 +99,7 @@ int main(){
             TipoDeJogo jogo_enum;
 
             while (true) { // Loop até que uma escolha válida seja feita
-                std::cout << "Escolha o jogo:\n";
+                std::cout << "\nEscolha o jogo:\n";
                 std::cout << "R - Reversi\n";
                 std::cout << "V - Jogo da Velha\n";
                 std::cout << "L - Lig4" << std::endl;
@@ -113,7 +108,7 @@ int main(){
 
                 // Verifica se a entrada é exatamente um caractere
                 if (std::cin.peek() != '\n') {
-                    std::cout << "Entrada invalida. Digite apenas um caractere.\n";
+                    std::cout << "\nEntrada invalida. Digite apenas um caractere.\n";
                     std::cin.clear(); // Limpa o estado de erro do cin
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
                     continue; // Volta ao início do loop
@@ -201,19 +196,16 @@ int main(){
                     std::cout << "Escolha invalida. Tente novamente.\n";
                 }
             }
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         } else if(comando == "FS"){
-            std::cout << "Sistema Finalizado. Saindo..." << std::endl;
+            std::cout << "\nSistema Finalizado. Saindo..." << std::endl;
                     break;
 
         } else {
             std::cout << "Comando Invalido. Tente Novamente." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-        std::cout << "\n\nInsira um comando: " << std::endl;
+        std::cout << "\nInsira um comando: " << std::endl;
     }
     return 0;
 }
