@@ -43,22 +43,15 @@ void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
 
 void Reversi::exibirTabuleiro() const {
     const auto& matriz = tabuleiro->getTabuleiro();
-    const size_t tamanho = matriz.size();
 
-    const int largura = 3; // Largura fixa para cada célula (ajuste conforme necessário)
-
-    // Exibe os números das colunas
-    std::cout << std::setw(largura - 1) << "  "; // Espaço para alinhar com os números das linhas
-    for (size_t coluna = 0; coluna < tamanho; ++coluna) {
-        std::cout << std::setw(largura + 1) << coluna + 1;
-    }
-    std::cout << "\n";
+    // Exibe os números das colunas com um espaço extra no começo
+    std::cout << "    1   2   3   4   5   6   7   8\n";
 
     for (size_t i = 0; i < matriz.size(); ++i) { // Itera sobre as linhas
         const auto& linha = matriz[i];
 
-        // Exibe o número da linha
-        std::cout << std::setw(largura) << i + 1 << " "; // Numeração das linhas
+        // Exibe o número da linha com um espaço extra antes da primeira casa
+        std::cout << i + 1 << "   ";
 
         // Exibe as peças da linha com os separadores "|"
         for (size_t j = 0; j < linha.size(); ++j) {
@@ -71,16 +64,49 @@ void Reversi::exibirTabuleiro() const {
 
         // Adiciona os separadores entre as linhas, exceto no final do tabuleiro
         if (i < matriz.size() - 1) {
-            std::cout << std::setw(largura) << " "; // Espaço alinhado com a numeração das linhas
-            for (size_t j = 0; j < linha.size(); ++j) {
-                std::cout << std::string(largura, '-'); // Linha horizontal para cada célula
-                if (j < linha.size() - 1) { // Adiciona o "|" entre os blocos
-                    std::cout << "+";
-                }
-            }
-            std::cout << "\n";
+            std::cout << "   ---+---+---+---+---+---+---+---\n";
         }
     }
+
+    // const auto& matriz = tabuleiro->getTabuleiro();
+    // const size_t tamanho = matriz.size();
+
+    // const int largura = 3; // Largura fixa para cada célula (ajuste conforme necessário)
+
+    // // Exibe os números das colunas
+    // std::cout << std::setw(largura - 1) << "  "; // Espaço para alinhar com os números das linhas
+    // for (size_t coluna = 0; coluna < tamanho; ++coluna) {
+    //     std::cout << std::setw(largura + 1) << coluna + 1;
+    // }
+    // std::cout << "\n";
+
+    // for (size_t i = 0; i < matriz.size(); ++i) { // Itera sobre as linhas
+    //     const auto& linha = matriz[i];
+
+    //     // Exibe o número da linha
+    //     std::cout << std::setw(largura) << i + 1 << " "; // Numeração das linhas
+
+    //     // Exibe as peças da linha com os separadores "|"
+    //     for (size_t j = 0; j < linha.size(); ++j) {
+    //         exibirPeca(linha[j]); // Exibe a peça
+    //         if (j < linha.size() - 1) { // Adiciona "|", exceto no final da linha
+    //             std::cout << " | ";
+    //         }
+    //     }
+    //     std::cout << "\n";
+
+    //     // Adiciona os separadores entre as linhas, exceto no final do tabuleiro
+    //     if (i < matriz.size() - 1) {
+    //         std::cout << std::setw(largura) << " "; // Espaço alinhado com a numeração das linhas
+    //         for (size_t j = 0; j < linha.size(); ++j) {
+    //             std::cout << std::string(largura, '-'); // Linha horizontal para cada célula
+    //             if (j < linha.size() - 1) { // Adiciona o "|" entre os blocos
+    //                 std::cout << "+";
+    //             }
+    //         }
+    //         std::cout << "\n";
+    //     }
+    // }
 }
 
 bool Reversi::haJogadasPossiveis() {

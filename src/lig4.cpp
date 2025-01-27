@@ -19,24 +19,56 @@ void lig4::fraseInicial() {
 }
 
 void lig4::exibirTabuleiro() const{
-    const int larguraCelula = 3; // Define a largura fixa para cada célula
-    const std::string separador = std::string(7 * (larguraCelula + 3), '-'); // Linha separadora ajustada
+    const auto& matriz = tabuleiro->getTabuleiro();
 
-    // Exibe as linhas do tabuleiro
-    for (const auto& linha : tabuleiro->getTabuleiro()) {
-        for (const auto& celula : linha) {
-            std::cout << std::setw(larguraCelula) << std::left; // Define largura e alinhamento
-            exibirPeca(celula); // Exibe a peça com a largura ajustada
-            std::cout << " | "; // Separador entre células
+    // Itera sobre as linhas
+    for (size_t i = 0; i < matriz.size(); ++i) {
+        const auto& linha = matriz[i];
+
+        // Exibe o delimitador lateral esquerdo
+        std::cout << "|";
+
+        // Exibe as peças da linha com os separadores "|"
+        for (size_t j = 0; j < linha.size(); ++j) {
+            exibirPeca(linha[j]); // Exibe a peça
+            if (j < linha.size() - 1) { // Adiciona "|", exceto no final da linha
+                std::cout << "|";
+            }
         }
-        std::cout << "\n" << separador << "\n"; // Linha separadora entre linhas
+
+        // Exibe o delimitador lateral direito
+        std::cout << "|\n";
+
+        // Adiciona os separadores entre as linhas, exceto no final do tabuleiro
+        if (i < matriz.size() - 1) {
+            std::cout << "|---+---+---+---+---+---+---|\n";
+        }
     }
 
-    // Exibe os números das colunas
-    for (int i = 0; i < 7; ++i) {
-        std::cout << "  " << std::setw(larguraCelula) << std::right << i + 1 << " "; // Alinha os números das colunas
-    }
-    std::cout << "\n";
+    // Adiciona o delimitador abaixo da última linha do tabuleiro
+    std::cout << "|---+---+---+---+---+---+---|\n";
+
+    // Exibe a numeração das colunas na parte inferior
+    std::cout << "  1   2   3   4   5   6   7\n";
+    
+    // const int larguraCelula = 3; // Define a largura fixa para cada célula
+    // const std::string separador = std::string(7 * (larguraCelula + 3), '-'); // Linha separadora ajustada
+
+    // // Exibe as linhas do tabuleiro
+    // for (const auto& linha : tabuleiro->getTabuleiro()) {
+    //     for (const auto& celula : linha) {
+    //         std::cout << std::setw(larguraCelula) << std::left; // Define largura e alinhamento
+    //         exibirPeca(celula); // Exibe a peça com a largura ajustada
+    //         std::cout << " | "; // Separador entre células
+    //     }
+    //     std::cout << "\n" << separador << "\n"; // Linha separadora entre linhas
+    // }
+
+    // // Exibe os números das colunas
+    // for (int i = 0; i < 7; ++i) {
+    //     std::cout << "  " << std::setw(larguraCelula) << std::right << i + 1 << " "; // Alinha os números das colunas
+    // }
+    // std::cout << "\n";
 }
 
 void lig4::exibirPeca(Tabuleiro::Peca peca) const{
