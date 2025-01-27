@@ -91,7 +91,7 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com separação clara entre as funcionalidades de gerenciamento de jogadores e a lógica dos jogos. A persistência dos dados é feita através de arquivos texto, e a documentação foi gerada utilizando **Doxygen**.
 
 ### Estrutura do Projeto
-
+```
 📦 ProjetoFinal
 ├── 📂 include
 │   ├── gestaoDeJogadores.hpp   # Gerenciamento de jogadores (cabeçalho)
@@ -116,7 +116,7 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 ├── 📂 tests
 ├── 📂 obj
 └── Makefile                    # Instruções de compilação para o programa
-
+```
 ---
 
 ## 📚 Documentação
