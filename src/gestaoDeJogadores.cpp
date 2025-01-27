@@ -38,21 +38,16 @@ bool GestaoDeJogadores::carregarTodoArquivo(){
     return true;
 }
 bool GestaoDeJogadores::carregarDoisJogadores(const std::string &apelido1,const std::string &apelido2){
-    //Confere se os apelidos recebidos são iguais
-    if(apelido1 == apelido2){
-        std::cerr << "Erro: Apelidos duplicados foram fornecidos." << std::endl;
-        return false;
-    }
     //Encontra linha dos jogadores no arquivo
     std::string linha1 = buscarLinhaDoJogador(apelido1);
     if(linha1.empty()){
-        std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido1 + "'" << std::endl;
+        std::cerr << "Erro: O apelido '" + apelido1 + "' nao esta cadastrado.'" << std::endl;
         return false;
     }
 
     std::string linha2 = buscarLinhaDoJogador(apelido2);
     if(linha2.empty()){
-        std::cerr << "Erro: Nao existe Jogador com o apelido: '" + apelido2 + "'" << std::endl;
+        std::cerr << "Erro: O apelido '" + apelido2 + "' nao esta cadastrado.'" << std::endl;
         return false;
     }
     //Insere jogadores no mapa limpo
@@ -127,8 +122,6 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
 
 
 //Métodos para gerenciar jogadores
-
-//Falta: impedir adicao de caracteres que atrapalhem o csv
 bool GestaoDeJogadores::cadastrarJogador(const std::string &apelido, const std::string &nome){
     //Testa se apelido já existe
     if(!buscarLinhaDoJogador(apelido).empty()){
@@ -208,9 +201,10 @@ std::string GestaoDeJogadores::buscarLinhaDoJogador(const std::string &apelido) 
     arquivo.close();
     return "";
 }
-bool GestaoDeJogadores::apelidoEstaCadastrado(const std::string& apelido) const {
-    return !buscarLinhaDoJogador(apelido).empty();
-}
+// bool GestaoDeJogadores::apelidoEstaCadastrado(const std::string& apelido) const {
+//     return !buscarLinhaDoJogador(apelido).empty();
+// }
+
 void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha){
     std::stringstream ss(linha);
     std::string apelido, nome;

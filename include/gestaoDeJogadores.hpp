@@ -13,21 +13,21 @@
 
 class GestaoDeJogadores{
     private:
-        std::map<std::string, std::unique_ptr<Jogador>> jogadores_map;
         const std::string caminhoDoArquivo;
 
         //Metodos auxiliares
         std::string buscarLinhaDoJogador(const std::string& apelido)const;
         void inserirLinhaNoMapa(const std::string& linha);
         std::string nomeDoJogo(TipoDeJogo jogo);
-
     public:
+        //Mapa de jogadores
+        std::map<std::string, std::unique_ptr<Jogador>> jogadores_map;
+
         //Construtor e destrutor
         GestaoDeJogadores(const std::string &caminhoDoArquivo);
         ~GestaoDeJogadores();
 
         //Metodos para manipulação de arquivo
-        bool ehValidoParaCSV(const std::string& str);
         bool carregarTodoArquivo();
         bool carregarDoisJogadores(const std::string& apelido1,const std::string& apelido2);
         bool inserirNovoJogador(const std::unique_ptr<Jogador>& novoJogador);
@@ -39,6 +39,6 @@ class GestaoDeJogadores{
         void listarJogadores();
 
         // Auxiliar visível
-        bool apelidoEstaCadastrado(const std::string& apelido) const;
+        // bool apelidoEstaCadastrado(const std::string& apelido) const;
 };
 #endif

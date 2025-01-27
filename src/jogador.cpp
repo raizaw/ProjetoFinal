@@ -16,14 +16,13 @@ std::string Jogador::getNome() const{
     return this->nome;
 }
 
-
 //É importante sempre passar o número do jogo (TipoDeJogo) e a quantidade de vitórias ou derrotas. 
 //Este método foi projetado para ser utilizado tanto durante os jogos quanto ao processar dados carregados do arquivo.
 void Jogador::adicionarVitoria(TipoDeJogo jogo_enum, int quantidade){
     if(jogo_enum >= REVERSI && jogo_enum < TOTAL_DE_JOGOS){
         estatisticas_map[jogo_enum].first += quantidade;
     }else{
-        throw std::out_of_range("TipoDeJogo está fora do intervalo válido para adicionar vitória");
+        throw std::out_of_range("TipoDeJogo esta fora do intervalo valido para adicionar vitoria");
     }
 }
 //É importante sempre passar o número do jogo (TipoDeJogo) e a quantidade de vitórias ou derrotas. 
@@ -32,7 +31,7 @@ void Jogador::adicionarDerrota(TipoDeJogo jogo_enum, int quantidade){
     if(jogo_enum >= REVERSI && jogo_enum < TOTAL_DE_JOGOS){
         estatisticas_map[jogo_enum].second += quantidade;
     }else{
-        throw std::out_of_range("TipoDeJogo está fora do intervalo válido para adicionar derrota.");
+        throw std::out_of_range("TipoDeJogo esta fora do intervalo valido para adicionar derrota.");
     }
 }
 

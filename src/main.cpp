@@ -28,8 +28,8 @@ void executarPartida(std::unique_ptr<Jogos> jogo) {
 bool ehValidoParaCSV(const std::string& str){
     // Verifica cada caractere da string
     for (char c : str) {
-        // Se encontrar um dos caracteres inválidos, retorna false
-        if (c == ',' || c == '"' || c == '\n' || c == '\t') {
+        // Se encontrar um dos caracteres invalidos, retorna false
+        if (c == ',' || c == '"' || c == '\n' || c == '\t' || c == '\'') {
             return false;
         }
     }
@@ -87,6 +87,7 @@ int main(){
             gestao.listarJogadores();
 
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
+            TipoDeJogo jogo_enum;
 
             while (true) { // Loop até que uma escolha válida seja feita
                 // std::cout << "Escolha o jogo:\n";
@@ -113,22 +114,30 @@ int main(){
                     switch (escolhaJogo) {
                         case 'R':
                             jogo = std::make_unique<Reversi>();
+                            jogo_enum = REVERSI;
                             break;
                         case 'V':
                             jogo = std::make_unique<JogoDaVelha>();
+                            jogo_enum = VELHA;
                             break;
                         case 'L':
                             jogo = std::make_unique<lig4>();
+                            jogo_enum = LIG4;
                             break;
                     }
-
                     // Solicita e valida os apelidos dos jogadores
                     std::string apelidoJogador1, apelidoJogador2;
                     bool apelidosValidos = false;
-
-                    while (!apelidosValidos) {
+                    while (apelidosValidos){
                         std::cin >> apelidoJogador1 >> apelidoJogador2;
 
+                        // Verifica se os apelidos são iguais
+                        if (apelidoJogador1 == apelidoJogador2) {
+                            std::cout << "Os apelidos nao podem ser iguais. Por favor, insira apelidos diferentes." << std::endl;
+                            continue; // Retorna ao inicio do loop para pedir novos apelidos
+                        }
+                        apelidosValidos  = gestao.carregarDoisJogadores(apelidoJogador1, apelidoJogador2);
+/*
                         // Verifica se os apelidos estão cadastrados
                         bool jogador1Valido = gestao.apelidoEstaCadastrado(apelidoJogador1);
                         bool jogador2Valido = gestao.apelidoEstaCadastrado(apelidoJogador2);
@@ -146,6 +155,7 @@ int main(){
                         if (!apelidosValidos) {
                             std::cout << "Por favor, insira apelidos validos.\n";
                         }
+*/
                     }
 
                     // Define os apelidos no jogo (se necessário)
@@ -154,6 +164,11 @@ int main(){
 
                     // Executa a partida
                     executarPartida(std::move(jogo));
+
+                    gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
+                    gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
+                    gestao.atualizarEstatisticas(gestao.jogadores_map);
+
                     break; // Sai do loop após uma escolha válida
                 } else {
                     std::cout << "Escolha invalida. Tente novamente.\n";
