@@ -128,12 +128,10 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 ---
 
 ##   Dificuldades do Sistema
-```
-- [**gestaoDoJogadores**], [**dados.csv**]: Manipular o preenchimento dos dados no arquivo csv, seja para adição, edição e remoção de jogadores e/ou atributos
-- [**jogoDaVeha**], [**reversi**], [**lig4**]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo e da dinâmica de jogadores
-- [**main**]: Estabeler a interação com o usuário e aumentar a robustez do sistema a comportamentos excepcionais
-- [**tests**]: Implementar os métodos para atender os casos de teste em cada função, de modo a alcançar a melhor cobertura possível e fomentar a robustez do sistema
-```
+- [<span style="color:red; font-weight:bold;">gestaoDoJogadores</span>], [<span style="color:red; font-weight:bold;">dados.csv</span>]: Manipular o preenchimento dos dados no arquivo csv, seja para adição, edição e remoção de jogadores e/ou atributos
+- [<span style="color:red; font-weight:bold;">jogoDaVeha</span>], [<span style="color:red; font-weight:bold;">reversi</span>], [<span style="color:red; font-weight:bold;">lig4</span>]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo e da dinâmica de jogadores
+- [<span style="color:red; font-weight:bold;">main</span>]: Estabeler a interação com o usuário e aumentar a robustez do sistema a comportamentos excepcionais
+- [<span style="color:red; font-weight:bold;">tests</span>]: Implementar os métodos para atender os casos de teste em cada função, de modo a alcançar a melhor cobertura possível e fomentar a robustez do sistema
 ---
 
 ##   Documentação
