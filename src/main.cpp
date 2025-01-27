@@ -8,6 +8,18 @@
 #include <cctype> // Para usar toupper
 #include <limits> // Para std::numeric_limits e std::streamsize
 
+void exibirMenu(){
+    std::cout << "------------------------------------" << std::endl;
+    std::cout << "[CJ] - Cadastrar Jogador\n" 
+              << "[RJ] - Remover Jogador\n" 
+              << "[LJ] - Listar Jogadores\n" 
+              << "[EP] - Executar Partida\n" 
+              << "[M]  - Menu\n" 
+              << "[FS] - Finalizar Sistema" << std::endl;
+    std::cout << "------------------------------------" << std::endl;
+
+}
+
 int executarPartida(std::unique_ptr<Jogos> jogo) {
     jogo->fraseInicial();
     jogo->exibirTabuleiro();
@@ -43,12 +55,7 @@ int main(){
     char escolhaJogo;
 
     std::cout << "\n BEM VINDO! INSIRA UM COMANDO:" << std::endl;
-    std::cout << "CJ - Cadastrar Jogador\n" 
-              << "RJ - Remover Jogador\n" 
-              << "LJ - Listar Jogadores\n" 
-              << "EP - Executar Partida\n" 
-              << "FS - Finalizar Sistema" << std::endl;
-
+    exibirMenu();
 
     while(std::cin >> comando){
 
@@ -149,25 +156,6 @@ int main(){
                             continue; // Retorna ao inicio do loop para pedir novos apelidos
                         }
                         apelidosValidos  = gestao.carregarDoisJogadores(apelidoJogador1, apelidoJogador2);
-/*
-                        // Verifica se os apelidos estão cadastrados
-                        bool jogador1Valido = gestao.apelidoEstaCadastrado(apelidoJogador1);
-                        bool jogador2Valido = gestao.apelidoEstaCadastrado(apelidoJogador2);
-
-                        if (!jogador1Valido && !jogador2Valido) {
-                            std::cout << "Os apelidos '" << apelidoJogador1 << "' e '" << apelidoJogador2 << "' nao estao cadastrados.\n";
-                        } else if (!jogador1Valido) {
-                            std::cout << "O apelido '" << apelidoJogador1 << "' nao esta cadastrado.\n";
-                        } else if (!jogador2Valido) {
-                            std::cout << "O apelido '" << apelidoJogador2 << "' nao esta cadastrado.\n";
-                        } else {
-                            apelidosValidos = true; // Ambos os apelidos são válidos
-                        }
-
-                        if (!apelidosValidos) {
-                            std::cout << "Por favor, insira apelidos validos.\n";
-                        }
-*/
                     }
 
                     // Define os apelidos no jogo (se necessário)
@@ -181,14 +169,14 @@ int main(){
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\nAs estatisticas foram atualizadas!" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 2) {
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\nAs estatisticas foram atualizadas!" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 0) {
-                        std::cout << "\nNenhuma estatistica foi alterada!" << std::endl;
+                        std::cout << "\nNenhuma estatistica foi alterada!\n" << std::endl;
                     }
 
                     break; // Sai do loop após uma escolha válida
@@ -197,10 +185,13 @@ int main(){
                 }
             }
 
+        } else if (comando == "M") {
+            exibirMenu();
+
         } else if(comando == "FS"){
             std::cout << "\nSistema Finalizado. Saindo..." << std::endl;
                     break;
-
+            
         } else {
             std::cout << "Comando Invalido. Tente Novamente." << std::endl;
         }
