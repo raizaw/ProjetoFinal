@@ -1,6 +1,6 @@
 # 🎮 Trabalho Prático PDS2 - Jogos de Tabuleiro
 
-Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Connect4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.
+Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Lig4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.
 
 ---
 
@@ -89,6 +89,33 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 ## 🏗️ Arquitetura de Sistema
 
 O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com separação clara entre as funcionalidades de gerenciamento de jogadores e a lógica dos jogos. A persistência dos dados é feita através de arquivos texto, e a documentação foi gerada utilizando **Doxygen**.
+
+### Estrutura do Projeto
+
+📦 ProjetoFinal
+├── 📂 include
+│   ├── gestaoDeJogadores.hpp   # Gerenciamento de jogadores (cabeçalho)
+│   ├── tabuleiro.hpp           # Interface base de tabuleiro (cabeçalho)
+│   ├── jogos.hpp               # Interface base para jogos (cabeçalho)
+│   ├── jogador.hpp             # Interface base para jogador (cabeçalho)
+│   ├── jogoDaVelha.hpp         # Implementação do Jogo Da Velha (cabeçalho)
+│   ├── reversi.hpp             # Implementação do Reversi (cabeçalho)
+│   └── lig4.hpp                # Implementação do Lig 4 (cabeçalho)
+├── 📂 src
+│   ├── gestaoDeJogadores.hpp   # Gerenciamento de jogadores (implementação)
+│   ├── tabuleiro.cpp           # Interface base de tabuleiro (implementação)
+│   ├── jogos.cpp               # Interface base para jogos (implementação)
+│   ├── jogador.cpp             # Interface base para jogador (implementação)
+│   ├── jogoDaVelha.cpp         # Implementação do Jogo Da Velha (implementação)
+│   ├── reversi.cpp             # Implementação do Reversi (implementação)
+│   ├── lig4.cpp                # Implementação do Lig 4 (implementação)
+│   └── main.cpp                # Executa o programa
+├── dados.csv                   # Banco de dados de jogadores e suas pontuações
+├── 📂 bin
+│   └── main.exe                # Executável
+├── 📂 tests
+├── 📂 obj
+└── Makefile                    # Instruções de compilação para o programa
 
 ---
 
