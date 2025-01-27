@@ -9,6 +9,8 @@ std::string lig4::cor(int jogador){
         return "\033[31m"; // Vermelho
     } else if (jogador == 2){
         return "\033[34m"; // Azul
+    } else{
+        return "";
     }
 }
 
@@ -168,8 +170,9 @@ bool lig4::partidaAcabou() {
 }
 
 int lig4::indicarFimDaPartida() {
+    std::cout << "\n\n" << "TABULEIRO FINAL:\n" << std::endl;
     exibirTabuleiro();
-    std::cout << "PARTIDA ENCERRADA!\n" << std::endl;
+    std::cout << "\nPARTIDA ENCERRADA!\n" << std::endl;
     if (vencedor == 0) {
         std::cout << "A partida terminou em empate!" << std::endl;
         return 0;

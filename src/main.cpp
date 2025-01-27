@@ -42,7 +42,7 @@ int main(){
     std::string comando, apelido, nome;
     char escolhaJogo;
 
-    std::cout << "BEM VINDO! INSIRA UM COMANDO:" << std::endl;
+    std::cout << "\n BEM VINDO! INSIRA UM COMANDO:" << std::endl;
     std::cout << "CJ - Cadastrar Jogador\n" 
               << "RJ - Remover Jogador\n" 
               << "LJ - Listar Jogadores\n" 
@@ -181,14 +181,14 @@ int main(){
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\n\nAs estatisticas foram atualizadas!" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!" << std::endl;
                     } else if (vencedor == 2) {
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\n\nAs estatisticas foram atualizadas!" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!" << std::endl;
                     } else if (vencedor == 0) {
-                        std::cout << "\n\nNenhuma estatistica foi alterada!" << std::endl;
+                        std::cout << "\nNenhuma estatistica foi alterada!" << std::endl;
                     }
 
                     break; // Sai do loop após uma escolha válida

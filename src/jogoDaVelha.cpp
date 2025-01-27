@@ -9,6 +9,8 @@ std::string JogoDaVelha::cor(int jogador){
         return "\033[31m"; // Vermelho
     } else if (jogador == 2){
         return "\033[33m"; // Amarelo
+    } else{
+        return "";
     }
 }
 
@@ -207,8 +209,9 @@ bool JogoDaVelha::partidaAcabou() {
 }; 
 
 int JogoDaVelha::indicarFimDaPartida() {
+    std::cout << "\n\n" << "TABULEIRO FINAL:\n" << std::endl;
     exibirTabuleiro();
-    std::cout << "PARTIDA ENCERRADA\n" << std::endl;
+    std::cout << "\nPARTIDA ENCERRADA\n" << std::endl;
     if (vencedor == 0) {
         std::cout << "A partida terminou em empate!\n";
         return 0;

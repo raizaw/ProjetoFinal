@@ -10,6 +10,8 @@ std::string Reversi::cor(int jogador){
         return "\033[35m"; // Magenta
     } else if (jogador == 2){
         return "\033[36m"; // Ciano
+    } else{
+        return "";
     }
 }
 
@@ -30,13 +32,13 @@ void Reversi::fraseInicial() {
 void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
     switch (peca) {
         case Tabuleiro::Peca::VAZIO: 
-            std::cout << "  ";
+            std::cout << " ";
             break;
         case Tabuleiro::Peca::JOGADOR1:
-            std::cout << "\033[35m O \033[0m"; // "O" em magenta
+            std::cout << "\033[35mO\033[0m"; // "O" em magenta
             break;
         case Tabuleiro::Peca::JOGADOR2:
-            std::cout << "\033[36m O \033[0m"; // "O" em ciano
+            std::cout << "\033[36mO\033[0m"; // "O" em ciano
             break;
     }
 }
@@ -250,8 +252,9 @@ int Reversi::indicarFimDaPartida() {
     int pecasJogador1 = pecas.first;
     int pecasJogador2 = pecas.second;
 
+    std::cout << "\n\n" << "TABULEIRO FINAL:\n" << std::endl;
     exibirTabuleiro();
-    std::cout << "PARTIDA ENCERRADA!\nContagem de pontos:";
+    std::cout << "\nPARTIDA ENCERRADA!\nContagem de pontos: ";
     std::cout << apelidoJogador1 << ": " << pecasJogador1 << std::endl;
     std::cout << apelidoJogador2 << ": " << pecasJogador2 << std::endl;
 
