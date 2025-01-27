@@ -8,7 +8,7 @@
 #include <cctype> // Para usar toupper
 #include <limits> // Para std::numeric_limits e std::streamsize
 
-void executarPartida(std::unique_ptr<Jogos> jogo) {
+int executarPartida(std::unique_ptr<Jogos> jogo) {
     jogo->fraseInicial();
     jogo->exibirTabuleiro();
 
@@ -22,7 +22,7 @@ void executarPartida(std::unique_ptr<Jogos> jogo) {
         }
     }
 
-    jogo->indicarFimDaPartida();
+    return jogo->indicarFimDaPartida();
 }
 
 bool ehValidoParaCSV(const std::string& str){
@@ -43,6 +43,14 @@ int main(){
 
     std::string comando, apelido, nome;
     char escolhaJogo;
+
+    std::cout << "BEM VINDO! INSIRA UM COMANDO:" << std::endl;
+    std::cout << "CJ - Cadastrar Jogador\n" 
+              << "RJ - Remover Jogador\n" 
+              << "LJ - Listar Jogadores\n" 
+              << "EP - Executar Partida\n" 
+              << "FS - Finalizar Sistema" << std::endl;
+
 
     while(std::cin >> comando){
 
@@ -87,13 +95,15 @@ int main(){
             gestao.listarJogadores();
 
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
+
+            int vencedor;
             TipoDeJogo jogo_enum;
 
             while (true) { // Loop até que uma escolha válida seja feita
-                // std::cout << "Escolha o jogo:\n";
-                // std::cout << "R - Reversi\n";
-                // std::cout << "V - Jogo da Velha\n";
-                // std::cout << "L - Lig4\n";
+                std::cout << "Escolha o jogo:\n";
+                std::cout << "R - Reversi\n";
+                std::cout << "V - Jogo da Velha\n";
+                std::cout << "L - Lig4" << std::endl;
 
                 std::cin >> escolhaJogo;
 
@@ -113,22 +123,25 @@ int main(){
                     // Cria o jogo escolhido
                     switch (escolhaJogo) {
                         case 'R':
-                            jogo = std::make_unique<Reversi>();
+                            jogo = std::unique_ptr<Reversi>(new Reversi());
                             jogo_enum = REVERSI;
                             break;
                         case 'V':
-                            jogo = std::make_unique<JogoDaVelha>();
+                            jogo = std::unique_ptr<JogoDaVelha>(new JogoDaVelha());
                             jogo_enum = VELHA;
                             break;
                         case 'L':
-                            jogo = std::make_unique<lig4>();
+                            jogo = std::unique_ptr<lig4>(new lig4());
                             jogo_enum = LIG4;
                             break;
                     }
                     // Solicita e valida os apelidos dos jogadores
                     std::string apelidoJogador1, apelidoJogador2;
+
+                    std::cout << "Insira <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
+
                     bool apelidosValidos = false;
-                    while (apelidosValidos){
+                    while (!apelidosValidos){
                         std::cin >> apelidoJogador1 >> apelidoJogador2;
 
                         // Verifica se os apelidos são iguais
@@ -163,11 +176,21 @@ int main(){
                     jogo->setApelidoJogador2(apelidoJogador2);
 
                     // Executa a partida
-                    executarPartida(std::move(jogo));
+                    vencedor = executarPartida(std::move(jogo));
 
-                    gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
-                    gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
-                    gestao.atualizarEstatisticas(gestao.jogadores_map);
+                    if (vencedor == 1) {
+                        gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
+                        gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
+                        gestao.atualizarEstatisticas(gestao.jogadores_map);
+                        std::cout << "\n\nAs estatisticas foram atualizadas!" << std::endl;
+                    } else if (vencedor == 2) {
+                        gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
+                        gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
+                        gestao.atualizarEstatisticas(gestao.jogadores_map);
+                        std::cout << "\n\nAs estatisticas foram atualizadas!" << std::endl;
+                    } else if (vencedor == 0) {
+                        std::cout << "\n\nNenhuma estatistica foi alterada!" << std::endl;
+                    }
 
                     break; // Sai do loop após uma escolha válida
                 } else {
@@ -179,9 +202,14 @@ int main(){
                     break;
 
         } else {
-            std::cout << "Comando Invalido. Tente Novamente";
+            std::cout << "Comando Invalido. Tente Novamente." << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "CJ - Cadastrar Jogador\n" 
+              << "RJ - Remover Jogador\n" 
+              << "LJ - Listar Jogadores\n" 
+              << "EP - Executar Partida\n" 
+              << "FS - Finalizar Sistema" << std::endl;
         }
     }
     return 0;

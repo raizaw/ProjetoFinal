@@ -2,10 +2,12 @@
 
 #include <iomanip>
 
-std::string JogoDaVelha::cor(Tabuleiro::Peca jogador){
-    if (jogador == Tabuleiro::Peca::JOGADOR1){
+#define fimCor "\033[0m"
+
+std::string JogoDaVelha::cor(int jogador){
+    if (jogador == 1){
         return "\033[31m"; // Vermelho
-    } else if (jogador == Tabuleiro::Peca::JOGADOR2){
+    } else if (jogador == 2){
         return "\033[33m"; // Amarelo
     }
 }
@@ -69,8 +71,8 @@ void JogoDaVelha::exibirTabuleiro() const {
 
 void JogoDaVelha::fraseInicial() {
     std::cout << "Iniciando partida de Jogo da Velha entre " 
-              << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << " e " 
-              << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << "..." << std::endl;
+              << cor(1) << apelidoJogador1 << fimCor << " e " 
+              << cor(2) << apelidoJogador2 << fimCor << "..." << std::endl;
 }
 
 void JogoDaVelha::lerJogada() {
@@ -78,9 +80,9 @@ void JogoDaVelha::lerJogada() {
 
     while (!entradaValida) {
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(1) << apelidoJogador1 << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(2) << apelidoJogador2 << fimCor << std::endl;
         }
         std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";
 
@@ -178,16 +180,18 @@ bool JogoDaVelha::partidaAcabou() {
     return true;
 }; 
 
-void JogoDaVelha::indicarFimDaPartida() {
+int JogoDaVelha::indicarFimDaPartida() {
     exibirTabuleiro();
     std::cout << "PARTIDA ENCERRADA\n" << std::endl;
     if (vencedor == 0) {
         std::cout << "A partida terminou em empate!\n";
+        return 0;
     } else {
  std::cout << "Parabens, " 
-           << ((vencedor == 1) ? cor(Tabuleiro::Peca::JOGADOR1) : cor(Tabuleiro::Peca::JOGADOR2))
-           << " "
+           << ((vencedor == 1) ? cor(1) : cor(2))
+           << fimCor
            << ((vencedor == 1) ? apelidoJogador1 : apelidoJogador2)
            << "! Voce venceu!" << std::endl;    
+        return (vencedor == 1)? 1 : 2;
     }
 };

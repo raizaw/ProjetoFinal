@@ -17,7 +17,7 @@ public:
     bool jogadaEValida() const override;
     void realizarJogada() override;
     bool partidaAcabou() override;
-    void indicarFimDaPartida() override;
+    int indicarFimDaPartida() override;
 
 private:
     int jogadaLinha;
@@ -28,7 +28,7 @@ private:
     bool direcaoValida(int linha, int coluna, int deltaLinha, int deltaColuna, Tabuleiro::Peca peca) const;
     bool capturarPecas(int linha, int coluna, Tabuleiro::Peca peca);
     bool haJogadasPossiveis();
-    std::string cor (Tabuleiro::Peca jogador);
+    std::string cor (int jogador);
 };
 
 #endif

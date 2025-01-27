@@ -3,10 +3,12 @@
 #include <limits>
 #include <iomanip>
 
-std::string Reversi::cor(Tabuleiro::Peca jogador){
-    if (jogador == Tabuleiro::Peca::JOGADOR1){
+#define fimCor "\033[0m"
+
+std::string Reversi::cor(int jogador){
+    if (jogador == 1){
         return "\033[35m"; // Magenta
-    } else if (jogador == Tabuleiro::Peca::JOGADOR2){
+    } else if (jogador == 2){
         return "\033[36m"; // Ciano
     }
 }
@@ -21,8 +23,8 @@ Reversi::Reversi() : Jogos(8, 8), jogadaLinha(-1), jogadaColuna(-1) {
 
 void Reversi::fraseInicial() {
     std::cout << "Iniciando partida de Reversi entre " 
-              << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << " e " 
-              << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << "..." << std::endl;
+              << cor(1) << apelidoJogador1 << fimCor << " e " 
+              << cor(2) << apelidoJogador2 << fimCor << "..." << std::endl;
 }
 
 void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
@@ -114,11 +116,11 @@ void Reversi::lerJogada() {
         }
 
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 
-                      << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(1) << apelidoJogador1 
+                      << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 
-                      << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(2) << apelidoJogador2 
+                      << fimCor << std::endl;
         }
         std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";
 
@@ -214,7 +216,7 @@ std::pair<int, int> Reversi::contarPecas() const {
 
 
 
-void Reversi::indicarFimDaPartida() {
+int Reversi::indicarFimDaPartida() {
     // Chamada à função contarPecas, que retorna um std::pair
     std::pair<int, int> pecas = contarPecas();
 
@@ -228,11 +230,14 @@ void Reversi::indicarFimDaPartida() {
     std::cout << apelidoJogador2 << ": " << pecasJogador2 << std::endl;
 
     if (pecasJogador1 > pecasJogador2) {
-        std::cout << "\nParabens, \033[35m" << apelidoJogador1 << "\033[0m, voce venceu!" << std::endl;
+        std::cout << "\nParabens, " << cor(1) << apelidoJogador1 << fimCor << ", voce venceu!" << std::endl;
+        return 1;
     } else if (pecasJogador1 < pecasJogador2) {
-        std::cout << "\nParabens, \033[36m" << apelidoJogador2 << "\033[0m, voce venceu!" << std::endl;
+        std::cout << "\nParabens, " << cor(2) << apelidoJogador2 << fimCor << ", voce venceu!" << std::endl;
+        return 2;
     } else {
         std::cout << "\nO jogo terminou empatado!" << std::endl;
+        return 0;
     }
 }
 

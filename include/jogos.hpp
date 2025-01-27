@@ -30,7 +30,7 @@ public:
     // Métodos que gerenciam o andamento da partida
     virtual void trocarJogador();
 	virtual bool partidaAcabou() = 0; // Verifica se a partida pode ou não continuar
-	virtual void indicarFimDaPartida() = 0;
+	virtual int indicarFimDaPartida() = 0;
 
 
     // Métodos auxiliares

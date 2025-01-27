@@ -2,18 +2,20 @@
 
 #include <iomanip>
 
-std::string lig4::cor(Tabuleiro::Peca jogador){
-    if (jogador == Tabuleiro::Peca::JOGADOR1){
+#define fimCor "\033[0m"
+
+std::string lig4::cor(int jogador){
+    if (jogador == 1){
         return "\033[31m"; // Vermelho
-    } else if (jogador == Tabuleiro::Peca::JOGADOR2){
+    } else if (jogador == 2){
         return "\033[34m"; // Azul
     }
 }
 
 void lig4::fraseInicial() {
     std::cout << "Iniciando partida de Lig4 entre " 
-              << cor(Tabuleiro::Peca::JOGADOR1) << apelidoJogador1 << "\033[0m" << " e " 
-              << cor(Tabuleiro::Peca::JOGADOR2) << apelidoJogador2 << "\033[0m" << "..." << std::endl;
+              << cor(1) << apelidoJogador1 << fimCor << " e " 
+              << cor(2) << apelidoJogador2 << fimCor << "..." << std::endl;
 }
 
 void lig4::exibirTabuleiro() const{
@@ -56,11 +58,11 @@ void lig4::lerJogada() {
 
     while (!entradaValida) {
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR1) 
-                      << apelidoJogador1 << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(1) 
+                      << apelidoJogador1 << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(Tabuleiro::Peca::JOGADOR2) 
-                      << apelidoJogador2 << "\033[0m" << std::endl;
+            std::cout << "Turno de " << cor(2) 
+                      << apelidoJogador2 << fimCor << std::endl;
         }
         std::cout << "Escolha uma coluna (1-7): ";
 
@@ -133,17 +135,18 @@ bool lig4::partidaAcabou() {
     return true;
 }
 
-void lig4::indicarFimDaPartida() {
+int lig4::indicarFimDaPartida() {
     exibirTabuleiro();
     std::cout << "PARTIDA ENCERRADA!\n" << std::endl;
     if (vencedor == 0) {
         std::cout << "A partida terminou em empate!" << std::endl;
+        return 0;
     } else {
         std::cout << "Parabens, " 
-          << ((vencedor == 1) ? cor(Tabuleiro::Peca::JOGADOR1) : cor(Tabuleiro::Peca::JOGADOR2))
-          << " "
+          << ((vencedor == 1) ? cor(1) : cor(2)) << fimCor
           << ((vencedor == 1) ? apelidoJogador1 : apelidoJogador2)
           << "! Voce venceu!" << std::endl;
+        return (vencedor == 1)? 1 : 2;
     }
 }
 

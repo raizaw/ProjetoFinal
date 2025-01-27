@@ -18,7 +18,7 @@ public:
     virtual void fraseInicial() override;
     virtual void exibirTabuleiro() const override;
     virtual void exibirPeca(Tabuleiro::Peca peca) const override;
-    std::string cor (Tabuleiro::Peca jogador);
+    std::string cor (int jogador);
     
     // Métodos responsáveis pelas jogadas em cada rodada
     virtual void lerJogada() override; 
@@ -27,7 +27,7 @@ public:
 
     // Métodos que gerenciam o andamento da partida
 	virtual bool partidaAcabou() override; 
-	virtual void indicarFimDaPartida() override;
+	virtual int indicarFimDaPartida() override;
 
 };
 

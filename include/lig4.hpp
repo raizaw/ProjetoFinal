@@ -26,13 +26,13 @@ public:
 
     // metodos que gerenciam o andamento da partida
     virtual bool partidaAcabou() override;
-    virtual void indicarFimDaPartida() override;
+    virtual int indicarFimDaPartida() override;
 
 private:
     mutable int colunaEscolhida; // coluna escolhida pelo jogador atual
     bool verificarVitoria(int linha, int coluna) const;
     bool dentroDosLimites(int linha, int coluna) const;
-    std::string cor (Tabuleiro::Peca jogador);
+    std::string cor (int jogador);
 };
 
 #endif
