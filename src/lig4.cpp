@@ -23,6 +23,7 @@ void lig4::fraseInicial() {
 void lig4::exibirTabuleiro() const{
     const auto& matriz = tabuleiro->getTabuleiro();
 
+    std::cout << "\n";
     // Itera sobre as linhas
     for (size_t i = 0; i < matriz.size(); ++i) {
         const auto& linha = matriz[i];
@@ -73,10 +74,10 @@ void lig4::lerJogada() {
 
     while (!entradaValida) {
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(1) 
+            std::cout << "\nTurno de " << cor(1) 
                       << apelidoJogador1 << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(2) 
+            std::cout << "\nTurno de " << cor(2) 
                       << apelidoJogador2 << fimCor << std::endl;
         }
         std::cout << "Escolha uma coluna (1-7): ";

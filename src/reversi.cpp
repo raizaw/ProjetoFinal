@@ -46,6 +46,7 @@ void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
 void Reversi::exibirTabuleiro() const {
     const auto& matriz = tabuleiro->getTabuleiro();
 
+    std::cout << "\n";
     // Exibe os números das colunas com um espaço extra no começo
     std::cout << "    1   2   3   4   5   6   7   8\n";
 
@@ -104,10 +105,10 @@ void Reversi::lerJogada() {
         }
 
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(1) << apelidoJogador1 
+            std::cout << "\nTurno de " << cor(1) << apelidoJogador1 
                       << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(2) << apelidoJogador2 
+            std::cout << "\nTurno de " << cor(2) << apelidoJogador2 
                       << fimCor << std::endl;
         }
         std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";

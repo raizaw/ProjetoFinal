@@ -9,14 +9,14 @@
 #include <limits> // Para std::numeric_limits e std::streamsize
 
 void exibirMenu(){
-    std::cout << "------------------------------------" << std::endl;
+    std::cout << "-------------------------------" << std::endl;
     std::cout << "[CJ] - Cadastrar Jogador\n" 
               << "[RJ] - Remover Jogador\n" 
               << "[LJ] - Listar Jogadores\n" 
               << "[EP] - Executar Partida\n" 
               << "[M]  - Menu\n" 
               << "[FS] - Finalizar Sistema" << std::endl;
-    std::cout << "------------------------------------" << std::endl;
+    std::cout << "-------------------------------" << std::endl;
 
 }
 
@@ -107,9 +107,11 @@ int main(){
 
             while (true) { // Loop até que uma escolha válida seja feita
                 std::cout << "\nEscolha o jogo:\n";
-                std::cout << "R - Reversi\n";
-                std::cout << "V - Jogo da Velha\n";
-                std::cout << "L - Lig4" << std::endl;
+                std::cout << "---------------------\n";
+                std::cout << "[R] - Reversi\n";
+                std::cout << "[V] - Jogo da Velha\n";
+                std::cout << "[L] - Lig4\n";
+                std::cout << "---------------------" << std::endl;
 
                 std::cin >> escolhaJogo;
 
@@ -144,11 +146,12 @@ int main(){
                     // Solicita e valida os apelidos dos jogadores
                     std::string apelidoJogador1, apelidoJogador2;
 
-                    std::cout << "Insira <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
-
                     bool apelidosValidos = false;
                     while (!apelidosValidos){
-                        std::cin >> apelidoJogador1 >> apelidoJogador2;
+                        std::cout << "\nInsira o apelido do jogador 1: ";
+                        std::cin >> apelidoJogador1;
+                        std::cout << "Insira o apelido do jogador 2: ";
+                        std::cin >> apelidoJogador2;
 
                         // Verifica se os apelidos são iguais
                         if (apelidoJogador1 == apelidoJogador2) {

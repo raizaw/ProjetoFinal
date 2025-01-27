@@ -31,6 +31,7 @@ void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
 void JogoDaVelha::exibirTabuleiro() const {
 
     const auto& matriz = tabuleiro->getTabuleiro();
+        std::cout << "\n";
         // Exibe os números das colunas com um espaço extra no começo
         std::cout << "    1   2   3\n";
 
@@ -68,9 +69,9 @@ void JogoDaVelha::lerJogada() {
 
     while (!entradaValida) {
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(1) << apelidoJogador1 << fimCor << std::endl;
+            std::cout << "\nTurno de " << cor(1) << apelidoJogador1 << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(2) << apelidoJogador2 << fimCor << std::endl;
+            std::cout << "\nTurno de " << cor(2) << apelidoJogador2 << fimCor << std::endl;
         }
         std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";
 
