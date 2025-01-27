@@ -18,10 +18,10 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
 
 ##   Tabela de Conteúdos
 
-- [ Instalação e Compilação](#️-instalação-e-compilação)
-- [ Funcionalidades](#-funcionalidades)
-- [ Estrutura do Projeto](#️-estrutura-do-projeto)
-- [ Documentação](#-documentação)
+- Instalação e Compilação
+- Funcionalidades do Sistema
+- Estrutura do Projeto
+- Documentação
 
 ---
 
@@ -63,7 +63,7 @@ Para gerar a documentação com Doxygen:
 
 ---
 
-##   Funcionalidades
+##   Funcionalidades do Sistema
 
 ###   Sistema de Jogadores
 Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem um nome, um apelido único, e estatísticas com o número de vitórias e derrotas nos jogos. Além disso criamos métodos para:
@@ -72,19 +72,17 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 - **Listagem Detalhada**: Exibe estatísticas detalhadas por jogo para cada jogador.
 - **Persistência em Arquivo csv**: O cadastro de jogadores é mantido entre diferentes execuções do sistema, com mecanismos para salvar e ler os dados a partir de um arquivo.
 
+###   Relação dos Jogos Implementados
 
-###   Jogos Implementados
-
-| Jogo          | Tamanho do Tabuleiro | Modo de Vitória                     | Características Especiais               |
+| Jogo          | Tamanho do Tabuleiro | Modo de Vitória                     | Características Únicas              |
 |---------------|----------------------|-------------------------------------|-----------------------------------------|
-| Jogo da Velha |          3x3        | Linha/Coluna/Diagonal               | Detecção de empate no jogo              |
-| Lig4      |        Variável     | 4 em linha vertical/horizontal/diagonal | Sistema de colunas                     |
+| Jogo da Velha |          3x3        | Linha/Coluna/Diagonal               | Possibilidade de empate no jogo              |
+| Lig4      |        6x7    | 4 peças em linha vertical/horizontal/diagonal | Sistema de colocar peça nas colunas                     |
 | Reversi       |         8x8         | Contagem de peças                   | Mecânica de captura de peças            |
 
 ###   Estatísticas
-Tamanho do 
+- Histórico de vitórias e de derrotas de cada jogador, em cada jogo.
           
-
 ---
 
 ##   Estrutura do Projeto
