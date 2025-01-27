@@ -24,7 +24,7 @@ Reversi::Reversi() : Jogos(8, 8), jogadaLinha(-1), jogadaColuna(-1) {
 }
 
 void Reversi::fraseInicial() {
-    std::cout << "Iniciando partida de Reversi entre " 
+    std::cout << "\nIniciando partida de Reversi entre " 
               << cor(1) << apelidoJogador1 << fimCor << " e " 
               << cor(2) << apelidoJogador2 << fimCor << "..." << std::endl;
 }
@@ -46,6 +46,7 @@ void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
 void Reversi::exibirTabuleiro() const {
     const auto& matriz = tabuleiro->getTabuleiro();
 
+    std::cout << "\n";
     // Exibe os números das colunas com um espaço extra no começo
     std::cout << "    1   2   3   4   5   6   7   8\n";
 
@@ -69,46 +70,6 @@ void Reversi::exibirTabuleiro() const {
             std::cout << "   ---+---+---+---+---+---+---+---\n";
         }
     }
-
-    // const auto& matriz = tabuleiro->getTabuleiro();
-    // const size_t tamanho = matriz.size();
-
-    // const int largura = 3; // Largura fixa para cada célula (ajuste conforme necessário)
-
-    // // Exibe os números das colunas
-    // std::cout << std::setw(largura - 1) << "  "; // Espaço para alinhar com os números das linhas
-    // for (size_t coluna = 0; coluna < tamanho; ++coluna) {
-    //     std::cout << std::setw(largura + 1) << coluna + 1;
-    // }
-    // std::cout << "\n";
-
-    // for (size_t i = 0; i < matriz.size(); ++i) { // Itera sobre as linhas
-    //     const auto& linha = matriz[i];
-
-    //     // Exibe o número da linha
-    //     std::cout << std::setw(largura) << i + 1 << " "; // Numeração das linhas
-
-    //     // Exibe as peças da linha com os separadores "|"
-    //     for (size_t j = 0; j < linha.size(); ++j) {
-    //         exibirPeca(linha[j]); // Exibe a peça
-    //         if (j < linha.size() - 1) { // Adiciona "|", exceto no final da linha
-    //             std::cout << " | ";
-    //         }
-    //     }
-    //     std::cout << "\n";
-
-    //     // Adiciona os separadores entre as linhas, exceto no final do tabuleiro
-    //     if (i < matriz.size() - 1) {
-    //         std::cout << std::setw(largura) << " "; // Espaço alinhado com a numeração das linhas
-    //         for (size_t j = 0; j < linha.size(); ++j) {
-    //             std::cout << std::string(largura, '-'); // Linha horizontal para cada célula
-    //             if (j < linha.size() - 1) { // Adiciona o "|" entre os blocos
-    //                 std::cout << "+";
-    //             }
-    //         }
-    //         std::cout << "\n";
-    //     }
-    // }
 }
 
 bool Reversi::haJogadasPossiveis() {
@@ -144,10 +105,10 @@ void Reversi::lerJogada() {
         }
 
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(1) << apelidoJogador1 
+            std::cout << "\nTurno de " << cor(1) << apelidoJogador1 
                       << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(2) << apelidoJogador2 
+            std::cout << "\nTurno de " << cor(2) << apelidoJogador2 
                       << fimCor << std::endl;
         }
         std::cout << "Insira a linha e a coluna da sua jogada (ex: 1 2): ";

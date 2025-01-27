@@ -15,7 +15,7 @@ std::string lig4::cor(int jogador){
 }
 
 void lig4::fraseInicial() {
-    std::cout << "Iniciando partida de Lig4 entre " 
+    std::cout << "\nIniciando partida de Lig4 entre " 
               << cor(1) << apelidoJogador1 << fimCor << " e " 
               << cor(2) << apelidoJogador2 << fimCor << "..." << std::endl;
 }
@@ -23,6 +23,7 @@ void lig4::fraseInicial() {
 void lig4::exibirTabuleiro() const{
     const auto& matriz = tabuleiro->getTabuleiro();
 
+    std::cout << "\n";
     // Itera sobre as linhas
     for (size_t i = 0; i < matriz.size(); ++i) {
         const auto& linha = matriz[i];
@@ -52,25 +53,6 @@ void lig4::exibirTabuleiro() const{
 
     // Exibe a numeração das colunas na parte inferior
     std::cout << "  1   2   3   4   5   6   7\n";
-    
-    // const int larguraCelula = 3; // Define a largura fixa para cada célula
-    // const std::string separador = std::string(7 * (larguraCelula + 3), '-'); // Linha separadora ajustada
-
-    // // Exibe as linhas do tabuleiro
-    // for (const auto& linha : tabuleiro->getTabuleiro()) {
-    //     for (const auto& celula : linha) {
-    //         std::cout << std::setw(larguraCelula) << std::left; // Define largura e alinhamento
-    //         exibirPeca(celula); // Exibe a peça com a largura ajustada
-    //         std::cout << " | "; // Separador entre células
-    //     }
-    //     std::cout << "\n" << separador << "\n"; // Linha separadora entre linhas
-    // }
-
-    // // Exibe os números das colunas
-    // for (int i = 0; i < 7; ++i) {
-    //     std::cout << "  " << std::setw(larguraCelula) << std::right << i + 1 << " "; // Alinha os números das colunas
-    // }
-    // std::cout << "\n";
 }
 
 void lig4::exibirPeca(Tabuleiro::Peca peca) const{
@@ -92,10 +74,10 @@ void lig4::lerJogada() {
 
     while (!entradaValida) {
         if (jogadorAtual == Tabuleiro::Peca::JOGADOR1) {
-            std::cout << "Turno de " << cor(1) 
+            std::cout << "\nTurno de " << cor(1) 
                       << apelidoJogador1 << fimCor << std::endl;
         } else if (jogadorAtual == Tabuleiro::Peca::JOGADOR2) {
-            std::cout << "Turno de " << cor(2) 
+            std::cout << "\nTurno de " << cor(2) 
                       << apelidoJogador2 << fimCor << std::endl;
         }
         std::cout << "Escolha uma coluna (1-7): ";
