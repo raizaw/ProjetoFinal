@@ -21,6 +21,7 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
 - Instalação e Compilação
 - Funcionalidades do Sistema
 - Estrutura do Projeto
+- Dificuldades do Sistema
 - Documentação
 
 ---
@@ -124,6 +125,15 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 ├── 📂 docs
 └── Makefile                    # Instruções de compilação para o programa
 ```
+---
+
+##   Dificuldades do Sistema
+
+- [**gestaoDoJogadores**], [**dados.csv**]: Manipular o preenchimento dos dados no arquivo csv, seja para adição, edição e remoção de jogadores e/ou atributos
+- [**jogoDaVeha**], [**reversi**], [**lig4**]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo
+- [**main**]: Estabeler a interação com o usuário e aumentar a robustez do sistema a comportamentos excepcionais
+- [**tests**]: Implementar os métodos para atender os casos de teste em cada função, de modo a alcançar a melhor cobertura possível e fomentar a robustez do sistema
+
 ---
 
 ##   Documentação
