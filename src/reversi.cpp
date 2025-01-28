@@ -40,6 +40,9 @@ void Reversi::exibirPeca(Tabuleiro::Peca peca) const {
         case Tabuleiro::Peca::JOGADOR2:
             std::cout << "\033[36mO\033[0m"; // "O" em ciano
             break;
+        case Tabuleiro::Peca::JOGADA_POSSIVEL:
+            std::cout << "\033[32m*\033[0m"; // "*" em verde para indicar jogadas possíveis
+            break;
     }
 }
 
@@ -132,7 +135,8 @@ void Reversi::lerJogada() {
 
 bool Reversi::jogadaEValida() const {
     if (!dentroDosLimites(jogadaLinha, jogadaColuna) || 
-        tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::VAZIO) {
+        (tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::VAZIO &&
+        tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::JOGADA_POSSIVEL)) {
         return false;
     }
 
@@ -163,8 +167,8 @@ void Reversi::realizarJogada() {
     }
 
     tabuleiro->setPosicao(jogadaLinha, jogadaColuna, peca);
-    exibirTabuleiro();
     trocarJogador();
+    indicarPossiveisJogadas(); // Imprime o tabuleiro com as possíveis jogadas
 }
 
 bool Reversi::partidaAcabou() {
@@ -243,9 +247,16 @@ bool Reversi::direcaoValida(int linha, int coluna, int deltaLinha, int deltaColu
 
     bool encontrouOponente = false;
     while (dentroDosLimites(linha, coluna)) {
-        if (tabuleiro->getPosicao(linha, coluna) == Tabuleiro::Peca::VAZIO) {
+        Tabuleiro::Peca posicaoAtual = tabuleiro->getPosicao(linha, coluna);
+
+        // Ignora posições marcadas como JOGADA_POSSIVEL
+        if (posicaoAtual == Tabuleiro::Peca::JOGADA_POSSIVEL) {
             return false;
-        } else if (tabuleiro->getPosicao(linha, coluna) != peca) {
+        }
+
+        if (posicaoAtual == Tabuleiro::Peca::VAZIO) {
+            return false;
+        } else if (posicaoAtual != peca) {
             encontrouOponente = true;
         } else {
             return encontrouOponente;
@@ -277,4 +288,33 @@ bool Reversi::capturarPecas(int linha, int coluna, Tabuleiro::Peca peca) {
     }
 
     return capturou;
+}
+
+void Reversi::indicarPossiveisJogadas() {
+    // Salva o estado atual do tabuleiro para restaurar depois
+    std::vector<std::vector<Tabuleiro::Peca>> estadoOriginal = tabuleiro->getTabuleiro();
+
+    // Percorre o tabuleiro para marcar as jogadas possíveis
+    for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
+        for (int j = 0; j < tabuleiro->getColunas(); ++j) {
+            if (tabuleiro->getPosicao(i, j) == Tabuleiro::Peca::VAZIO) {
+                jogadaLinha = i;
+                jogadaColuna = j;
+                if (jogadaEValida()) {
+                    // Marca a posição como uma jogada possível
+                    tabuleiro->setPosicao(i, j, Tabuleiro::Peca::JOGADA_POSSIVEL);
+                }
+            }
+        }
+    }
+
+    // Exibe o tabuleiro com as jogadas possíveis marcadas
+    exibirTabuleiro();
+
+    // Restaura o tabuleiro ao estado original
+    for (int i = 0; i < tabuleiro->getLinhas(); ++i) {
+        for (int j = 0; j < tabuleiro->getColunas(); ++j) {
+            tabuleiro->setPosicao(i, j, estadoOriginal[i][j]);
+        }
+    }
 }

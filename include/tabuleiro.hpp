@@ -10,7 +10,8 @@ public:
     enum class Peca {
        VAZIO = 0,
        JOGADOR1 = 1,
-       JOGADOR2 = 2
+       JOGADOR2 = 2,
+       JOGADA_POSSIVEL
     };
 
 private:

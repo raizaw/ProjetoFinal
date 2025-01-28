@@ -18,6 +18,7 @@ public:
     void realizarJogada() override;
     bool partidaAcabou() override;
     int indicarFimDaPartida() override;
+    void indicarPossiveisJogadas();
 
 private:
     int jogadaLinha;
