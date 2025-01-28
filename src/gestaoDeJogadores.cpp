@@ -98,7 +98,7 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
         throw std::runtime_error("Erro: Nao foi possivel abrir o arquivo: " + caminhoDoArquivo);
     }
     //Cria um arquivo temporário
-    std::ofstream arquivoTemp("temp.csv");
+    std::ofstream arquivoTemp("./gameData/temp.csv");
     //Verifica se aquivo pode ser aberto
     if (!arquivoTemp.is_open()) {
         throw std::runtime_error("Erro: Nao foi possivel criar o arquivo temporario.");
@@ -130,7 +130,7 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
     if (std::remove(caminhoDoArquivo.c_str()) != 0) {
         throw std::runtime_error("Erro: Nao foi possivel remover o arquivo original.");
     }
-    if (std::rename("temp.csv", caminhoDoArquivo.c_str()) != 0) {
+    if (std::rename("./gameData/temp.csv", caminhoDoArquivo.c_str()) != 0) {
         throw std::runtime_error("Erro: Nao foi possivel renomear o arquivo temporario.");
     }
 

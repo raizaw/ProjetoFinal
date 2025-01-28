@@ -48,7 +48,7 @@ bool ehValidoParaCSV(const std::string& str){
 
 int main(){
 
-    const std::string caminhodoArquivo = "dados.csv";
+    const std::string caminhodoArquivo = "./gameData/dados.csv";
     GestaoDeJogadores gestao(caminhodoArquivo);
 
     std::string comando, apelido, nome;
