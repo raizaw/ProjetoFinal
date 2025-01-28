@@ -234,15 +234,12 @@ int Reversi::indicarFimDaPartida() {
 
     if (pecasJogador1 > pecasJogador2) {
         std::cout << "\nParabens, " << cor(1) << apelidoJogador1 << fimCor << ", voce venceu!" << std::endl;
-        trocarJogador();
         return 1;
     } else if (pecasJogador1 < pecasJogador2) {
         std::cout << "\nParabens, " << cor(2) << apelidoJogador2 << fimCor << ", voce venceu!" << std::endl;
-        trocarJogador();
         return 2;
     } else {
         std::cout << "\nO jogo terminou empatado!" << std::endl;
-        trocarJogador();
         return 0;
     }
 }
