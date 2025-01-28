@@ -41,7 +41,7 @@ std::pair<int, int>Jogador::getEstatisticasDoJogo(TipoDeJogo jogo_enum)const{
     if(jogo_enum >= REVERSI && jogo_enum < TOTAL_DE_JOGOS){
         return estatisticas_map.at(jogo_enum); //retorna as estatisticas que estão em tal jogo
     }else{
-        throw std::out_of_range("TipoDeJogo está fora do intervalo válido para pegar estatísticas do jogo.");
+        throw std::out_of_range("TipoDeJogo esta fora do intervalo valido para pegar estatisticas do jogo.");
     }
 }
 //Este método converte as informações do objeto Jogador em uma string formatada no estilo CSV.

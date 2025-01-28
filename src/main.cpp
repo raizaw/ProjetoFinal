@@ -38,8 +38,8 @@ int executarPartida(std::unique_ptr<Jogos> jogo) {
 bool ehValidoParaCSV(const std::string& str){
     // Verifica cada caractere da string
     for (char c : str) {
-        // Se encontrar um dos caracteres invalidos, retorna false
-        if (c == ',' || c == '"' || c == '\n' || c == '\t' || c == '\'') {
+        // Se encontrar um dos caractere invalido, retorna false
+        if (c == ',') {
             return false;
         }
     }
@@ -70,7 +70,7 @@ int main(){
 
                     // Verifica se o apelido e valido
                     if (!ehValidoParaCSV(apelido)) {
-                        std::cout << "Erro: O apelido contem caracteres invalidos (virgula, aspas, etc.). Tente novamente." << std::endl;
+                        std::cout << "Erro: O apelido contem caracter invalido (virgula). Tente novamente." << std::endl;
                     } else {
                         break; // Sai do loop quando o apelido for válido
                     }
@@ -84,7 +84,7 @@ int main(){
                     if(nome.empty()){
                         std::cout << "Erro: nome nao pode estar vazio." << std::endl;
                     } else if(!ehValidoParaCSV(nome)){
-                        std::cout << "Erro: O nome contem caracteres invalidos (virgula, aspas, etc.). Tente novamente." << std::endl;
+                        std::cout << "Erro: O nome contem caracter invalido (virgula). Tente novamente." << std::endl;
                     } else{
                         break;
                     }

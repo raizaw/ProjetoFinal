@@ -141,7 +141,7 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
 bool GestaoDeJogadores::cadastrarJogador(const std::string &apelido, const std::string &nome) {
     //Testa se apelido já existe
     if (!buscarLinhaDoJogador(apelido).empty()) {
-        std::cerr << "Erro: ja existe um jogador com o apelido '" + apelido + "'. Insira outro por favor." << std::endl;
+        std::cerr << "Erro: ja existe um jogador com o apelido '" + apelido + "'. Por favor, insira outro." << std::endl;
         return false;
     }
 
@@ -169,7 +169,7 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido) {
     jogadores_map.erase(apelido);
     std::ofstream arquivo(caminhoDoArquivo, std::ios::trunc); //trunc reseta o arquivo para 0 bytes
     if (!arquivo.is_open()) {
-        throw std::runtime_error("ERRO: Nao foi possível abrir o arquivo para removerJogador");
+        throw std::runtime_error("ERRO: Nao foi possivel abrir o arquivo para removerJogador");
     }
     //Formata e insere todos jogadores no arquivo
     for (const auto& pair : jogadores_map) {
@@ -184,7 +184,7 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido) {
 void GestaoDeJogadores::listarJogadores() {
     // Coloca todos jogadores do arquivo em um mapa
     if (!carregarTodoArquivo()) {
-        std::cerr << "Não foi possível carregar todo o arquivo para listar jogadores" << std::endl;
+        std::cerr << "Nao foi possivel carregar todo o arquivo para listar jogadores" << std::endl;
         return;
     }
     
@@ -195,10 +195,37 @@ void GestaoDeJogadores::listarJogadores() {
                   << std::left << _jogador->getNome() << std::endl;
         //Exibe as estatísticas de vitórias e derrotas em cada jogo
         for (int i = REVERSI; i < TOTAL_DE_JOGOS; i++) {
+            float media;
+            float nPartidas;
+
             auto estatisticas = _jogador->getEstatisticasDoJogo(static_cast<TipoDeJogo>(i));
+            nPartidas = estatisticas.first + estatisticas.second;
+
+            if(nPartidas == 0){
+                media = 0;
+            }else{
+                media = (estatisticas.first/nPartidas)*100;
+            }
+
+            std::string cor;
+
+            if (nPartidas == 0) {
+                cor = "\033[0m";       // Padrão
+            }else if (media >= 75) {
+                cor = "\033[1;32m";    // Verde em negrito
+            } else if (media >= 50) {
+                cor = "\033[36m";      // Ciano
+            } else if (media >= 25){
+                cor = "\033[33m";      // Amarelo
+            } else {
+                cor = "\033[31m";      // Vermelho
+            } 
+
             std::cout << std::setw(10) << std::left << nomeDoJogo(static_cast<TipoDeJogo>(i))
                       << " - V: " << std::setw(3) << std::left << estatisticas.first  //Vitórias
                       << " D: " << std::setw(3) << std::left << estatisticas.second  //Derrotas
+                      << " | A: " << std::setw(3) << std::left << cor               //Cor da média
+                      << std::fixed << std::setprecision(2) << media << "%\033[0m" //Média
                       << std::endl;
         }
     }
@@ -253,12 +280,12 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha) {
 
         //Armazena vitórias nas variáveis
         if (!std::getline(ss, estatistica, ',') || !(std::istringstream(estatistica) >> vitoria)) {
-            std::cerr << "Erro: Estatísticas mal formatadas para o jogo " + nomeDoJogo(static_cast<TipoDeJogo>(i)) + " na linha - " << linha << std::endl;
+            std::cerr << "Erro: Estatisticas mal formatadas para o jogo " + nomeDoJogo(static_cast<TipoDeJogo>(i)) + " na linha - " << linha << std::endl;
             return;
         }
         //Armazena derrotas nas variáveis
         if (!std::getline(ss, estatistica, ',') || !(std::istringstream(estatistica) >> derrota)) {
-            std::cerr << "Erro: Estatísticas mal formatadas para o jogo " + nomeDoJogo(static_cast<TipoDeJogo>(i)) + " na linha - " << linha << std::endl;
+            std::cerr << "Erro: Estatisticas mal formatadas para o jogo " + nomeDoJogo(static_cast<TipoDeJogo>(i)) + " na linha - " << linha << std::endl;
             return;
         }
         //Armazena variáveis no mapa
@@ -268,7 +295,7 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha) {
     }
     // Verifique se o número de jogos lidos é o esperado
     if (contaJogos != (TOTAL_DE_JOGOS - REVERSI)) {
-        std::cerr << "Erro: Número incorreto de jogos na linha - " << linha << std::endl;
+        std::cerr << "Erro: Numero incorreto de jogos na linha - " << linha << std::endl;
         return;
     }
     jogadores_map[apelido] = std::move(novoJogador);
