@@ -120,7 +120,8 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 │   ├── reversi.cpp             # Implementação do Reversi (implementação)
 │   ├── lig4.cpp                # Implementação do Lig 4 (implementação)
 │   └── main.cpp                # Executa o programa
-├── dados.csv                   # Banco de dados de jogadores e suas pontuações
+├── 📂 gameData
+│   └── dados.csv               # Banco de dados de jogadores e suas pontuações
 ├── 📂 tests
 │   ├── teste_gestaoDeJogadores.hpp   # Arquivo de teste da Classe Gestão de Jogadores
 │   ├── teste_jogador.hpp             # Arquivo de teste da Classe Jogador
