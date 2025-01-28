@@ -137,6 +137,12 @@ bool Reversi::jogadaEValida() const {
     if (!dentroDosLimites(jogadaLinha, jogadaColuna) || 
         (tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::VAZIO &&
         tabuleiro->getPosicao(jogadaLinha, jogadaColuna) != Tabuleiro::Peca::JOGADA_POSSIVEL)) {
+        if (tabuleiro->getPosicao(jogadaLinha, jogadaColuna) == Tabuleiro::Peca::JOGADOR1 ||
+        tabuleiro->getPosicao(jogadaLinha, jogadaColuna) == Tabuleiro::Peca::JOGADOR2){
+            std::cout << "Jogada invalida. Posicao ja ocupada." << std::endl;
+            return false;
+        }
+        std::cout << "Jogada invalida. Posicao fora do tabuleiro." << std::endl;
         return false;
     }
 
@@ -150,11 +156,14 @@ bool Reversi::jogadaEValida() const {
             }
         }
     }
+    
     return false;
 }
 
 void Reversi::realizarJogada() {
-    if (!jogadaEValida()) return;
+    if (!jogadaEValida()) {
+        return;
+    }
 
     Tabuleiro::Peca peca = jogadorAtual;
     for (int deltaLinha = -1; deltaLinha <= 1; ++deltaLinha) {
