@@ -432,7 +432,7 @@ void GestaoDeJogadores::listarJogadores() {
 
     for (const auto& pair : jogadores_map) {
         const auto& _jogador = pair.second;
-        std::cout << "[A|N] " << std::setw(15) << std::left << _jogador->getApelido()
+        std::cout << "\n" << "[A|N] " << std::setw(15) << std::left << _jogador->getApelido()
                   << std::left << _jogador->getNome() << std::endl;
 
         for (int i = REVERSI; i < TOTAL_DE_JOGOS; i++) {
@@ -442,7 +442,6 @@ void GestaoDeJogadores::listarJogadores() {
                       << " D: " << std::setw(3) << std::left << estatisticas.second
                       << std::endl;
         }
-        std::cout << std::endl;
     }
 }
 

@@ -21,7 +21,7 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
 - Instalação e Compilação
 - Funcionalidades do Sistema
 - Estrutura do Projeto
-- Dificuldades do Sistema
+- Dificuldades Enfrentadas
 - Documentação
 
 ---
@@ -122,12 +122,20 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 │   └── main.cpp                # Executa o programa
 ├── dados.csv                   # Banco de dados de jogadores e suas pontuações
 ├── 📂 tests
+│   ├── teste_gestaoDeJogadores.hpp   # Arquivo de teste da Classe Gestão de Jogadores
+│   ├── teste_jogador.hpp             # Arquivo de teste da Classe Jogador
+│   ├── teste_jogoDaVelha.hpp         # Arquivo de teste da Classe JogoDaVelha
+│   ├── teste_jogos.hpp               # Arquivo de teste da Classe Jogos
+│   ├── teste_lig4.hpp                # Arquivo de teste da Classe Lig4
+│   ├── teste_reversi.hpp             # Arquivo de teste da Classe Reversi
+│   ├── teste_tabueleiro.hpp          # Arquivo de teste da Classe Tabuleiro
+│   ├── doctest.h                     # Módulo do doctest para efetuar os testes nos arquivos
 ├── 📂 docs
 └── Makefile                    # Instruções de compilação para o programa
 ```
 ---
 
-##   Dificuldades do Sistema
+##   Dificuldades Enfrentadas
 🔴 [**gestaoDoJogadores**] , [**dados.csv**]: Manipular o preenchimento dos dados no arquivo csv, seja para adição, edição e remoção de jogadores e/ou atributos
 
 🔴 [**jogoDaVelha**], [**reversi**], [**lig4**]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo e da dinâmica de jogadores
@@ -135,6 +143,17 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 🔴 [**main**]: Estabelecer a interação com o usuário e aumentar a robustez do sistema a comportamentos excepcionais
 
 🔴 [**tests**]: Implementar os métodos para atender os casos de teste em cada função, de modo a alcançar a melhor cobertura possível e fomentar a robustez do sistema
+
+   Vale ressaltar que tivemos muita dificuldade com o uso do doctest, já que mesmo instalando-o corretamente no sistema e utilizando a versão atualizada, ouve um problema com uma das dependências da biblioteca padrão std.
+      
+      tests/doctest.h:3175:50: error: 'mutex' is not a member of 'std'
+       #define DOCTEST_LOCK_MUTEX(name) std::lock_guard<std::mutex> DOCTEST_ANONYMOUS(DOCTEST_ANON_LOCK_)(name);
+    
+   ⚠️ Essa foi apenas uma das várias mensagens exibidas, mas todas estão relacionadas ao mutex.
+
+   Com isso, após tentar de todas as formas compilar os arquivos de teste, não conseguimos superar esse erro que ocorreu com nosso sistema. Entretanto, pelo fim de um resultado agradável e completo do trabalho, buscamos desenvolver todos arquivos de teste para que mesmo na ausência da solução que julgamos adequada, o sistema fosse completo. Além disso, buscamos compensar esse problema com um foco maior em todas as demais áreas do projeto, de modo a equilibrar a deficiência mencionada. Enquanto isso, continuaremos a buscar uma solução para que possamos validar nossos testes e tirar novas conclusões sobre o projeto que desenvolvemos. 
+
+   
 
 ---
 

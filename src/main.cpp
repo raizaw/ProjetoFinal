@@ -147,19 +147,23 @@ int main(){
                     std::string apelidoJogador1, apelidoJogador2;
 
                     bool apelidosValidos = false;
-                    while (!apelidosValidos){
+                    do{
                         std::cout << "\nInsira o apelido do jogador 1: ";
                         std::cin >> apelidoJogador1;
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
                         std::cout << "Insira o apelido do jogador 2: ";
                         std::cin >> apelidoJogador2;
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
                         // Verifica se os apelidos são iguais
                         if (apelidoJogador1 == apelidoJogador2) {
                             std::cout << "Os apelidos nao podem ser iguais. Por favor, insira apelidos diferentes." << std::endl;
                             continue; // Retorna ao inicio do loop para pedir novos apelidos
                         }
+                        
                         apelidosValidos  = gestao.carregarDoisJogadores(apelidoJogador1, apelidoJogador2);
-                    }
+                    } while (!apelidosValidos);
 
                     // Define os apelidos no jogo (se necessário)
                     jogo->setApelidoJogador1(apelidoJogador1);
