@@ -4,35 +4,70 @@
 #include <vector>
 #include <iostream>
 
+/**
+ * @class Tabuleiro
+ * @brief Classe que representa o tabuleiro do jogo.
+ * 
+ * Esta classe gerencia o estado do tabuleiro, incluindo a colocação e recuperação de peças.
+ */
 class Tabuleiro {
 public:
-// Enum encapsulado para representar as peças no tabuleiro
+    /**
+     * @enum Peca
+     * @brief Enumeração que representa os tipos de peças no tabuleiro.
+     */
     enum class Peca {
-       VAZIO = 0,
-       JOGADOR1 = 1,
-       JOGADOR2 = 2,
-       JOGADA_POSSIVEL
+       VAZIO = 0,       ///< Representa uma posição vazia no tabuleiro.
+       JOGADOR1 = 1,    ///< Representa uma peça do Jogador 1.
+       JOGADOR2 = 2,    ///< Representa uma peça do Jogador 2.
+       JOGADA_POSSIVEL  ///< Representa uma jogada possível no tabuleiro.
     };
 
 private:
-    int linhas; 
-    int colunas; 
-    std::vector<std::vector<Peca>> tabuleiro; // Matriz para representar o tabuleiro
+    int linhas; ///< Número de linhas do tabuleiro.
+    int colunas; ///< Número de colunas do tabuleiro.
+    std::vector<std::vector<Peca>> tabuleiro; ///< Matriz que armazena o estado do tabuleiro.
 
 public:
-    // Construtor que inicializa o tabuleiro com as dimensões
+    /**
+     * @brief Construtor que inicializa o tabuleiro com as dimensões especificadas.
+     * @param linhas Número de linhas do tabuleiro.
+     * @param colunas Número de colunas do tabuleiro.
+     */
     Tabuleiro(int linhas, int colunas);
 
-    // // Método para exibir o tabuleiro
-    // void imprimirTabuleiro() const;
+    /**
+     * @brief Define o valor de uma posição específica no tabuleiro.
+     * @param linha A linha da posição a ser definida.
+     * @param coluna A coluna da posição a ser definida.
+     * @param peca O valor da peça a ser colocada na posição.
+     */
+    void setPosicao(int linha, int coluna, Peca peca);
 
-    // Métodos para manipulação do tabuleiro
-    void setPosicao(int linha, int coluna, Peca peca); // Define um valor em uma posição específica
-    Peca getPosicao(int linha, int coluna) const;      // Retorna o valor em uma posição específica
+    /**
+     * @brief Retorna o valor de uma posição específica no tabuleiro.
+     * @param linha A linha da posição a ser consultada.
+     * @param coluna A coluna da posição a ser consultada.
+     * @return O valor da peça na posição especificada.
+     */
+    Peca getPosicao(int linha, int coluna) const;
 
-    // Getters
+    /**
+     * @brief Retorna a matriz que representa o tabuleiro.
+     * @return Uma referência constante para a matriz do tabuleiro.
+     */
     const std::vector<std::vector<Peca>>& getTabuleiro() const;
+
+    /**
+     * @brief Retorna o número de linhas do tabuleiro.
+     * @return O número de linhas do tabuleiro.
+     */
     int getLinhas() const;
+
+    /**
+     * @brief Retorna o número de colunas do tabuleiro.
+     * @return O número de colunas do tabuleiro.
+     */
     int getColunas() const;
 };
 
