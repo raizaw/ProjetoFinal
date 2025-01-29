@@ -14,7 +14,7 @@ GestaoDeJogadores::GestaoDeJogadores(const std::string& caminho)
         //Se não, tenta criar o arquivo
         std::ofstream novoArquivo(caminhoDoArquivo);
         if (!novoArquivo) {
-            throw std::runtime_error("Erro: Nao foi possivel criar o arquivo: " + caminhoDoArquivo);
+            throw std::runtime_error("Erro no construtor: Nao foi possivel criar o arquivo: " + caminhoDoArquivo);
         }
         novoArquivo.close();  //Fecha o arquivo apenas se foi criado com sucesso
     }
@@ -73,14 +73,14 @@ bool GestaoDeJogadores::inserirNovoJogador(const std::unique_ptr<Jogador>& NovoJ
     std::fstream arquivo(caminhoDoArquivo, std::ios::app | std::ios::out); //Abre o arquivo para leitura e edição
     //Testa se o arquivo pode ser aberto
     if (!arquivo.is_open()) {
-        throw std::runtime_error("Erro: Nao foi possivel abrir o arquivo");
+        throw std::runtime_error("Erro em inserirNovoJogador: Nao foi possivel abrir o arquivo: "+ caminhoDoArquivo);
     }
 
     std::string linha = NovoJogador->formatarJogadorComoCSV();
     //Insere novo jogador formatado no final do arquivo
     if (!(arquivo << linha)) {
         arquivo.close();
-        throw std::runtime_error("Erro: Falha ao escrever os dados do jogador no arquivo.");
+        throw std::runtime_error("Erro em inserirNovoJogador: Falha ao escrever os dados do jogador no arquivo.");
     }
     arquivo.close();
     return true;
@@ -95,13 +95,14 @@ bool GestaoDeJogadores::atualizarEstatisticas(const std::map<std::string, std::u
     std::ifstream arquivoEntrada(caminhoDoArquivo);
     //Verifica se aquivo pode ser aberto
     if (!arquivoEntrada.is_open()) {
-        throw std::runtime_error("Erro: Nao foi possivel abrir o arquivo: " + caminhoDoArquivo);
+        throw std::runtime_error("Erro em atualizarEstatisticas: Nao foi possivel abrir o arquivo: " + caminhoDoArquivo);
     }
     //Cria um arquivo temporário
     std::ofstream arquivoTemp("./gameData/temp.csv");
     //Verifica se aquivo pode ser aberto
     if (!arquivoTemp.is_open()) {
-        throw std::runtime_error("Erro: Nao foi possivel criar o arquivo temporario.");
+        arquivoEntrada.close();
+        throw std::runtime_error("Erro em atualizarEstatisticas: Nao foi possivel criar o arquivo temporario.");
     }
 
     //Percorre o arquivo linha a linha
@@ -150,7 +151,7 @@ bool GestaoDeJogadores::cadastrarJogador(const std::string &apelido, const std::
     
     //Teste se houve erro no salvamento do jogador no arquivo
     if (!inserirNovoJogador(novoJogador)) {
-        throw std::runtime_error("ERRO: Falha ao salvar o jogador no arquivo.");
+        throw std::runtime_error("ERRO em cadastrarJogador: Falha ao salvar o jogador no arquivo.");
     }
     std::cout << "Jogador '" << apelido << "' cadastrado com sucesso." << std::endl;
     return true;
@@ -169,7 +170,7 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido) {
     jogadores_map.erase(apelido);
     std::ofstream arquivo(caminhoDoArquivo, std::ios::trunc); //trunc reseta o arquivo para 0 bytes
     if (!arquivo.is_open()) {
-        throw std::runtime_error("ERRO: Nao foi possivel abrir o arquivo para removerJogador");
+        throw std::runtime_error("ERRO em removerJogador: Nao foi possivel abrir o arquivo para removerJogador");
     }
     //Formata e insere todos jogadores no arquivo
     for (const auto& pair : jogadores_map) {
@@ -184,7 +185,7 @@ bool GestaoDeJogadores::removerJogador(const std::string &apelido) {
 void GestaoDeJogadores::listarJogadores() {
     // Coloca todos jogadores do arquivo em um mapa
     if (!carregarTodoArquivo()) {
-        std::cerr << "Nao foi possivel carregar todo o arquivo para listar jogadores" << std::endl;
+        std::cerr << "Nao foi possivel carregar todo o arquivo para listar jogadores." << std::endl;
         return;
     }
     
@@ -236,7 +237,7 @@ std::string GestaoDeJogadores::buscarLinhaDoJogador(const std::string &apelido) 
     std::ifstream arquivo(caminhoDoArquivo);
     //Verifica se aquivo pode ser aberto
     if (!arquivo.is_open()) {
-        throw std::runtime_error("Erro: Nao foi possivel abrir o arquivo: " + caminhoDoArquivo);
+        throw std::runtime_error("Erro buscarLinhaDoJogador: Nao foi possivel abrir o arquivo: " + caminhoDoArquivo);
     }
 
     //Percorre o arquivo linha a linha
@@ -300,7 +301,6 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha) {
     }
     jogadores_map[apelido] = std::move(novoJogador);
 }
-//Recebe o TipoDeJogo e retorna a string respectiva do tipoDeJogo
 std::string GestaoDeJogadores::nomeDoJogo(TipoDeJogo jogo) {
     switch (jogo) {
         case REVERSI: return "REVERSI";
@@ -308,4 +308,4 @@ std::string GestaoDeJogadores::nomeDoJogo(TipoDeJogo jogo) {
         case VELHA:   return "VELHA";
         default:      return "JOGO_INVALIDO";
     }
-}
+} //Recebe o TipoDeJogo e retorna a string respectiva do tipoDeJogo
