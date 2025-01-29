@@ -65,7 +65,13 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 - **Persistência em Arquivo csv**: O cadastro de jogadores é mantido entre diferentes execuções do sistema, com mecanismos para salvar e ler os dados a partir de um arquivo.
 - **Funcionalidade Extras**: 
      * O código exibe no tabuleiro do Reversi as posições válidas para a jogada, marcando-as de forma clara e seguindo as regras do jogo.
+       
+       ![WhatsApp Image 2025-01-28 at 23 31 47_db869cba](https://github.com/user-attachments/assets/bcbb41b3-72cb-467d-89ae-5ea4b46982c6)
+
      * O código, ao listar os jogadores, exibe estatísticas detalhadas, incluindo o aproveitamento de cada usuário cadastrado em cada jogo, destacando-o com cores: vermelho (0-25%), amarelo (25-50%), azul (50-75%) e verde (75-100%), proporcionando uma visão clara e visualmente intuitiva do desempenho
+       
+       ![image](https://github.com/user-attachments/assets/11336812-0dcc-497f-b7b7-58d6cf613fee)
+
 
 ###   Relação dos Jogos Implementados
 
