@@ -38,7 +38,7 @@ int executarPartida(std::unique_ptr<Jogos> jogo) {
 bool ehValidoParaCSV(const std::string& str){
     // Verifica cada caractere da string
     for (char c : str) {
-        // Se encontrar um dos caractere invalido, retorna false
+        // Se encontrar caractere invalido, retorna false
         if (c == ',') {
             return false;
         }
@@ -70,7 +70,7 @@ int main(){
 
                     // Verifica se o apelido e valido
                     if (!ehValidoParaCSV(apelido)) {
-                        std::cout << "Erro: O apelido contem caracter invalido (virgula). Tente novamente." << std::endl;
+                        std::cout << "Erro: O apelido contem caractere invalido (virgula). Tente novamente." << std::endl;
                     } else {
                         break; // Sai do loop quando o apelido for válido
                     }
@@ -82,9 +82,9 @@ int main(){
                     std::cout << "Digite o nome (pode conter mais de uma palavra): ";  // Pode ter mais de uma palavra
                     std::getline(std::cin >> std::ws, nome);  // `std::ws` ignora espaços em branco à frente da string
                     if(nome.empty()){
-                        std::cout << "Erro: nome nao pode estar vazio." << std::endl;
+                        std::cout << "Erro: Nome nao pode estar vazio." << std::endl;
                     } else if(!ehValidoParaCSV(nome)){
-                        std::cout << "Erro: O nome contem caracter invalido (virgula). Tente novamente." << std::endl;
+                        std::cout << "Erro: O nome contem caractere invalido (virgula). Tente novamente." << std::endl;
                     } else{
                         break;
                     }
@@ -101,6 +101,12 @@ int main(){
             gestao.listarJogadores();
 
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
+            //Verifica se o arquivo tem dados para executar partida
+            if(!gestao.carregarTodoArquivo()){
+                std::cout << "Impossivel executar partida.\n"
+                          << "\nInsira um comando: " << std::endl;
+                continue;
+            }
 
             int vencedor;
             TipoDeJogo jogo_enum;
@@ -147,7 +153,25 @@ int main(){
                     std::string apelidoJogador1, apelidoJogador2;
 
                     bool apelidosValidos = false;
-                    do{
+                    int nErros = 0; // Variável para armazenar a quantidade de erros
+
+                    do { // Loop até que os apelidos inseridos sejam válidos
+                        
+                        // Após 3 tentativas mal-sucedidas, é oferecida a possibilidade de listar jogadores
+                        if(nErros == 3) {
+                            char resposta;
+                            std::cout << "\nMuitos erros, hein?! Deseja listar jogadores?" << std::endl;
+                            while(resposta != 'S' && resposta != 'N') {
+                                std::cout << "Digite 'S' para sim e 'N' para nao: ";
+                                std::cin >> resposta;
+                            }
+                            if(resposta == 'S'){
+                                std::cout << "\n";
+                                gestao.listarJogadores();
+                                nErros = 0;
+                            }
+                        }
+
                         std::cout << "\nInsira o apelido do jogador 1: ";
                         std::cin >> apelidoJogador1;
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -155,6 +179,8 @@ int main(){
                         std::cout << "Insira o apelido do jogador 2: ";
                         std::cin >> apelidoJogador2;
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+                        nErros++;
 
                         // Verifica se os apelidos são iguais
                         if (apelidoJogador1 == apelidoJogador2) {
