@@ -32,6 +32,7 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
 
 - **Compilador C++** compatível com C++11 (ex: g++, clang)
 - **Doxygen** (para gerar a documentação)
+- **Make** para compilar e executar
 
 ### Passo a Passo
 
@@ -50,17 +51,7 @@ Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sist
    ```bash
    make run
    ```
-
-### Geração da Documentação
-
-Para gerar a documentação com Doxygen:
-
-1. Certifique-se de que o Doxygen está instalado.
-2. Execute o comando:
-   ```bash
-   doxygen Doxyfile
-   ```
-3. A documentação será gerada na pasta `docs/`.
+⚠️ Certifique-se de ter o `make` instalado para compilar e executar o projeto corretamente utilizando o nosso Makefile.
 
 ---
 
@@ -72,6 +63,9 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 - **Cadastrar/Remover Jogadores**: Permite o cadastro e remoção de jogadores com apelido único.
 - **Listagem Detalhada**: Exibe estatísticas detalhadas por jogo para cada jogador.
 - **Persistência em Arquivo csv**: O cadastro de jogadores é mantido entre diferentes execuções do sistema, com mecanismos para salvar e ler os dados a partir de um arquivo.
+- **Funcionalidade Extras**: 
+     * O código exibe no tabuleiro do Reversi as posições válidas para a jogada, marcando-as de forma clara e seguindo as regras do jogo.
+     * O código, ao listar os jogadores, exibe estatísticas detalhadas, incluindo o aproveitamento de cada usuário cadastrado em cada jogo, destacando-o com cores: vermelho (0-25%), amarelo (25-50%), azul (50-75%) e verde (75-100%), proporcionando uma visão clara e visualmente intuitiva do desempenho
 
 ###   Relação dos Jogos Implementados
 
@@ -82,13 +76,13 @@ Implementamos um módulo para cuidar do cadastro de jogadores. Cada jogador tem 
 | Reversi       |         8x8         | Contagem de peças                   | Mecânica de captura de peças            |
 
 ###   Estatísticas
-- Histórico de vitórias e de derrotas de cada jogador, em cada jogo.
+- Mecânica de vitórias, de derrotas e de aproveitamento de cada jogador, em cada jogo.
           
 ---
 
 ##   Estrutura do Projeto
 
-O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com separação clara entre as funcionalidades de gerenciamento de jogadores e a lógica dos jogos. A persistência dos dados é feita através de arquivos texto, e a documentação foi gerada utilizando **Doxygen**.
+O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com separação clara entre as funcionalidades de gerenciamento de jogadores e a lógica dos jogos. A persistência dos dados é feita através de arquivo csv, e a documentação foi gerada utilizando **Doxygen**.
 
 ```
 📦 ProjetoFinal
@@ -145,7 +139,7 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 
 🔴 [**tests**]: Implementar os métodos para atender os casos de teste em cada função, de modo a alcançar a melhor cobertura possível e fomentar a robustez do sistema
 
-   Vale ressaltar que tivemos muita dificuldade com o uso do doctest, já que mesmo instalando-o corretamente no sistema e utilizando a versão atualizada, ouve um problema com uma das dependências da biblioteca padrão std.
+   Vale ressaltar que tivemos muita dificuldade com o uso do doctest, já que mesmo instalando-o corretamente no sistema e utilizando a versão atualizada, houve um problema com uma das dependências da biblioteca padrão std.
       
       tests/doctest.h:3175:50: error: 'mutex' is not a member of 'std'
        #define DOCTEST_LOCK_MUTEX(name) std::lock_guard<std::mutex> DOCTEST_ANONYMOUS(DOCTEST_ANON_LOCK_)(name);
