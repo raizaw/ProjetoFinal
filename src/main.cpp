@@ -9,7 +9,7 @@
 #include <limits> // Para std::numeric_limits e std::streamsize
 
 /**
- * @brief Exibe o menu de opções para o usuário.
+ * @brief Exibe o menu de opcoes para o usuario.
  */
 void exibirMenu(){
     std::cout << "-------------------------------" << std::endl;
@@ -24,8 +24,8 @@ void exibirMenu(){
 
 /**
  * @brief Executa uma partida do jogo escolhido.
- * @param jogo Um ponteiro único para o jogo que será executado.
- * @return O código do vencedor da partida (1 para jogador 1, 2 para jogador 2, 0 para empate).
+ * @param jogo Um ponteiro unico para o jogo que sera executado.
+ * @return O codigo do vencedor da partida (1 para jogador 1, 2 para jogador 2, 0 para empate).
  */
 int executarPartida(std::unique_ptr<Jogos> jogo) {
     jogo->fraseInicial();
@@ -43,14 +43,14 @@ int executarPartida(std::unique_ptr<Jogos> jogo) {
 }
 
 /**
- * @brief Verifica se uma string é válida para ser usada em um arquivo CSV.
+ * @brief Verifica se uma string e valida para ser usada em um arquivo CSV.
  * @param str A string a ser verificada.
- * @return true se a string não contém vírgulas, false caso contrário.
+ * @return true se a string nao contem virgulas, false caso contrario.
  */
 bool ehValidoParaCSV(const std::string& str){
     // Verifica cada caractere da string
     for (char c : str) {
-        // Se encontrar caractere inválido, retorna false
+        // Se encontrar caractere invalido, retorna false
         if (c == ',') {
             return false;
         }
@@ -59,7 +59,7 @@ bool ehValidoParaCSV(const std::string& str){
 }
 
 /**
- * @brief Função principal do programa.
+ * @brief Funcao principal do programa.
  * @return 0 se o programa for executado com sucesso.
  */
 int main(){
@@ -79,34 +79,34 @@ int main(){
 
         if (comando == "CJ") {
             do{
-                // Solicita o apelido até que ele seja válido
+                // Solicita o apelido ate que ele seja valido
                 do {
-                    std::cout << "Digite o apelido (uma única palavra): ";  // Uma palavra
+                    std::cout << "Digite o apelido (uma unica palavra): ";  // Uma palavra
                     std::cin >> apelido;
 
-                    // Verifica se o apelido é válido
+                    // Verifica se o apelido e valido
                     if (!ehValidoParaCSV(apelido)) {
-                        std::cout << "Erro: O apelido contém caractere inválido (vírgula). Tente novamente." << std::endl;
+                        std::cout << "Erro: O apelido contem caractere invalido (virgula). Tente novamente." << std::endl;
                     } else {
-                        break; // Sai do loop quando o apelido for válido
+                        break; // Sai do loop quando o apelido for valido
                     }
                 } while (true);
 
-                // Solicita o nome até que ele seja válido
+                // Solicita o nome ate que ele seja valido
                 std::cin.ignore(); // Limpa o buffer de entrada antes de getline.
                 do {
                     std::cout << "Digite o nome (pode conter mais de uma palavra): ";  // Pode ter mais de uma palavra
-                    std::getline(std::cin >> std::ws, nome);  // `std::ws` ignora espaços em branco à frente da string
+                    std::getline(std::cin >> std::ws, nome);  // `std::ws` ignora espacos em branco a frente da string
                     if(nome.empty()){
-                        std::cout << "Erro: Nome não pode estar vazio." << std::endl;
+                        std::cout << "Erro: Nome nao pode estar vazio." << std::endl;
                     } else if(!ehValidoParaCSV(nome)){
-                        std::cout << "Erro: O nome contém caractere inválido (vírgula). Tente novamente." << std::endl;
+                        std::cout << "Erro: O nome contem caractere invalido (virgula). Tente novamente." << std::endl;
                     } else{
                         break;
                     }
                 } while (true);
 
-            } while (!gestao.cadastrarJogador(apelido, nome)); // Tenta cadastrar até ser bem-sucedido.
+            } while (!gestao.cadastrarJogador(apelido, nome)); // Tenta cadastrar ate ser bem-sucedido.
 
         } else if(comando == "RJ"){
             std::cout << "Insira o apelido do jogador a ser removido: " << std::endl;
@@ -119,7 +119,7 @@ int main(){
         } else if (comando == "EP") { //EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>
             //Verifica se o arquivo tem dados para executar partida
             if(!gestao.carregarTodoArquivo()){
-                std::cout << "Impossível executar partida.\n"
+                std::cout << "Impossivel executar partida.\n"
                           << "\nInsira um comando: " << std::endl;
                 continue;
             }
@@ -127,7 +127,7 @@ int main(){
             int vencedor;
             TipoDeJogo jogo_enum;
 
-            while (true) { // Loop até que uma escolha válida seja feita
+            while (true) { // Loop ate que uma escolha valida seja feita
                 std::cout << "\nEscolha o jogo:\n";
                 std::cout << "---------------------\n";
                 std::cout << "[R] - Reversi\n";
@@ -137,15 +137,15 @@ int main(){
 
                 std::cin >> escolhaJogo;
 
-                // Verifica se a entrada é exatamente um caractere
+                // Verifica se a entrada e exatamente um caractere
                 if (std::cin.peek() != '\n') {
-                    std::cout << "\nEntrada inválida. Digite apenas um caractere.\n";
+                    std::cout << "\nEntrada invalida. Digite apenas um caractere.\n";
                     std::cin.clear(); // Limpa o estado de erro do cin
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer de entrada
-                    continue; // Volta ao início do loop
+                    continue; // Volta ao inicio do loop
                 }
 
-                escolhaJogo = toupper(escolhaJogo); // Converte para maiúscula
+                escolhaJogo = toupper(escolhaJogo); // Converte para maiuscula
 
                 if (escolhaJogo == 'R' || escolhaJogo == 'V' || escolhaJogo == 'L') {
                     std::unique_ptr<Jogos> jogo;
@@ -168,7 +168,7 @@ int main(){
                                 break;
                         }
                     } catch (const std::bad_alloc& e) {
-                        std::cerr << "Erro: Falha ao alocar memória para o jogo. " << e.what() << std::endl;
+                        std::cerr << "Erro: Falha ao alocar memoria para o jogo. " << e.what() << std::endl;
                         return 1;
                     }
 
@@ -176,16 +176,16 @@ int main(){
                     std::string apelidoJogador1, apelidoJogador2;
 
                     bool apelidosValidos = false;
-                    int nErros = 0; // Variável para armazenar a quantidade de erros
+                    int nErros = 0; // Variavel para armazenar a quantidade de erros
 
-                    do { // Loop até que os apelidos inseridos sejam válidos
+                    do { // Loop ate que os apelidos inseridos sejam validos
                         
-                        // Após 3 tentativas mal-sucedidas, é oferecida a possibilidade de listar jogadores
+                        // Apos 3 tentativas mal-sucedidas, e oferecida a possibilidade de listar jogadores
                         if(nErros == 3) {
                             char resposta;
                             std::cout << "\nMuitos erros, hein?! Deseja listar jogadores?" << std::endl;
                             while(resposta != 'S' && resposta != 'N') {
-                                std::cout << "Digite 'S' para sim e 'N' para não: ";
+                                std::cout << "Digite 'S' para sim e 'N' para nao: ";
                                 std::cin >> resposta;
                             }
                             if(resposta == 'S'){
@@ -207,16 +207,16 @@ int main(){
 
                         nErros++;
 
-                        // Verifica se os apelidos são iguais
+                        // Verifica se os apelidos sao iguais
                         if (apelidoJogador1 == apelidoJogador2) {
-                            std::cout << "Os apelidos não podem ser iguais. Por favor, insira apelidos diferentes." << std::endl;
-                            continue; // Retorna ao início do loop para pedir novos apelidos
+                            std::cout << "Os apelidos nao podem ser iguais. Por favor, insira apelidos diferentes." << std::endl;
+                            continue; // Retorna ao inicio do loop para pedir novos apelidos
                         }
                         
                         apelidosValidos  = gestao.carregarDoisJogadores(apelidoJogador1, apelidoJogador2);
                     } while (!apelidosValidos);
 
-                    // Define os apelidos no jogo (se necessário)
+                    // Define os apelidos no jogo (se necessario)
                     jogo->setApelidoJogador1(apelidoJogador1);
                     jogo->setApelidoJogador2(apelidoJogador2);
 
@@ -227,19 +227,19 @@ int main(){
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\nAs estatísticas foram atualizadas!\n" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 2) {
                         gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
                         gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
-                        std::cout << "\nAs estatísticas foram atualizadas!\n" << std::endl;
+                        std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 0) {
-                        std::cout << "\nNenhuma estatística foi alterada!\n" << std::endl;
+                        std::cout << "\nNenhuma estatistica foi alterada!\n" << std::endl;
                     }
 
-                    break; // Sai do loop após uma escolha válida
+                    break; // Sai do loop apos uma escolha valida
                 } else {
-                    std::cout << "Escolha inválida. Tente novamente.\n";
+                    std::cout << "Escolha invalida. Tente novamente.\n";
                 }
             }
 
@@ -251,7 +251,7 @@ int main(){
                     break;
             
         } else {
-            std::cout << "Comando Inválido. Tente Novamente." << std::endl;
+            std::cout << "Comando Invalido. Tente Novamente." << std::endl;
         }
 
         std::cout << "\nInsira um comando: " << std::endl;
