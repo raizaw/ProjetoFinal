@@ -25,6 +25,8 @@ void JogoDaVelha::exibirPeca(Tabuleiro::Peca peca) const {
     case Tabuleiro::Peca::JOGADOR2:
         std::cout << "\033[33mO\033[0m"; // O em amarelo
         break;
+    case Tabuleiro::Peca::JOGADA_POSSIVEL:
+        break;
     }
 };
 
