@@ -135,20 +135,27 @@ int main(){
                     std::unique_ptr<Jogos> jogo;
 
                     // Cria o jogo escolhido
-                    switch (escolhaJogo) {
-                        case 'R':
-                            jogo = std::unique_ptr<Reversi>(new Reversi());
-                            jogo_enum = REVERSI;
-                            break;
-                        case 'V':
-                            jogo = std::unique_ptr<JogoDaVelha>(new JogoDaVelha());
-                            jogo_enum = VELHA;
-                            break;
-                        case 'L':
-                            jogo = std::unique_ptr<lig4>(new lig4());
-                            jogo_enum = LIG4;
-                            break;
+
+                    try {
+                        switch (escolhaJogo) {
+                            case 'R':
+                                jogo = std::unique_ptr<Reversi>(new Reversi());
+                                jogo_enum = REVERSI;
+                                break;
+                            case 'V':
+                                jogo = std::unique_ptr<JogoDaVelha>(new JogoDaVelha());
+                                jogo_enum = VELHA;
+                                break;
+                            case 'L':
+                                jogo = std::unique_ptr<lig4>(new lig4());
+                                jogo_enum = LIG4;
+                                break;
+                        }
+                    } catch (const std::bad_alloc& e) {
+                        std::cerr << "Erro: Falha ao alocar memória para o jogo. " << e.what() << std::endl;
+                        return 1;
                     }
+
                     // Solicita e valida os apelidos dos jogadores
                     std::string apelidoJogador1, apelidoJogador2;
 
@@ -168,6 +175,8 @@ int main(){
                             if(resposta == 'S'){
                                 std::cout << "\n";
                                 gestao.listarJogadores();
+                                nErros = 0;
+                            } else if (resposta == 'N') {
                                 nErros = 0;
                             }
                         }
