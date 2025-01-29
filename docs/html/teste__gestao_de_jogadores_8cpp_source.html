@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjetoFinal: Código-Fonte de D:/arthu/Documents/Arquivos/Programação/Programação_e_Desenvolvimento_de_Software_II/ProjetoFinal/tests/teste_gestaoDeJogadores.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjetoFinal<span id="projectnumber">&#160;0.0</span>
+   </div>
+   <div id="projectbrief">Este projeto é um sistema desenvolvido em C++11 para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de Jogo da Velha, Lig4 e Reversi, e gerar estatísticas detalhadas para cada jogador.</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('teste__gestao_de_jogadores_8cpp_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">teste_gestaoDeJogadores.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="teste__gestao_de_jogadores_8cpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="teste__gestao_de_jogadores_8cpp.html#a623b8690a262536536a43eab2d7df03d">    1</a></span><span class="preprocessor">#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;doctest.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="gestao_de_jogadores_8hpp.html">../include/gestaoDeJogadores.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// Função auxiliar para remover um arquivo, caso ele exista</span></div>
+<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="teste__gestao_de_jogadores_8cpp.html#aad75311d6e53bd160af2a53be13dcd51">    7</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="teste__gestao_de_jogadores_8cpp.html#aad75311d6e53bd160af2a53be13dcd51">removerArquivoSeExistir</a>(<span class="keyword">const</span> std::string&amp; nomeDoArquivo) {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordflow">if</span> (std::filesystem::exists(nomeDoArquivo)) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        std::filesystem::remove(nomeDoArquivo);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    }</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
+</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="teste__gestao_de_jogadores_8cpp.html#abb9583d6960cf9fae2130a83be0f7c7f">   13</a></span><a class="code hl_function" href="teste__gestao_de_jogadores_8cpp.html#abb9583d6960cf9fae2130a83be0f7c7f">TEST_CASE</a>(<span class="stringliteral">&quot;Testando a classe GestaoDeJogadores&quot;</span>) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> std::string caminhoArquivoTeste = <span class="stringliteral">&quot;./test_jogadores.csv&quot;</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_function" href="teste__gestao_de_jogadores_8cpp.html#aad75311d6e53bd160af2a53be13dcd51">removerArquivoSeExistir</a>(caminhoArquivoTeste); <span class="comment">// Garante que o arquivo não exista antes dos testes</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    SUBCASE(<span class="stringliteral">&quot;Testando cadastrarJogador e carregarTodoArquivo&quot;</span>) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhoArquivoTeste);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>));</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player2&quot;</span>, <span class="stringliteral">&quot;Maria&quot;</span>));</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a02d26988d4c65d8c4eaa6a0f8f10d047">carregarTodoArquivo</a>());</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.size() == 2);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player1&quot;</span>) != gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player2&quot;</span>) != gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    SUBCASE(<span class="stringliteral">&quot;Testando removerJogador&quot;</span>) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhoArquivoTeste);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>));</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player2&quot;</span>, <span class="stringliteral">&quot;Maria&quot;</span>));</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a262193b3f5402b934412f623ae766ea9">removerJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>));</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.size() == 1);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player1&quot;</span>) == gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player2&quot;</span>) != gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    SUBCASE(<span class="stringliteral">&quot;Testando listarJogadores&quot;</span>) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhoArquivoTeste);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player2&quot;</span>, <span class="stringliteral">&quot;Maria&quot;</span>));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="comment">// Redireciona cout para um stringstream para capturar a saída</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        std::stringstream buffer;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::streambuf* antigo = std::cout.rdbuf(buffer.rdbuf());</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#ac69595a47cca3956adacdccf6a47d3b4">listarJogadores</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        std::cout.rdbuf(antigo); <span class="comment">// Restaura cout</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        std::string saida = buffer.str();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        CHECK(saida.find(<span class="stringliteral">&quot;João&quot;</span>) != std::string::npos);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        CHECK(saida.find(<span class="stringliteral">&quot;Maria&quot;</span>) != std::string::npos);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    SUBCASE(<span class="stringliteral">&quot;Testando carregarDoisJogadores&quot;</span>) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhoArquivoTeste);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player2&quot;</span>, <span class="stringliteral">&quot;Maria&quot;</span>));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player3&quot;</span>, <span class="stringliteral">&quot;Carlos&quot;</span>));</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a2b78334ecd15767efb8fe5e8303a2bbb">carregarDoisJogadores</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;player2&quot;</span>));</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.size() == 2);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player1&quot;</span>) != gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player2&quot;</span>) != gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        CHECK(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.find(<span class="stringliteral">&quot;player3&quot;</span>) == gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>.end());</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    SUBCASE(<span class="stringliteral">&quot;Testando atualizarEstatisticas&quot;</span>) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhoArquivoTeste);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(<span class="stringliteral">&quot;player2&quot;</span>, <span class="stringliteral">&quot;Maria&quot;</span>));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// Simula a atualização de estatísticas</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        std::map&lt;std::string, std::unique_ptr&lt;Jogador&gt;&gt; jogadoresParaAtualizar;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        jogadoresParaAtualizar[<span class="stringliteral">&quot;player1&quot;</span>] = std::make_unique&lt;Jogador&gt;(<span class="stringliteral">&quot;player1&quot;</span>, <span class="stringliteral">&quot;João&quot;</span>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        jogadoresParaAtualizar[<span class="stringliteral">&quot;player1&quot;</span>]-&gt;adicionarVitoria(<a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a>, 5);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        jogadoresParaAtualizar[<span class="stringliteral">&quot;player1&quot;</span>]-&gt;adicionarDerrota(<a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a>, 3);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a5e5c2381bd5a09bd0539560726bfef9b">atualizarEstatisticas</a>(jogadoresParaAtualizar));</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        CHECK(gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a02d26988d4c65d8c4eaa6a0f8f10d047">carregarTodoArquivo</a>());</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">auto</span>&amp; jogadorAtualizado = gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>[<span class="stringliteral">&quot;player1&quot;</span>];</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keyword">auto</span> estatisticas = jogadorAtualizado-&gt;getEstatisticasDoJogo(<a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        CHECK(estatisticas.first == 5);  <span class="comment">// Vitórias</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        CHECK(estatisticas.second == 3); <span class="comment">// Derrotas</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_function" href="teste__gestao_de_jogadores_8cpp.html#aad75311d6e53bd160af2a53be13dcd51">removerArquivoSeExistir</a>(caminhoArquivoTeste); <span class="comment">// Limpa após os testes</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+</div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html"><div class="ttname"><a href="class_gestao_de_jogadores.html">GestaoDeJogadores</a></div><div class="ttdoc">Classe responsável pela gestão de jogadores.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8hpp_source.html#l00019">gestaoDeJogadores.hpp:19</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a02d26988d4c65d8c4eaa6a0f8f10d047"><div class="ttname"><a href="class_gestao_de_jogadores.html#a02d26988d4c65d8c4eaa6a0f8f10d047">GestaoDeJogadores::carregarTodoArquivo</a></div><div class="ttdeci">bool carregarTodoArquivo()</div><div class="ttdoc">Carrega todos os jogadores do arquivo para o mapa.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00025">gestaoDeJogadores.cpp:25</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a262193b3f5402b934412f623ae766ea9"><div class="ttname"><a href="class_gestao_de_jogadores.html#a262193b3f5402b934412f623ae766ea9">GestaoDeJogadores::removerJogador</a></div><div class="ttdeci">bool removerJogador(const std::string &amp;apelido)</div><div class="ttdoc">Remove um jogador do sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00158">gestaoDeJogadores.cpp:158</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a2b78334ecd15767efb8fe5e8303a2bbb"><div class="ttname"><a href="class_gestao_de_jogadores.html#a2b78334ecd15767efb8fe5e8303a2bbb">GestaoDeJogadores::carregarDoisJogadores</a></div><div class="ttdeci">bool carregarDoisJogadores(const std::string &amp;apelido1, const std::string &amp;apelido2)</div><div class="ttdoc">Carrega dois jogadores específicos do arquivo para o mapa.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00044">gestaoDeJogadores.cpp:44</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a4fe8d2e03e5028fa1a1d92164730a23a"><div class="ttname"><a href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">GestaoDeJogadores::cadastrarJogador</a></div><div class="ttdeci">bool cadastrarJogador(const std::string &amp;apelido, const std::string &amp;nome)</div><div class="ttdoc">Cadastra um novo jogador no sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00141">gestaoDeJogadores.cpp:141</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a5e5c2381bd5a09bd0539560726bfef9b"><div class="ttname"><a href="class_gestao_de_jogadores.html#a5e5c2381bd5a09bd0539560726bfef9b">GestaoDeJogadores::atualizarEstatisticas</a></div><div class="ttdeci">bool atualizarEstatisticas(const std::map&lt; std::string, std::unique_ptr&lt; Jogador &gt; &gt; &amp;jogadoresParaAtualizar)</div><div class="ttdoc">Atualiza as estatísticas dos jogadores no arquivo.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00088">gestaoDeJogadores.cpp:88</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a808d346accaef08b4742b2453dc360a0"><div class="ttname"><a href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">GestaoDeJogadores::jogadores_map</a></div><div class="ttdeci">std::map&lt; std::string, std::unique_ptr&lt; Jogador &gt; &gt; jogadores_map</div><div class="ttdoc">Mapa que armazena os jogadores, onde a chave é o apelido do jogador.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8hpp_source.html#l00044">gestaoDeJogadores.hpp:44</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_ac69595a47cca3956adacdccf6a47d3b4"><div class="ttname"><a href="class_gestao_de_jogadores.html#ac69595a47cca3956adacdccf6a47d3b4">GestaoDeJogadores::listarJogadores</a></div><div class="ttdeci">void listarJogadores()</div><div class="ttdoc">Lista todos os jogadores cadastrados no sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00184">gestaoDeJogadores.cpp:184</a></div></div>
+<div class="ttc" id="agestao_de_jogadores_8hpp_html"><div class="ttname"><a href="gestao_de_jogadores_8hpp.html">gestaoDeJogadores.hpp</a></div></div>
+<div class="ttc" id="ajogador_8hpp_html_a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a"><div class="ttname"><a href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a></div><div class="ttdeci">@ REVERSI</div><div class="ttdoc">Jogo Reversi.</div><div class="ttdef"><b>Definição</b> <a href="jogador_8hpp_source.html#l00013">jogador.hpp:13</a></div></div>
+<div class="ttc" id="ateste__gestao_de_jogadores_8cpp_html_aad75311d6e53bd160af2a53be13dcd51"><div class="ttname"><a href="teste__gestao_de_jogadores_8cpp.html#aad75311d6e53bd160af2a53be13dcd51">removerArquivoSeExistir</a></div><div class="ttdeci">void removerArquivoSeExistir(const std::string &amp;nomeDoArquivo)</div><div class="ttdef"><b>Definição</b> <a href="#l00007">teste_gestaoDeJogadores.cpp:7</a></div></div>
+<div class="ttc" id="ateste__gestao_de_jogadores_8cpp_html_abb9583d6960cf9fae2130a83be0f7c7f"><div class="ttname"><a href="teste__gestao_de_jogadores_8cpp.html#abb9583d6960cf9fae2130a83be0f7c7f">TEST_CASE</a></div><div class="ttdeci">TEST_CASE(&quot;Testando a classe GestaoDeJogadores&quot;)</div><div class="ttdef"><b>Definição</b> <a href="#l00013">teste_gestaoDeJogadores.cpp:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_433cdbe8d3847d9a60b17645db517601.html">arthu</a></li><li class="navelem"><a class="el" href="dir_40e9e8f76497d16d3705e2daf6281846.html">Documents</a></li><li class="navelem"><a class="el" href="dir_2c498390632a1a52ea9542775e54968b.html">Arquivos</a></li><li class="navelem"><a class="el" href="dir_f9b7524fbf3ba38942311e19623d9aba.html">Programação</a></li><li class="navelem"><a class="el" href="dir_0633fb0cb29d8a479c4d32d17413bdae.html">Programação_e_Desenvolvimento_de_Software_II</a></li><li class="navelem"><a class="el" href="dir_f1e96faf8cd2022581d63d33f01bea04.html">ProjetoFinal</a></li><li class="navelem"><a class="el" href="dir_c35ad2f47a12119d3e20673ed8a5dc37.html">tests</a></li><li class="navelem"><a class="el" href="teste__gestao_de_jogadores_8cpp.html">teste_gestaoDeJogadores.cpp</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

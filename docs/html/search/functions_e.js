@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['scale_0',['scale',['../structdoctest_1_1_approx.html#a040114c288b721e97d7cdd22faf69c90',1,'doctest::Approx']]],
+  ['setapelidojogador1_1',['setApelidoJogador1',['../class_jogos.html#a3280b14406c080d3559d65363ef4cc19',1,'Jogos']]],
+  ['setapelidojogador2_2',['setApelidoJogador2',['../class_jogos.html#aac9b0a6e3372ed9198a5305f09e2b5a2',1,'Jogos']]],
+  ['setasdefaultforassertsoutoftestcases_3',['setAsDefaultForAssertsOutOfTestCases',['../classdoctest_1_1_context.html#ae85cecc7689f009e23cba383484773b2',1,'doctest::Context']]],
+  ['setasserthandler_4',['setAssertHandler',['../classdoctest_1_1_context.html#a669dd0a596a611eeb0decdb78b661a90',1,'doctest::Context']]],
+  ['setcout_5',['setCout',['../classdoctest_1_1_context.html#a503e7ebcc794a3cc67fa2e77873cafaa',1,'doctest::Context']]],
+  ['setoption_6',['setOption',['../classdoctest_1_1_context.html#a7f7735caa75c60cdf8c8d86a75ce1d81',1,'doctest::Context::setOption(const char *option, bool value)'],['../classdoctest_1_1_context.html#a95e7a0230c5897f0eae36718f51d2f05',1,'doctest::Context::setOption(const char *option, int value)'],['../classdoctest_1_1_context.html#a4352ffc196c4ba56045270e45baa2754',1,'doctest::Context::setOption(const char *option, const char *value)']]],
+  ['setposicao_7',['setPosicao',['../class_tabuleiro.html#abb2da90a2e09e803c715f009ff03a4ea',1,'Tabuleiro']]],
+  ['setresult_8',['setResult',['../structdoctest_1_1detail_1_1_result_builder.html#a86c0ca727fead43263de4a7e9a59ad23',1,'doctest::detail::ResultBuilder']]],
+  ['settestsuite_9',['setTestSuite',['../namespacedoctest_1_1detail.html#ae79cb8df06d35468dd0ba9f04c85802c',1,'doctest::detail']]],
+  ['shouldexit_10',['shouldExit',['../classdoctest_1_1_context.html#a219b10301380b81c84c0824a6876d9aa',1,'doctest::Context']]],
+  ['simularjogadas_11',['simularJogadas',['../teste__jogo_da_velha_8cpp.html#ab6e4d7019d52e99cec322168424b53ae',1,'teste_jogoDaVelha.cpp']]],
+  ['size_12',['size',['../classdoctest_1_1_string.html#acc9888303b7330a8dc78d3d79eadcf7c',1,'doctest::String']]],
+  ['skippathfromfilename_13',['skipPathFromFilename',['../namespacedoctest.html#a31b19b71f2b30f77f84b6a8bb4943925',1,'doctest']]],
+  ['string_14',['String',['../classdoctest_1_1_string.html#ac458ccc54bb0f2d66fe8ca14146ec5f0',1,'doctest::String::String() noexcept'],['../classdoctest_1_1_string.html#abb4449cbc613cd973ae774c704fca5dd',1,'doctest::String::String(const char *in)'],['../classdoctest_1_1_string.html#a0ce0a3e6a00b63b0a219a988fc42cec3',1,'doctest::String::String(const char *in, size_type in_size)'],['../classdoctest_1_1_string.html#ac6e38dd40b68e19ef6898a13f60d2a07',1,'doctest::String::String(std::istream &amp;in, size_type in_size)'],['../classdoctest_1_1_string.html#a27ca7976da20bdebbf225fa496c38ad1',1,'doctest::String::String(const String &amp;other)'],['../classdoctest_1_1_string.html#a2a0aa72649d92cb8da5b89b98bcff752',1,'doctest::String::String(String &amp;&amp;other) noexcept']]],
+  ['stringcontains_15',['StringContains',['../classdoctest_1_1_assert_data_1_1_string_contains.html#a6a88dee0e03ef22a1e425696c3070e16',1,'doctest::AssertData::StringContains::StringContains(const String &amp;str)'],['../classdoctest_1_1_assert_data_1_1_string_contains.html#ae8b0e70648c2863d986b3ca053a78078',1,'doctest::AssertData::StringContains::StringContains(Contains cntn)']]],
+  ['stringify_16',['stringify',['../structdoctest_1_1_i_context_scope.html#affbf0f9bf8107a4a8a805d237288141d',1,'doctest::IContextScope::stringify()'],['../classdoctest_1_1detail_1_1_context_scope.html#a4636ac32ae41ae108c7ada4a164ffaeb',1,'doctest::detail::ContextScope::stringify()']]],
+  ['stringifybinaryexpr_17',['stringifyBinaryExpr',['../namespacedoctest_1_1detail.html#a6879a79aea397a22e296e4afd0a90e3b',1,'doctest::detail']]],
+  ['strjogador_18',['strJogador',['../class_jogos.html#a59da365e9016a6d1d2db86cf121021e7',1,'Jogos::strJogador(int jogador) const'],['../class_jogos.html#ad990e856fe8b10b1e5957a4b7e3ab6ef',1,'Jogos::strJogador(Tabuleiro::Peca peca) const']]],
+  ['subcase_19',['Subcase',['../structdoctest_1_1detail_1_1_subcase.html#a8f7d4a5ddfb8ae48663e5cfc786e6f12',1,'doctest::detail::Subcase::Subcase(const String &amp;name, const char *file, int line)'],['../structdoctest_1_1detail_1_1_subcase.html#a9e0ce38b3c110677a9188ba130a946f5',1,'doctest::detail::Subcase::Subcase(const Subcase &amp;)=delete'],['../structdoctest_1_1detail_1_1_subcase.html#aa467f606cedb24696a5013da4737bc90',1,'doctest::detail::Subcase::Subcase(Subcase &amp;&amp;)=delete']]],
+  ['subcase_5fend_20',['subcase_end',['../structdoctest_1_1_i_reporter.html#a05196dd1a5f7e40e8c734cd2a37d4e1e',1,'doctest::IReporter']]],
+  ['subcase_5fstart_21',['subcase_start',['../structdoctest_1_1_i_reporter.html#a03ef82d6fb9afe8b0e3bbe24f28dd268',1,'doctest::IReporter']]],
+  ['substr_22',['substr',['../classdoctest_1_1_string.html#a6fd53b95d33900d8a38a3a33c43c928e',1,'doctest::String::substr(size_type pos, size_type cnt=npos) &amp;&amp;'],['../classdoctest_1_1_string.html#ace5bc90d48d52944412addef185de9a6',1,'doctest::String::substr(size_type pos, size_type cnt=npos) const &amp;']]]
+];

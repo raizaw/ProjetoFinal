@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjetoFinal: Código-Fonte de include/jogos.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjetoFinal<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Lig4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('jogos_8hpp_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">jogos.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="jogos_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef JOGOS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define JOGOS_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="tabuleiro_8hpp.html">./tabuleiro.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_jogos.html">   16</a></span><span class="keyword">class </span><a class="code hl_function" href="class_jogos.html#adabe45b8612d069c66b1a56d05c0a59f">Jogos</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_jogos.html#ac7c7977c9df4c939364c2fcdb34f5e95">   18</a></span>    <a class="code hl_class" href="class_tabuleiro.html">Tabuleiro</a>* <a class="code hl_variable" href="class_jogos.html#ac7c7977c9df4c939364c2fcdb34f5e95">tabuleiro</a>; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_jogos.html#a846db8381142b8047cc4f5f08d96be9b">   19</a></span>    <a class="code hl_enumeration" href="class_tabuleiro.html#aa83377fc91a893101d11438ff6dc29f1">Tabuleiro::Peca</a> <a class="code hl_variable" href="class_jogos.html#a846db8381142b8047cc4f5f08d96be9b">jogadorAtual</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_jogos.html#a509c095593ad704930b7bae18223e2d2">   20</a></span>    std::string <a class="code hl_variable" href="class_jogos.html#a509c095593ad704930b7bae18223e2d2">apelidoJogador1</a>; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_jogos.html#afe511ee4c4b0f006b0338b563c1f12a1">   21</a></span>    std::string <a class="code hl_variable" href="class_jogos.html#afe511ee4c4b0f006b0338b563c1f12a1">apelidoJogador2</a>; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="class_jogos.html#adabe45b8612d069c66b1a56d05c0a59f">Jogos</a>(<span class="keywordtype">int</span> linhas, <span class="keywordtype">int</span> colunas);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Métodos de impressão</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_jogos.html#a20fd03051b7a03ef209fff2e54e37d00">   37</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#a20fd03051b7a03ef209fff2e54e37d00">fraseInicial</a>() = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#ab5a7abde8f5288bb95ee9b84585191bc">exibirTabuleiro</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_jogos.html#a1f1c6aaa24117426294cf87d8c327744">   49</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#a1f1c6aaa24117426294cf87d8c327744">exibirPeca</a>(<a class="code hl_enumeration" href="class_tabuleiro.html#aa83377fc91a893101d11438ff6dc29f1">Tabuleiro::Peca</a> peca) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Métodos responsáveis pelas jogadas em cada rodada</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_jogos.html#ad937ccdd4e6d93c353dc9092eca5115b">   57</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#ad937ccdd4e6d93c353dc9092eca5115b">lerJogada</a>() = 0;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_jogos.html#a062efc192eb08ab4b9388dfb4dcc9fbe">   64</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogos.html#a062efc192eb08ab4b9388dfb4dcc9fbe">jogadaEValida</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_jogos.html#a5ecc3ab89d817fcb1fce10d2dcfc8185">   70</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#a5ecc3ab89d817fcb1fce10d2dcfc8185">realizarJogada</a>() = 0;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Métodos que gerenciam o andamento da partida</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#ae631445bea2d9d6a419d3e6983da5b22">trocarJogador</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_jogos.html#a3e351e4a184f01a162bc1a2d9ae46f72">   84</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogos.html#a3e351e4a184f01a162bc1a2d9ae46f72">partidaAcabou</a>() = 0;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_jogos.html#a8919a9bcb0e2eb8b478475ec110f5324">   91</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_jogos.html#a8919a9bcb0e2eb8b478475ec110f5324">indicarFimDaPartida</a>() = 0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// Métodos auxiliares</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::string <a class="code hl_function" href="class_jogos.html#a59da365e9016a6d1d2db86cf121021e7">strJogador</a>(<span class="keywordtype">int</span> jogador) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    std::string <a class="code hl_function" href="class_jogos.html#a59da365e9016a6d1d2db86cf121021e7">strJogador</a>(<a class="code hl_enumeration" href="class_tabuleiro.html#aa83377fc91a893101d11438ff6dc29f1">Tabuleiro::Peca</a> peca) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// Setters</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#a3280b14406c080d3559d65363ef4cc19">setApelidoJogador1</a>(std::string apelido);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogos.html#aac9b0a6e3372ed9198a5305f09e2b5a2">setApelidoJogador2</a>(std::string apelido);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="class_jogos.html#a5d0c0cb4794a06b01da280338698e4d0">  127</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_jogos.html#a5d0c0cb4794a06b01da280338698e4d0">~Jogos</a>() {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keyword">delete</span> <a class="code hl_variable" href="class_jogos.html#ac7c7977c9df4c939364c2fcdb34f5e95">tabuleiro</a>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>};</div>
+</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_jogos_html_a062efc192eb08ab4b9388dfb4dcc9fbe"><div class="ttname"><a href="class_jogos.html#a062efc192eb08ab4b9388dfb4dcc9fbe">Jogos::jogadaEValida</a></div><div class="ttdeci">virtual bool jogadaEValida() const =0</div><div class="ttdoc">Verifica se a jogada é válida.</div></div>
+<div class="ttc" id="aclass_jogos_html_a1f1c6aaa24117426294cf87d8c327744"><div class="ttname"><a href="class_jogos.html#a1f1c6aaa24117426294cf87d8c327744">Jogos::exibirPeca</a></div><div class="ttdeci">virtual void exibirPeca(Tabuleiro::Peca peca) const =0</div><div class="ttdoc">Exibe a peça no tabuleiro.</div></div>
+<div class="ttc" id="aclass_jogos_html_a20fd03051b7a03ef209fff2e54e37d00"><div class="ttname"><a href="class_jogos.html#a20fd03051b7a03ef209fff2e54e37d00">Jogos::fraseInicial</a></div><div class="ttdeci">virtual void fraseInicial()=0</div><div class="ttdoc">Exibe a frase inicial do jogo.</div></div>
+<div class="ttc" id="aclass_jogos_html_a3280b14406c080d3559d65363ef4cc19"><div class="ttname"><a href="class_jogos.html#a3280b14406c080d3559d65363ef4cc19">Jogos::setApelidoJogador1</a></div><div class="ttdeci">virtual void setApelidoJogador1(std::string apelido)</div><div class="ttdoc">Define o apelido do jogador 1.</div><div class="ttdef"><b>Definição</b> jogos.cpp:62</div></div>
+<div class="ttc" id="aclass_jogos_html_a3e351e4a184f01a162bc1a2d9ae46f72"><div class="ttname"><a href="class_jogos.html#a3e351e4a184f01a162bc1a2d9ae46f72">Jogos::partidaAcabou</a></div><div class="ttdeci">virtual bool partidaAcabou()=0</div><div class="ttdoc">Verifica se a partida acabou.</div></div>
+<div class="ttc" id="aclass_jogos_html_a509c095593ad704930b7bae18223e2d2"><div class="ttname"><a href="class_jogos.html#a509c095593ad704930b7bae18223e2d2">Jogos::apelidoJogador1</a></div><div class="ttdeci">std::string apelidoJogador1</div><div class="ttdoc">Apelido do jogador 1.</div><div class="ttdef"><b>Definição</b> jogos.hpp:20</div></div>
+<div class="ttc" id="aclass_jogos_html_a59da365e9016a6d1d2db86cf121021e7"><div class="ttname"><a href="class_jogos.html#a59da365e9016a6d1d2db86cf121021e7">Jogos::strJogador</a></div><div class="ttdeci">std::string strJogador(int jogador) const</div><div class="ttdoc">Retorna uma string representando o jogador.</div><div class="ttdef"><b>Definição</b> jogos.cpp:40</div></div>
+<div class="ttc" id="aclass_jogos_html_a5d0c0cb4794a06b01da280338698e4d0"><div class="ttname"><a href="class_jogos.html#a5d0c0cb4794a06b01da280338698e4d0">Jogos::~Jogos</a></div><div class="ttdeci">virtual ~Jogos()</div><div class="ttdoc">Destrutor da classe Jogos. Libera a memória alocada para o tabuleiro.</div><div class="ttdef"><b>Definição</b> jogos.hpp:127</div></div>
+<div class="ttc" id="aclass_jogos_html_a5ecc3ab89d817fcb1fce10d2dcfc8185"><div class="ttname"><a href="class_jogos.html#a5ecc3ab89d817fcb1fce10d2dcfc8185">Jogos::realizarJogada</a></div><div class="ttdeci">virtual void realizarJogada()=0</div><div class="ttdoc">Realiza a jogada no tabuleiro.</div></div>
+<div class="ttc" id="aclass_jogos_html_a846db8381142b8047cc4f5f08d96be9b"><div class="ttname"><a href="class_jogos.html#a846db8381142b8047cc4f5f08d96be9b">Jogos::jogadorAtual</a></div><div class="ttdeci">Tabuleiro::Peca jogadorAtual</div><div class="ttdoc">Representa o jogador atual (peca do jogador 1 ou 2).</div><div class="ttdef"><b>Definição</b> jogos.hpp:19</div></div>
+<div class="ttc" id="aclass_jogos_html_a8919a9bcb0e2eb8b478475ec110f5324"><div class="ttname"><a href="class_jogos.html#a8919a9bcb0e2eb8b478475ec110f5324">Jogos::indicarFimDaPartida</a></div><div class="ttdeci">virtual int indicarFimDaPartida()=0</div><div class="ttdoc">Indica o fim da partida e retorna o vencedor.</div></div>
+<div class="ttc" id="aclass_jogos_html_aac9b0a6e3372ed9198a5305f09e2b5a2"><div class="ttname"><a href="class_jogos.html#aac9b0a6e3372ed9198a5305f09e2b5a2">Jogos::setApelidoJogador2</a></div><div class="ttdeci">virtual void setApelidoJogador2(std::string apelido)</div><div class="ttdoc">Define o apelido do jogador 2.</div><div class="ttdef"><b>Definição</b> jogos.cpp:66</div></div>
+<div class="ttc" id="aclass_jogos_html_ab5a7abde8f5288bb95ee9b84585191bc"><div class="ttname"><a href="class_jogos.html#ab5a7abde8f5288bb95ee9b84585191bc">Jogos::exibirTabuleiro</a></div><div class="ttdeci">virtual void exibirTabuleiro() const</div><div class="ttdoc">Exibe o tabuleiro do jogo.</div><div class="ttdef"><b>Definição</b> jogos.cpp:8</div></div>
+<div class="ttc" id="aclass_jogos_html_ac7c7977c9df4c939364c2fcdb34f5e95"><div class="ttname"><a href="class_jogos.html#ac7c7977c9df4c939364c2fcdb34f5e95">Jogos::tabuleiro</a></div><div class="ttdeci">Tabuleiro * tabuleiro</div><div class="ttdoc">Ponteiro para o tabuleiro do jogo.</div><div class="ttdef"><b>Definição</b> jogos.hpp:18</div></div>
+<div class="ttc" id="aclass_jogos_html_ad937ccdd4e6d93c353dc9092eca5115b"><div class="ttname"><a href="class_jogos.html#ad937ccdd4e6d93c353dc9092eca5115b">Jogos::lerJogada</a></div><div class="ttdeci">virtual void lerJogada()=0</div><div class="ttdoc">Lê a jogada do jogador atual.</div></div>
+<div class="ttc" id="aclass_jogos_html_adabe45b8612d069c66b1a56d05c0a59f"><div class="ttname"><a href="class_jogos.html#adabe45b8612d069c66b1a56d05c0a59f">Jogos::Jogos</a></div><div class="ttdeci">Jogos(int linhas, int colunas)</div><div class="ttdoc">Construtor da classe Jogos.</div><div class="ttdef"><b>Definição</b> jogos.cpp:3</div></div>
+<div class="ttc" id="aclass_jogos_html_ae631445bea2d9d6a419d3e6983da5b22"><div class="ttname"><a href="class_jogos.html#ae631445bea2d9d6a419d3e6983da5b22">Jogos::trocarJogador</a></div><div class="ttdeci">virtual void trocarJogador()</div><div class="ttdoc">Alterna o jogador atual.</div><div class="ttdef"><b>Definição</b> jogos.cpp:36</div></div>
+<div class="ttc" id="aclass_jogos_html_afe511ee4c4b0f006b0338b563c1f12a1"><div class="ttname"><a href="class_jogos.html#afe511ee4c4b0f006b0338b563c1f12a1">Jogos::apelidoJogador2</a></div><div class="ttdeci">std::string apelidoJogador2</div><div class="ttdoc">Apelido do jogador 2.</div><div class="ttdef"><b>Definição</b> jogos.hpp:21</div></div>
+<div class="ttc" id="aclass_tabuleiro_html"><div class="ttname"><a href="class_tabuleiro.html">Tabuleiro</a></div><div class="ttdoc">Classe que representa o tabuleiro do jogo.</div><div class="ttdef"><b>Definição</b> tabuleiro.hpp:13</div></div>
+<div class="ttc" id="aclass_tabuleiro_html_aa83377fc91a893101d11438ff6dc29f1"><div class="ttname"><a href="class_tabuleiro.html#aa83377fc91a893101d11438ff6dc29f1">Tabuleiro::Peca</a></div><div class="ttdeci">Peca</div><div class="ttdoc">Enumeração que representa os tipos de peças no tabuleiro.</div><div class="ttdef"><b>Definição</b> tabuleiro.hpp:19</div></div>
+<div class="ttc" id="atabuleiro_8hpp_html"><div class="ttname"><a href="tabuleiro_8hpp.html">tabuleiro.hpp</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="jogos_8hpp.html">jogos.hpp</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjetoFinal: Código-Fonte de D:/arthu/Documents/Arquivos/Programação/Programação_e_Desenvolvimento_de_Software_II/ProjetoFinal/src/main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjetoFinal<span id="projectnumber">&#160;0.0</span>
+   </div>
+   <div id="projectbrief">Este projeto é um sistema desenvolvido em C++11 para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de Jogo da Velha, Lig4 e Reversi, e gerar estatísticas detalhadas para cada jogador.</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('main_8cpp_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8cpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="gestao_de_jogadores_8hpp.html">../include/gestaoDeJogadores.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="lig4_8hpp.html">../include/lig4.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="jogo_da_velha_8hpp.html">../include/jogoDaVelha.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="reversi_8hpp.html">../include/reversi.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cctype&gt;</span> <span class="comment">// Para usar toupper</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;limits&gt;</span> <span class="comment">// Para std::numeric_limits e std::streamsize</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="main_8cpp.html#a41e28bb4d9d18b22673799874520024e">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="main_8cpp.html#a41e28bb4d9d18b22673799874520024e">exibirMenu</a>(){</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;-------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;[CJ] - Cadastrar Jogador\n&quot;</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>              &lt;&lt; <span class="stringliteral">&quot;[RJ] - Remover Jogador\n&quot;</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>              &lt;&lt; <span class="stringliteral">&quot;[LJ] - Listar Jogadores\n&quot;</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>              &lt;&lt; <span class="stringliteral">&quot;[EP] - Executar Partida\n&quot;</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>              &lt;&lt; <span class="stringliteral">&quot;[M]  - Menu\n&quot;</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>              &lt;&lt; <span class="stringliteral">&quot;[FS] - Finalizar Sistema&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;-------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="main_8cpp.html#a28fe99a9f894367b2fbf051af36e06aa">   23</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a28fe99a9f894367b2fbf051af36e06aa">executarPartida</a>(std::unique_ptr&lt;Jogos&gt; jogo) {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    jogo-&gt;fraseInicial();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    jogo-&gt;exibirTabuleiro();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">while</span> (!jogo-&gt;partidaAcabou()) {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        jogo-&gt;lerJogada();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">if</span> (jogo-&gt;jogadaEValida()) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            jogo-&gt;realizarJogada();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> jogo-&gt;indicarFimDaPartida();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="main_8cpp.html#ad947af3d3aaf4aa3c6ada07a253631c8">   38</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="main_8cpp.html#ad947af3d3aaf4aa3c6ada07a253631c8">ehValidoParaCSV</a>(<span class="keyword">const</span> std::string&amp; str){</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// Verifica cada caractere da string</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">for</span> (<span class="keywordtype">char</span> c : str) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// Se encontrar um dos caracteres invalidos, retorna false</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;,&#39;</span> || c == <span class="charliteral">&#39;&quot;&#39;</span> || c == <span class="charliteral">&#39;\n&#39;</span> || c == <span class="charliteral">&#39;\t&#39;</span> || c == <span class="charliteral">&#39;\&#39;&#39;</span>) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   49</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(){</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">const</span> std::string caminhodoArquivo = <span class="stringliteral">&quot;./gameData/dados.csv&quot;</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_class" href="class_gestao_de_jogadores.html">GestaoDeJogadores</a> gestao(caminhodoArquivo);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::string comando, apelido, nome;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">char</span> escolhaJogo;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;\n BEM VINDO! INSIRA UM COMANDO:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="main_8cpp.html#a41e28bb4d9d18b22673799874520024e">exibirMenu</a>();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">while</span>(std::cin &gt;&gt; comando){</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>); <span class="comment">// Limpa o buffer de entrada</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">if</span> (comando == <span class="stringliteral">&quot;CJ&quot;</span>) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">do</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <span class="comment">// Solicita o apelido ate que ele seja valido</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">do</span> {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Digite o apelido (uma unica palavra): &quot;</span>;  <span class="comment">// Uma palavra</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    std::cin &gt;&gt; apelido;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    <span class="comment">// Verifica se o apelido e valido</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    <span class="keywordflow">if</span> (!<a class="code hl_function" href="main_8cpp.html#ad947af3d3aaf4aa3c6ada07a253631c8">ehValidoParaCSV</a>(apelido)) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;Erro: O apelido contem caracteres invalidos (virgula, aspas, etc.). Tente novamente.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                        <span class="keywordflow">break</span>; <span class="comment">// Sai do loop quando o apelido for válido</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                <span class="comment">// Solicita o nome ate que ele seja valido</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                std::cin.ignore(); <span class="comment">// Limpa o buffer de entrada antes de getline.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">do</span> {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Digite o nome (pode conter mais de uma palavra): &quot;</span>;  <span class="comment">// Pode ter mais de uma palavra</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    std::getline(std::cin &gt;&gt; std::ws, nome);  <span class="comment">// `std::ws` ignora espaços em branco à frente da string</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    <span class="keywordflow">if</span>(nome.empty()){</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;Erro: nome nao pode estar vazio.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!<a class="code hl_function" href="main_8cpp.html#ad947af3d3aaf4aa3c6ada07a253631c8">ehValidoParaCSV</a>(nome)){</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;Erro: O nome contem caracteres invalidos (virgula, aspas, etc.). Tente novamente.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                    } <span class="keywordflow">else</span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                } <span class="keywordflow">while</span> (<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            } <span class="keywordflow">while</span> (!gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">cadastrarJogador</a>(apelido, nome)); <span class="comment">// Tenta cadastrar até ser bem-sucedido.</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(comando == <span class="stringliteral">&quot;RJ&quot;</span>){</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Insira o apelido do jogador a ser removido: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            std::cin &gt;&gt; apelido;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a262193b3f5402b934412f623ae766ea9">removerJogador</a>(apelido);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(comando == <span class="stringliteral">&quot;LJ&quot;</span>){</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#ac69595a47cca3956adacdccf6a47d3b4">listarJogadores</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comando == <span class="stringliteral">&quot;EP&quot;</span>) { <span class="comment">//EP &lt;Jogo: (R|L|V)&gt; &lt;Apelido Jogador 1&gt; &lt;Apelido Jogador 2&gt;</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordtype">int</span> vencedor;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <a class="code hl_enumeration" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5">TipoDeJogo</a> jogo_enum;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>) { <span class="comment">// Loop até que uma escolha válida seja feita</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;\nEscolha o jogo:\n&quot;</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;---------------------\n&quot;</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[R] - Reversi\n&quot;</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[V] - Jogo da Velha\n&quot;</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;[L] - Lig4\n&quot;</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;---------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                std::cin &gt;&gt; escolhaJogo;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <span class="comment">// Verifica se a entrada é exatamente um caractere</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                <span class="keywordflow">if</span> (std::cin.peek() != <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;\nEntrada invalida. Digite apenas um caractere.\n&quot;</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                    std::cin.clear(); <span class="comment">// Limpa o estado de erro do cin</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                    std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>); <span class="comment">// Limpa o buffer de entrada</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                    <span class="keywordflow">continue</span>; <span class="comment">// Volta ao início do loop</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                escolhaJogo = toupper(escolhaJogo); <span class="comment">// Converte para maiúscula</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordflow">if</span> (escolhaJogo == <span class="charliteral">&#39;R&#39;</span> || escolhaJogo == <span class="charliteral">&#39;V&#39;</span> || escolhaJogo == <span class="charliteral">&#39;L&#39;</span>) {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    std::unique_ptr&lt;Jogos&gt; jogo;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                    <span class="comment">// Cria o jogo escolhido</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                    <span class="keywordflow">switch</span> (escolhaJogo) {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                        <span class="keywordflow">case</span> <span class="charliteral">&#39;R&#39;</span>:</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                            jogo = std::unique_ptr&lt;Reversi&gt;(<span class="keyword">new</span> <a class="code hl_class" href="class_reversi.html">Reversi</a>());</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                            jogo_enum = <a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                        <span class="keywordflow">case</span> <span class="charliteral">&#39;V&#39;</span>:</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                            jogo = std::unique_ptr&lt;JogoDaVelha&gt;(<span class="keyword">new</span> <a class="code hl_class" href="class_jogo_da_velha.html">JogoDaVelha</a>());</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                            jogo_enum = <a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a9ba8cb9157f8b7e5c03ccd6076ad51c1">VELHA</a>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                        <span class="keywordflow">case</span> <span class="charliteral">&#39;L&#39;</span>:</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                            jogo = std::unique_ptr&lt;lig4&gt;(<span class="keyword">new</span> <a class="code hl_class" href="classlig4.html">lig4</a>());</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                            jogo_enum = <a class="code hl_enumvalue" href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a17bed7b7154a7d5ff10d202858975088">LIG4</a>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                    }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                    <span class="comment">// Solicita e valida os apelidos dos jogadores</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                    std::string apelidoJogador1, apelidoJogador2;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                    <span class="keywordtype">bool</span> apelidosValidos = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                    <span class="keywordflow">do</span>{</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;\nInsira o apelido do jogador 1: &quot;</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                        std::cin &gt;&gt; apelidoJogador1;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                        std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;Insira o apelido do jogador 2: &quot;</span>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                        std::cin &gt;&gt; apelidoJogador2;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                        std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                        <span class="comment">// Verifica se os apelidos são iguais</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                        <span class="keywordflow">if</span> (apelidoJogador1 == apelidoJogador2) {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                            std::cout &lt;&lt; <span class="stringliteral">&quot;Os apelidos nao podem ser iguais. Por favor, insira apelidos diferentes.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                            <span class="keywordflow">continue</span>; <span class="comment">// Retorna ao inicio do loop para pedir novos apelidos</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                        }</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                        </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                        apelidosValidos  = gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a2b78334ecd15767efb8fe5e8303a2bbb">carregarDoisJogadores</a>(apelidoJogador1, apelidoJogador2);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                    } <span class="keywordflow">while</span> (!apelidosValidos);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                    <span class="comment">// Define os apelidos no jogo (se necessário)</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                    jogo-&gt;setApelidoJogador1(apelidoJogador1);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                    jogo-&gt;setApelidoJogador2(apelidoJogador2);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                    <span class="comment">// Executa a partida</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                    vencedor = <a class="code hl_function" href="main_8cpp.html#a28fe99a9f894367b2fbf051af36e06aa">executarPartida</a>(std::move(jogo));</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                    <span class="keywordflow">if</span> (vencedor == 1) {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                        gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>[apelidoJogador1]-&gt;adicionarVitoria(jogo_enum, 1);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                        gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>[apelidoJogador2]-&gt;adicionarDerrota(jogo_enum, 1);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                        gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a5e5c2381bd5a09bd0539560726bfef9b">atualizarEstatisticas</a>(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;\nAs estatisticas foram atualizadas!\n&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (vencedor == 2) {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                        gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>[apelidoJogador1]-&gt;adicionarVitoria(jogo_enum, 1);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                        gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>[apelidoJogador2]-&gt;adicionarDerrota(jogo_enum, 1);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                        gestao.<a class="code hl_function" href="class_gestao_de_jogadores.html#a5e5c2381bd5a09bd0539560726bfef9b">atualizarEstatisticas</a>(gestao.<a class="code hl_variable" href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">jogadores_map</a>);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;\nAs estatisticas foram atualizadas!\n&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (vencedor == 0) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;\nNenhuma estatistica foi alterada!\n&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                    }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                    <span class="keywordflow">break</span>; <span class="comment">// Sai do loop após uma escolha válida</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Escolha invalida. Tente novamente.\n&quot;</span>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (comando == <span class="stringliteral">&quot;M&quot;</span>) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <a class="code hl_function" href="main_8cpp.html#a41e28bb4d9d18b22673799874520024e">exibirMenu</a>();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(comando == <span class="stringliteral">&quot;FS&quot;</span>){</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;\nSistema Finalizado. Saindo...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Comando Invalido. Tente Novamente.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        }</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;\nInsira um comando: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>}</div>
+</div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html"><div class="ttname"><a href="class_gestao_de_jogadores.html">GestaoDeJogadores</a></div><div class="ttdoc">Classe responsável pela gestão de jogadores.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8hpp_source.html#l00019">gestaoDeJogadores.hpp:19</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a262193b3f5402b934412f623ae766ea9"><div class="ttname"><a href="class_gestao_de_jogadores.html#a262193b3f5402b934412f623ae766ea9">GestaoDeJogadores::removerJogador</a></div><div class="ttdeci">bool removerJogador(const std::string &amp;apelido)</div><div class="ttdoc">Remove um jogador do sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00158">gestaoDeJogadores.cpp:158</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a2b78334ecd15767efb8fe5e8303a2bbb"><div class="ttname"><a href="class_gestao_de_jogadores.html#a2b78334ecd15767efb8fe5e8303a2bbb">GestaoDeJogadores::carregarDoisJogadores</a></div><div class="ttdeci">bool carregarDoisJogadores(const std::string &amp;apelido1, const std::string &amp;apelido2)</div><div class="ttdoc">Carrega dois jogadores específicos do arquivo para o mapa.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00044">gestaoDeJogadores.cpp:44</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a4fe8d2e03e5028fa1a1d92164730a23a"><div class="ttname"><a href="class_gestao_de_jogadores.html#a4fe8d2e03e5028fa1a1d92164730a23a">GestaoDeJogadores::cadastrarJogador</a></div><div class="ttdeci">bool cadastrarJogador(const std::string &amp;apelido, const std::string &amp;nome)</div><div class="ttdoc">Cadastra um novo jogador no sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00141">gestaoDeJogadores.cpp:141</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a5e5c2381bd5a09bd0539560726bfef9b"><div class="ttname"><a href="class_gestao_de_jogadores.html#a5e5c2381bd5a09bd0539560726bfef9b">GestaoDeJogadores::atualizarEstatisticas</a></div><div class="ttdeci">bool atualizarEstatisticas(const std::map&lt; std::string, std::unique_ptr&lt; Jogador &gt; &gt; &amp;jogadoresParaAtualizar)</div><div class="ttdoc">Atualiza as estatísticas dos jogadores no arquivo.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00088">gestaoDeJogadores.cpp:88</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_a808d346accaef08b4742b2453dc360a0"><div class="ttname"><a href="class_gestao_de_jogadores.html#a808d346accaef08b4742b2453dc360a0">GestaoDeJogadores::jogadores_map</a></div><div class="ttdeci">std::map&lt; std::string, std::unique_ptr&lt; Jogador &gt; &gt; jogadores_map</div><div class="ttdoc">Mapa que armazena os jogadores, onde a chave é o apelido do jogador.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8hpp_source.html#l00044">gestaoDeJogadores.hpp:44</a></div></div>
+<div class="ttc" id="aclass_gestao_de_jogadores_html_ac69595a47cca3956adacdccf6a47d3b4"><div class="ttname"><a href="class_gestao_de_jogadores.html#ac69595a47cca3956adacdccf6a47d3b4">GestaoDeJogadores::listarJogadores</a></div><div class="ttdeci">void listarJogadores()</div><div class="ttdoc">Lista todos os jogadores cadastrados no sistema.</div><div class="ttdef"><b>Definição</b> <a href="gestao_de_jogadores_8cpp_source.html#l00184">gestaoDeJogadores.cpp:184</a></div></div>
+<div class="ttc" id="aclass_jogo_da_velha_html"><div class="ttname"><a href="class_jogo_da_velha.html">JogoDaVelha</a></div><div class="ttdoc">Classe que implementa o jogo da velha.</div><div class="ttdef"><b>Definição</b> <a href="jogo_da_velha_8hpp_source.html#l00013">jogoDaVelha.hpp:13</a></div></div>
+<div class="ttc" id="aclass_reversi_html"><div class="ttname"><a href="class_reversi.html">Reversi</a></div><div class="ttdoc">Classe que implementa o jogo Reversi.</div><div class="ttdef"><b>Definição</b> <a href="reversi_8hpp_source.html#l00015">reversi.hpp:15</a></div></div>
+<div class="ttc" id="aclasslig4_html"><div class="ttname"><a href="classlig4.html">lig4</a></div><div class="ttdoc">Classe que implementa o jogo Lig 4.</div><div class="ttdef"><b>Definição</b> <a href="lig4_8hpp_source.html#l00013">lig4.hpp:13</a></div></div>
+<div class="ttc" id="agestao_de_jogadores_8hpp_html"><div class="ttname"><a href="gestao_de_jogadores_8hpp.html">gestaoDeJogadores.hpp</a></div></div>
+<div class="ttc" id="ajogador_8hpp_html_a63c5f8a8fc1b73844678d3800606e0b5"><div class="ttname"><a href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5">TipoDeJogo</a></div><div class="ttdeci">TipoDeJogo</div><div class="ttdoc">Enumeração que define os tipos de jogos disponíveis.</div><div class="ttdef"><b>Definição</b> <a href="jogador_8hpp_source.html#l00012">jogador.hpp:12</a></div></div>
+<div class="ttc" id="ajogador_8hpp_html_a63c5f8a8fc1b73844678d3800606e0b5a17bed7b7154a7d5ff10d202858975088"><div class="ttname"><a href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a17bed7b7154a7d5ff10d202858975088">LIG4</a></div><div class="ttdeci">@ LIG4</div><div class="ttdoc">Jogo Lig 4.</div><div class="ttdef"><b>Definição</b> <a href="jogador_8hpp_source.html#l00014">jogador.hpp:14</a></div></div>
+<div class="ttc" id="ajogador_8hpp_html_a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a"><div class="ttname"><a href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a5ac6559c0a96dc91b4bf758eb896772a">REVERSI</a></div><div class="ttdeci">@ REVERSI</div><div class="ttdoc">Jogo Reversi.</div><div class="ttdef"><b>Definição</b> <a href="jogador_8hpp_source.html#l00013">jogador.hpp:13</a></div></div>
+<div class="ttc" id="ajogador_8hpp_html_a63c5f8a8fc1b73844678d3800606e0b5a9ba8cb9157f8b7e5c03ccd6076ad51c1"><div class="ttname"><a href="jogador_8hpp.html#a63c5f8a8fc1b73844678d3800606e0b5a9ba8cb9157f8b7e5c03ccd6076ad51c1">VELHA</a></div><div class="ttdeci">@ VELHA</div><div class="ttdoc">Jogo da Velha.</div><div class="ttdef"><b>Definição</b> <a href="jogador_8hpp_source.html#l00015">jogador.hpp:15</a></div></div>
+<div class="ttc" id="ajogo_da_velha_8hpp_html"><div class="ttname"><a href="jogo_da_velha_8hpp.html">jogoDaVelha.hpp</a></div></div>
+<div class="ttc" id="alig4_8hpp_html"><div class="ttname"><a href="lig4_8hpp.html">lig4.hpp</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a28fe99a9f894367b2fbf051af36e06aa"><div class="ttname"><a href="main_8cpp.html#a28fe99a9f894367b2fbf051af36e06aa">executarPartida</a></div><div class="ttdeci">int executarPartida(std::unique_ptr&lt; Jogos &gt; jogo)</div><div class="ttdef"><b>Definição</b> <a href="#l00023">main.cpp:23</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a41e28bb4d9d18b22673799874520024e"><div class="ttname"><a href="main_8cpp.html#a41e28bb4d9d18b22673799874520024e">exibirMenu</a></div><div class="ttdeci">void exibirMenu()</div><div class="ttdef"><b>Definição</b> <a href="#l00011">main.cpp:11</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ad947af3d3aaf4aa3c6ada07a253631c8"><div class="ttname"><a href="main_8cpp.html#ad947af3d3aaf4aa3c6ada07a253631c8">ehValidoParaCSV</a></div><div class="ttdeci">bool ehValidoParaCSV(const std::string &amp;str)</div><div class="ttdef"><b>Definição</b> <a href="#l00038">main.cpp:38</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definição</b> <a href="#l00049">main.cpp:49</a></div></div>
+<div class="ttc" id="areversi_8hpp_html"><div class="ttname"><a href="reversi_8hpp.html">reversi.hpp</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_275089585c7fc1b5fd5d7d42c69cb1da.html">D:</a></li><li class="navelem"><a class="el" href="dir_433cdbe8d3847d9a60b17645db517601.html">arthu</a></li><li class="navelem"><a class="el" href="dir_40e9e8f76497d16d3705e2daf6281846.html">Documents</a></li><li class="navelem"><a class="el" href="dir_2c498390632a1a52ea9542775e54968b.html">Arquivos</a></li><li class="navelem"><a class="el" href="dir_f9b7524fbf3ba38942311e19623d9aba.html">Programação</a></li><li class="navelem"><a class="el" href="dir_0633fb0cb29d8a479c4d32d17413bdae.html">Programação_e_Desenvolvimento_de_Software_II</a></li><li class="navelem"><a class="el" href="dir_f1e96faf8cd2022581d63d33f01bea04.html">ProjetoFinal</a></li><li class="navelem"><a class="el" href="dir_77c2bac7b82b29f657ebe4da816d2ed4.html">src</a></li><li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
