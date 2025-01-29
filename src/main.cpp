@@ -38,7 +38,7 @@ int executarPartida(std::unique_ptr<Jogos> jogo) {
             jogo->realizarJogada();
         }
     }
-
+    
     return jogo->indicarFimDaPartida();
 }
 
@@ -130,9 +130,9 @@ int main(){
             while (true) { // Loop ate que uma escolha valida seja feita
                 std::cout << "\nEscolha o jogo:\n";
                 std::cout << "---------------------\n";
-                std::cout << "[R] - Reversi\n";
-                std::cout << "[V] - Jogo da Velha\n";
-                std::cout << "[L] - Lig4\n";
+                std::cout << "[R] - \033[36mReversi\033[0m\n";         //Reversi em ciano
+                std::cout << "[V] - \033[35mJogo da Velha\033[0m\n";   //Jogo da Velha em magenta
+                std::cout << "[L] - \033[33mLig4\033[0m\n";            //Lig4 em amarelo
                 std::cout << "---------------------" << std::endl;
 
                 std::cin >> escolhaJogo;
@@ -229,8 +229,8 @@ int main(){
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
                         std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 2) {
-                        gestao.jogadores_map[apelidoJogador1]->adicionarVitoria(jogo_enum, 1);
-                        gestao.jogadores_map[apelidoJogador2]->adicionarDerrota(jogo_enum, 1);
+                        gestao.jogadores_map[apelidoJogador1]->adicionarDerrota(jogo_enum, 1);
+                        gestao.jogadores_map[apelidoJogador2]->adicionarVitoria(jogo_enum, 1);
                         gestao.atualizarEstatisticas(gestao.jogadores_map);
                         std::cout << "\nAs estatisticas foram atualizadas!\n" << std::endl;
                     } else if (vencedor == 0) {

@@ -222,7 +222,7 @@ void GestaoDeJogadores::listarJogadores() {
                 cor = "\033[31m";      // Vermelho
             } 
 
-            std::cout << std::setw(10) << std::left << nomeDoJogo(static_cast<TipoDeJogo>(i))
+            std::cout << std::setw(16) << std::left << nomeDoJogo(static_cast<TipoDeJogo>(i))
                       << " - V: " << std::setw(3) << std::left << estatisticas.first  //Vitórias
                       << " D: " << std::setw(3) << std::left << estatisticas.second  //Derrotas
                       << " | A: " << std::setw(3) << std::left << cor               //Cor da média
@@ -303,9 +303,9 @@ void GestaoDeJogadores::inserirLinhaNoMapa(const std::string& linha) {
 }
 std::string GestaoDeJogadores::nomeDoJogo(TipoDeJogo jogo) {
     switch (jogo) {
-        case REVERSI: return "REVERSI";
-        case LIG4:    return "LIG4";
-        case VELHA:   return "VELHA";
+        case REVERSI: return "\033[36mREVERSI\033[0m";
+        case LIG4:    return "\033[33mLIG4\033[0m";
+        case VELHA:   return "\033[35mVELHA\033[0m";
         default:      return "JOGO_INVALIDO";
     }
 } //Recebe o TipoDeJogo e retorna a string respectiva do tipoDeJogo
