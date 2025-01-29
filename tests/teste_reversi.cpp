@@ -1,10 +1,24 @@
+/**
+ * @file
+ * @brief Implementação de testes para a classe Reversi utilizando a biblioteca doctest.
+ */
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "../include/reversi.hpp"
 #include <iostream>
 #include <sstream>
 
+/**
+ * @brief Testa os métodos da classe Reversi.
+ */
 TEST_CASE("Testando a classe Reversi") {
+
+    /**
+     * @test Testa o método lerJogada, que lê a jogada do usuário.
+     * Simula a entrada do jogador e verifica se os índices de linha e coluna
+     * são corretamente ajustados para começar em 0.
+     */
     SUBCASE("Testando o método lerJogada") {
         Reversi jogo;
         std::istringstream input("3 4\n"); // Simula a entrada do usuário
@@ -16,6 +30,10 @@ TEST_CASE("Testando a classe Reversi") {
         CHECK(jogo.getJogadaColuna() == 3); // Verifica se a coluna foi ajustada corretamente (índice 0)
     }
 
+    /**
+     * @test Testa o método jogadaEValida, que verifica se a jogada é válida.
+     * Avalia condições como posições fora dos limites ou posições ocupadas.
+     */
     SUBCASE("Testando o método jogadaEValida") {
         Reversi jogo;
 
@@ -24,21 +42,25 @@ TEST_CASE("Testando a classe Reversi") {
         jogo.setJogadaColuna(3);
         CHECK(jogo.jogadaEValida() == true);
 
-        // Testa uma jogada inválida (fora dos limites)
-        jogo.setJogadaLinha(-1);
+        // Testa jogadas inválidas
+        jogo.setJogadaLinha(-1); // Fora dos limites
         jogo.setJogadaColuna(3);
         CHECK(jogo.jogadaEValida() == false);
 
-        jogo.setJogadaLinha(8);
+        jogo.setJogadaLinha(8); // Fora dos limites
         jogo.setJogadaColuna(3);
         CHECK(jogo.jogadaEValida() == false);
 
-        // Testa uma jogada inválida (posição já ocupada)
+        // Testa uma posição já ocupada
         jogo.setJogadaLinha(3);
         jogo.setJogadaColuna(3);
         CHECK(jogo.jogadaEValida() == false);
     }
 
+    /**
+     * @test Testa o método realizarJogada, que executa uma jogada no tabuleiro.
+     * Verifica se a peça foi colocada corretamente após uma jogada válida.
+     */
     SUBCASE("Testando o método realizarJogada") {
         Reversi jogo;
 
@@ -51,6 +73,10 @@ TEST_CASE("Testando a classe Reversi") {
         CHECK(jogo.getTabuleiro().getPosicao(2, 3) == Tabuleiro::Peca::JOGADOR1); // Jogador 1 começa
     }
 
+    /**
+     * @test Testa o método partidaAcabou, que verifica se o jogo terminou.
+     * Simula um tabuleiro cheio e verifica se a partida é detectada como finalizada.
+     */
     SUBCASE("Testando o método partidaAcabou") {
         Reversi jogo;
 
@@ -64,6 +90,10 @@ TEST_CASE("Testando a classe Reversi") {
         CHECK(jogo.partidaAcabou() == true); // Verifica se a partida acabou
     }
 
+    /**
+     * @test Testa o método contarPecas, que retorna a quantidade de peças de cada jogador.
+     * Simula um tabuleiro com peças de ambos os jogadores e verifica a contagem.
+     */
     SUBCASE("Testando o método contarPecas") {
         Reversi jogo;
 
@@ -77,6 +107,10 @@ TEST_CASE("Testando a classe Reversi") {
         CHECK(contagem.second == 1); // Verifica o número de peças do jogador 2
     }
 
+    /**
+     * @test Testa o método direcaoValida, que verifica se uma jogada é válida em uma direção.
+     * Simula um cenário no qual a direção deve ser considerada válida.
+     */
     SUBCASE("Testando o método direcaoValida") {
         Reversi jogo;
 
@@ -87,6 +121,9 @@ TEST_CASE("Testando a classe Reversi") {
         CHECK(jogo.direcaoValida(3, 5, 0, -1, Tabuleiro::Peca::JOGADOR1) == true); // Verifica se a direção é válida
     }
 
+    /**
+     * @test Testa o método dentroDosLimites, que verifica se uma posição está dentro dos limites do tabuleiro.
+     */
     SUBCASE("Testando o método dentroDosLimites") {
         Reversi jogo;
 
