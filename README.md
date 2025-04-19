@@ -139,7 +139,7 @@ O sistema foi desenvolvido em **C++11** e segue uma arquitetura modular, com sep
 ##   Dificuldades Enfrentadas
 🔴 [**gestaoDoJogadores**] , [**dados.csv**]: Manipular o preenchimento dos dados no arquivo csv, seja para adição, edição e remoção de jogadores e/ou atributos
 
-🔴 [**jogoDaVelha**], [**reversi**], [**lig4**]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo e da dinâmica de jogadores
+🔴 [**jogoDaVelha**], [**reversi**], [**lig4**]: Implementar a dinâmica com o tabuleiro, dentro da lógica de funcionamento do jogo e da dinâmica de jogadores.
 
 🔴 [**main**]: Estabelecer a interação com o usuário e aumentar a robustez do sistema a comportamentos excepcionais
 
