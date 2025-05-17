@@ -1,3 +1,9 @@
+### Sobre o repositório
+
+Este repositório é um fork de um projeto desenvolvido em grupo para a disciplina **Programação e Desenvolvimento de Software II** da faculdade. O objetivo era criar um sistema de jogos de tabuleiro com diversas funcionalidades utilizando a linguagem de programação C++.
+
+Este fork tem como finalidade manter um registro da minha participação no projeto, como contribuições no desenvolvimento e organização do código.
+
 #   Trabalho Prático PDS2 - Jogos de Tabuleiro
 
 Bem-vindo ao repositório do **Trabalho Prático PDS2**! Este projeto é um sistema desenvolvido em **C++11** para gerenciamento de jogadores e execução de jogos clássicos de tabuleiro. Aqui você encontrará uma solução robusta para cadastrar jogadores, jogar partidas de **Jogo da Velha**, **Lig4** e **Reversi**, e gerar estatísticas detalhadas para cada jogador.
